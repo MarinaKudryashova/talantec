@@ -1,0 +1,170 @@
+.mobile-menu {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  height: calc(100% - 74px);
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--white);
+  padding: 32px 16px 24px;
+  opacity: 0;
+  z-index: 300;
+  pointer-events: none;
+  visibility: hidden;
+  // transform: translateY(-100%);
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.2s ease-out,
+              visibility 0.2s linear ;
+
+  &.is-open{
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 970px) {
+    height: calc(100% - 66px);
+  }
+
+  @include small-tablet {
+    height: calc(100% - 62px);
+  }
+
+  @include mobile {
+    width: 100%;
+  }
+
+  @include small-mobile {
+    height: calc(100% - 58px);
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin: 0 0 32px 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__link {
+    font-size: clamp(24px, px-to-vw(24px, 375), 28px);
+    line-height: 110%;
+    color: var(--black);
+  }
+
+  & .accordion__content {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all var(--transition-300);
+  }
+
+  & .accordion__control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    font-size: clamp(24px, px-to-vw(24px, 375), 28px);
+    line-height: 110%;
+    color: var(--black);
+    cursor: pointer;
+  }
+
+  & .accordion__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: var(--accent);
+    border-radius: 50%;
+  }
+
+  & .accordion__icon svg {
+    fill: none;
+    stroke: var(--white);
+    width: 16px;
+    height: 16px;
+    transform: rotate(180deg);
+    transition: transform var(--transition-300), stroke var(--transition-300);
+  }
+
+  & .accordion__item.is-open {
+    .accordion__control {
+      margin-bottom: 16px;
+    }
+
+    .accordion__icon svg {
+      stroke: var(--white);
+      transform: rotate(0deg);
+    }
+
+    .accordion__icon {
+      background-color: var(--black);
+    }
+
+    .accordion__content {
+      opacity: 1;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-left: 24px;
+    margin: 0;
+    border-left: 1px solid var(--accent);
+
+    & a {
+      font-size: 16px;
+      color: var(--grey);
+    }
+  }
+
+  &__action {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__link--phone {
+    display: block;
+    padding: 16px 0;
+    font-size: clamp(16px, px-to-vw(16px, 375), 20px);
+    color: var(--black);
+    border-top: 1px solid #CFCED5;
+    border-bottom: 1px solid #CFCED5;
+  }
+
+  &__btn {
+    padding-left: 20px;
+    background-color: var(--accent);
+    border: none;
+
+    & .ui-btn-arrow__text {
+
+      font-size: clamp(14px, px-to-vw(14px, 375), 16px);
+      color: var(--white);
+    }
+
+    & .ui-btn-arrow__arrow {
+      width: 32px;
+      height: 32px;
+      background-color: var(--white);
+    }
+
+    .ui-arrow__svg {
+      color: var(--black);
+      stroke-width: 2px;
+    }
+
+  }
+}

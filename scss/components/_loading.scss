@@ -1,0 +1,42 @@
+.btn[data-is-loading] {
+  position: relative;
+  transition: 0.3s;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 1.2em;
+    height: 1.2em;
+    position: absolute;
+    left: calc(50% - 0.75em);
+    top: calc(50% - 0.75em);
+    border: 0.15em solid transparent;
+    border-right-color: var(--grey);
+    border-radius: 50%;
+    transition:
+      opacity 0.3 ease-in-out,
+      animation 0.3 ease-in-out;
+  }
+}
+
+.btn[data-is-loading="false"]::after {
+  animation: none;
+  opacity: 0;
+}
+.btn[data-is-loading="true"] {
+  color: transparent;
+}
+
+.btn[data-is-loading="true"]::after {
+  animation: button-anim 0.7s linear infinite;
+  opacity: 1;
+}
+
+@keyframes button-anim {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

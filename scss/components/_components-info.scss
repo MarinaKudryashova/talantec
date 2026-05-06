@@ -1,0 +1,88 @@
+.components-info {
+  // overflow: hidden;
+
+  &__container {
+    padding-top: px-to-vw(120px, 1440);
+    padding-bottom: px-to-vw(120px, 1440);
+    overflow: hidden;
+
+    @include mobile {
+      padding-top: clamp(64px, px-to-vw(64px, 576), 64px);
+      padding-bottom: clamp(64px, px-to-vw(64px, 576), 64px);
+    }
+  }
+
+  &__heading {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: px-to-vw(32px, 1440);
+    gap: 24px;
+
+
+   @include mobile {
+      flex-direction: column;
+      align-items: start;
+    }
+
+  }
+
+  &__inner {
+    flex-grow: 1;
+  }
+
+  &__title {
+    margin: 0 0 px-to-vw(12px, 1440);
+    font-weight: 400;
+    font-size: px-to-vw(24px, 1440);
+    line-height: 110%;
+    color: var(--black);
+
+    @include desktop {
+      margin: 0 0 12px;
+      font-size: 24px;
+    }
+
+    @include mobile {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+  }
+
+  &__text {
+    margin: 0;
+    max-width: px-to-vw(645px, 1440);
+    font-weight: 400;
+    font-size: px-to-vw(14px, 1440);
+    line-height: 120%;
+    color: var(--grey);
+
+    @include desktop {
+      max-width: 645px;
+      font-size: 14px;
+    }
+
+    @include mobile {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+  }
+
+  &__slider {
+    height: fit-content;
+    margin: 0 calc(-1 * px-to-vw(64px, 1440));
+    padding: 0 px-to-vw(64px, 1440);
+    overflow: hidden;
+  }
+
+  & .swiper-slide {
+    display: flex;
+    justify-content: center;
+    height: auto;
+  }
+
+  &__nav {
+    @include small-tablet {
+      display: none;
+    }
+  }
+}

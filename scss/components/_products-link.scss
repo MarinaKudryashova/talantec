@@ -1,0 +1,118 @@
+.products-link {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: px-to-vw(12px, 1440);
+  padding: clamp(28px, px-to-vw(40px, 1440), 80px);
+  width: 100%;
+  color: var(--white);
+
+  @media (max-width: 970px) {
+    gap: clamp(12px, px-to-vw(12px, 375), 12px);
+    padding: clamp(12px, px-to-vw(16px, 375), 28px);
+  }
+
+
+  &::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--black);
+    opacity: 0;
+    z-index: -1;
+
+    @media (max-width: 970px) {
+      opacity: 0.72;
+    }
+  }
+
+  &:hover .ui-arrow__svg:first-child {
+    transform: translate(150%, -150%);
+  }
+
+  &:hover .ui-arrow__svg--copy {
+    transform: translate(0);
+  }
+
+  &__number {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-start;
+    border: 1px solid var(--white-160);
+    border-radius: px-to-vw(9999px, 1440);
+    padding: clamp(4px, px-to-vw(4px, 1440), 10px)
+             clamp(8px, px-to-vw(8px, 1440), 16px);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(16px, px-to-vw(16px, 1440), 32px);
+    line-height: 120%;
+    text-transform: uppercase;
+    color: currentColor;
+
+    @include mobile {
+      font-size: clamp(12px, px-to-vw(12px, 375), 16px);
+      background-repeat: 9999px;
+    }
+
+    &::before {
+      content: "0" counter(products-counter);
+      color: inherit;
+    }
+  }
+
+  &__name {
+    font-weight: 500;
+    font-size: px-to-vw(24px, 1440);
+    line-height: 110%;
+    color: currentColor;
+
+    @include small-desktop {
+      font-size: clamp(20px, px-to-vw(24px, 1280), 24px);
+    }
+
+    @include small-tablet {
+      font-size: clamp(18px, px-to-vw(20px, 768), 20px);
+      max-width: 200px;
+    }
+
+    @include mobile {
+      font-size: clamp(14px, px-to-vw(14px, 375), 18px);
+      max-width: 160px;
+    }
+  }
+
+  &__arrow {
+    margin-top: auto;
+    align-self: self-end;
+
+    @media (max-width: 970px) {
+      position: absolute;
+      top: clamp(12px, px-to-vw(16px, 375), 28px);
+      right: clamp(12px, px-to-vw(16px, 375), 28px);
+    }
+  }
+
+  &__img {
+    display: none;
+
+    @media (max-width: 970px) {
+      display: flex;
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+
+    & img {
+      width: 100%;
+    }
+  }
+}

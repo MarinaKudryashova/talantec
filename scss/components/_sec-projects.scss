@@ -1,0 +1,83 @@
+.sec-projects {
+  overflow: hidden;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    padding-top: px-to-vw(120px, 1440);
+    padding-bottom: px-to-vw(120px, 1440);
+
+    @include mobile {
+      padding-top: clamp(64px, px-to-vw(64px, 576), 64px);
+      padding-bottom: clamp(64px, px-to-vw(64px, 576), 64px);
+    }
+  }
+
+  &__heading {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: px-to-vw(56px, 1440);
+    gap: px-to-vw(15px, 1440);
+
+    @include small-desktop {
+      margin-bottom: clamp(50px, px-to-vw(56px, 1280), 56px);
+      gap: clamp(15px, px-to-vw(15px, 1280), 15px);
+    }
+
+    @include small-tablet {
+      flex-direction: column;
+      align-items: start;
+      gap: clamp(40px, px-to-vw(40px, 768), 24px);
+      margin-bottom: clamp(16px, px-to-vw(16px, 768), 20px);
+    }
+  }
+
+  &__inner {
+    flex-grow: 1;
+  }
+
+  &__title {
+    margin-bottom: px-to-vw(8px, 1440);
+
+    @include desktop {
+      margin-bottom: 8px;
+    }
+
+    @include big-tablet {
+      margin-bottom: 12px;
+    }
+  }
+
+  &__subtitle {
+    margin: 0;
+    max-width: px-to-vw(645px, 1440);
+    font-weight: 500;
+    font-size: px-to-vw(48px, 1440);
+    line-height: 100%;
+    color: var(--black);
+
+    @include small-desktop {
+      font-size: clamp(44px, px-to-vw(48px, 1280), 48px);
+      max-width: px-to-vw(645px, 1280);
+    }
+
+    @include big-tablet {
+      max-width: 100%;
+    }
+
+    @include tablet {
+      font-size: clamp(36px, px-to-vw(44px, 1023), 48px);
+    }
+
+    @include mobile {
+      font-size: clamp(24px, px-to-vw(24px, 576), 26px);
+      max-width: 100%;
+    }
+  }
+
+  &__slider {
+    margin: 0 calc(-1 * px-to-vw(64px, 1440));
+    padding: 0 px-to-vw(64px, 1440);
+    max-width: calc(100% + px-to-vw(64px, 1440) * 2);
+  }
+}

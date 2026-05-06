@@ -1,0 +1,119 @@
+.components-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid var(--border);
+  background-color: var(--white);
+  overflow: hidden;
+
+  &:focus-visible .components-card__img {
+    transform: scale(1.1);
+  }
+
+  &:focus-visible .components-card__name {
+    color: var(--accent);
+  }
+
+  &:focus-visible .components-card__arrow {
+    background-color: var(--black);
+  }
+
+  &:focus-visible .ui-arrow__svg:first-child {
+    transform: translate(150%, -150%);
+  }
+
+  &:focus-visible .ui-arrow__svg--copy {
+    transform: translate(0);
+  }
+
+  &:hover .components-card__img {
+    transform: scale(1.1);
+  }
+
+  &:hover .components-card__name {
+    color: var(--accent);
+  }
+
+  &:hover .components-card__arrow {
+    background-color: var(--black);
+  }
+
+  &:hover .ui-arrow__svg:first-child {
+    transform: translate(150%, -150%);
+  }
+
+  &:hover .ui-arrow__svg--copy {
+    transform: translate(0);
+  }
+
+  &__view {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  &__img {
+    width: 100%;
+    aspect-ratio: 304 / 312;
+    transform: scale(1);
+    transition: transform var(--transition-300);
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    padding: px-to-vw(16px, 1440);
+
+    @include mobile {
+      padding: clamp(8px, px-to-vw(8px, 576), 14px);
+    }
+  }
+
+  &__name {
+    font-weight: 500;
+    font-size: px-to-vw(16px, 1440);
+    line-height: 120%;
+    color: var(--black);
+    transition: color var(--transition-300);
+
+    @include desktop {
+      font-size: 16px;
+    }
+  }
+
+  &__arrow {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    border-radius: 100%;
+    width: px-to-vw(36px, 1440);
+    height: px-to-vw(36px, 1440);
+    color: var(--white);
+    background-color: var(--accent);
+    transition: background-color var(--transition-300);
+
+    @include desktop {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  &__icons {
+    & .ui-arrow__svg {
+      width: px-to-vw(16px, 1440);
+      height: px-to-vw(16px, 1440);
+      transition:
+        color var(--transition-300),
+        transform var(--transition-300);
+
+      @include desktop {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}

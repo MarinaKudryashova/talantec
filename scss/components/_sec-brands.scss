@@ -1,0 +1,137 @@
+.sec-brands {
+  background-color: var(--bg);
+  overflow: hidden;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: px-to-vw(64px, 1440);
+    padding-top: px-to-vw(80px, 1440);
+    padding-bottom: px-to-vw(80px, 1440);
+
+    @include desktop {
+      gap: 64px;
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+
+    @include big-tablet {
+      gap: 40px;
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+  }
+
+  &__heading {
+    display: flex;
+    align-items: flex-start;
+    gap: px-to-vw(32px, 1440);
+
+    @include desktop {
+      gap: 32px;
+    }
+
+    @include big-tablet {
+      gap: 12px;
+      flex-direction: column;
+    }
+
+    @include mobile {
+      margin-bottom: clamp(16px, px-to-vw(16, 768), 20px);
+    }
+  }
+
+  &__title {
+    margin: 0;
+    width: 31.7%;
+  }
+
+  &__descr {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: px-to-vw(16px, 1440);
+    width: calc(100% - 31.7% - px-to-vw(32px, 1440));
+    color: var(--black);
+
+    @include desktop {
+      gap: 16px;
+    }
+
+    @include big-tablet {
+      gap: 12px;
+      width: 100%;
+    }
+  }
+
+  &__slogan {
+    margin: 0;
+    font-weight: 500;
+    font-size: px-to-vw(32px, 1440);
+    line-height: 110%;
+    color: currentColor;
+
+    @include desktop {
+      font-size: 32px;
+    }
+
+    @include tablet {
+      font-size: 30px;
+    }
+
+    @include big-tablet {
+      width: 100%;
+    }
+
+    @include small-tablet {
+      font-size: 27px;
+    }
+
+    @include mobile {
+      font-size: 25px;
+    }
+
+    @include small-mobile {
+      font-size: 24px;
+    }
+  }
+
+  &__text {
+    margin: 0;
+    max-width: px-to-vw(640px, 1440);
+    font-weight: 400;
+    font-size: px-to-vw(16px, 1440);
+    line-height: 120%;
+    color: currentColor;
+
+    @include desktop {
+      font-size: 16px;
+    }
+
+    @include big-tablet {
+      min-width: 100%;
+    }
+
+    @include small-tablet {
+      font-size: 15px;
+    }
+
+    @include mobile {
+      font-size: 14px;
+    }
+  }
+
+  // .sec-brands__slider
+  &__slider {
+    margin: 0 calc(-1 * px-to-vw(64px, 1440));
+    padding: 0 px-to-vw(64px, 1440);
+    max-width: calc(100% + px-to-vw(64px, 1440) * 2);
+
+    .swiper-slide {
+      height: auto;
+      display: flex;
+    }
+  }
+}
+
+

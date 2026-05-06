@@ -1,0 +1,145 @@
+.bannerform {
+  position: relative;
+  padding: px-to-vw(80px, 1440) 0;
+  color: var(--white);
+  overflow: hidden;
+
+  @include mobile {
+    padding: 64px 0;
+  }
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    display: flex;
+    width: 100%;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      background-color: var(--black-560);
+    }
+  }
+
+  &__picture {
+    display: block;
+    width: 100%;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+
+    @include small-tablet {
+      // height: auto;
+      object-fit: cover;
+    }
+  }
+
+  &__container {
+    position: relative;
+    z-index: 2;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: flex-start;
+    gap: px-to-vw(32px, 1440);
+
+    @include desktop {
+      // gap: 32px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: px-to-vw(40px, 1440);
+    font-weight: 500;
+    font-size: px-to-vw(48px, 1440);
+    line-height: 100%;
+    color: currentColor;
+
+    @include desktop {
+      margin-bottom: 40px;
+      font-size: 48px;
+    }
+
+    @include tablet {
+      font-size: 42px;
+    }
+
+    @include big-tablet {
+      font-size: 38px;
+    }
+
+    @include mobile {
+      margin-bottom: 24px;
+      font-size: clamp(28px, px-to-vw(32px, 576), 32px);
+    }
+  }
+
+  &__descr {
+    grid-column: 4 span;
+    margin: 0;
+    font-weight: 400;
+    font-size: px-to-vw(16px, 1440);
+    line-height: 120%;
+    color: currentColor;
+
+    @include desktop {
+      font-size: 16px;
+    }
+
+    @include tablet {
+      grid-column: 5 span;
+    }
+
+    @include small-tablet {
+      grid-column: 12 span;
+    }
+
+    @include mobile {
+      grid-column: 11 span;
+      font-size: 16px;
+    }
+
+    @include small-mobile {
+      grid-column: 12 span;
+      font-size: 14px;
+    }
+  }
+
+  &__form {
+    grid-column: 7 / 6 span;
+    color: currentColor;
+
+    .form-field__input {
+      &:-webkit-autofill,
+      &:-webkit-autofill:hover,
+      &:-webkit-autofill:focus {
+        -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+        -webkit-text-fill-color: var(--white);
+        border-color: var(--white);
+        transition: background-color 5000s ease-in-out 0s;
+        background-color: transparent;
+      }
+
+      &::placeholder {
+        color: currentColor;
+      }
+    }
+
+    @include small-tablet {
+      grid-column: 1 / 12 span;
+    }
+  }
+}

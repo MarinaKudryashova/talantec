@@ -1,0 +1,18 @@
+@use "sass:math";
+
+/**
+ * Конвертирует пиксели в vw
+ * @param {number} $px - значение в пикселях (например: 16px)
+ * @param {number} $viewport - ширина вьюпорта в пикселях (без единиц)
+ * @return {string} - значение в vw
+ */
+@function px-to-vw($px, $viewport: 1920) {
+  // Убираем 'px' из значения если оно есть
+  $px-value: if(unit($px) == 'px', math.div($px, 1px), $px);
+
+  // Вычисляем vw с использованием math.div()
+  $vw-value: math.div($px-value, $viewport) * 100;
+
+  // Возвращаем результат с единицей vw
+  @return #{$vw-value}vw;
+}

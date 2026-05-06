@@ -1,0 +1,104 @@
+.burger {
+  --burger-width: 20px;
+  --burger-height: 16px;
+  --burger-line-height: 1.5px;
+
+  position: relative;
+  flex-shrink: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 0;
+  width: var(--burger-width);
+  height: var(--burger-height);
+  color: var(--white);
+  background-color: transparent;
+  cursor: pointer;
+
+  @include tablet {
+    display: flex;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    border-radius: 50%;
+    height: var(--burger-line-height);
+    background-color: currentColor;
+    transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+  }
+
+  &::before {
+    top: 0;
+  }
+
+  &::after {
+    top: calc(100% - var(--burger-line-height) / 2);
+  }
+
+  &__line {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: var(--burger-line-height);
+    background-color: currentColor;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease-in-out, color .3s ease-in-out;
+
+    @include small-tablet {
+      transform: none;
+    }
+  }
+
+  &.is-open {
+    &::before {
+      color: var(--black);
+      top: 50%;
+      transform: rotate(45deg);
+      transition: transform 0.3s ease-in-out, top 0.3s ease-in-out, color .3s ease-in-out;
+    }
+
+    &::after {
+      color: var(--black);
+      top: 50%;
+      transform: rotate(-45deg);
+      transition: transform 0.3s ease-in-out, top 0.3s ease-in-out, color .3s ease-in-out;
+    }
+
+    .burger__line {
+      transform: scale(0);
+      transition: transform 0.3s ease-in-out;
+    }
+  }
+
+  // height: 40px;
+  // width: 40px;
+  // border: 0.96px solid var(--white-160);
+  // padding: 8px;
+  // background-color: transparent;
+  // color: var(--white);
+  // cursor: pointer;
+  // flex-shrink: 0;
+
+  // & svg {
+  //   width: px-to-vw(24px, 1440);
+  //   height: px-to-vw(24px, 1440);
+  //   stroke: currentColor;
+  //   stroke-width: 1.5px;
+  //   fill: none;
+
+  //   @include desktop {
+  //     width: 24px;
+  //     height: 24px;
+  //   }
+  // }
+
+  // .burger__line
+
+  // &__line {}
+}

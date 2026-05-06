@@ -1,0 +1,98 @@
+.sec-blockquote {
+
+  // .sec-blockquote__container
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: px-to-vw(120px, 1440);
+    padding-bottom: px-to-vw(120px, 1440);
+
+    @include big-tablet {
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+  }
+
+  // .sec-blockquote__content
+  &__content {
+    max-width: px-to-vw(673px, 1440);
+
+    @include desktop {
+      max-width: 673px;
+    }
+
+    @include big-tablet {
+      max-width: 100%;
+    }
+
+    @include big-tablet {
+      font-size: 24px;
+      width: 100%;
+    }
+  }
+
+  // .sec-blockquote__title
+  &__title {
+    margin-bottom: px-to-vw(12px, 1440);
+    text-align: center;
+
+    @include desktop {
+      margin-bottom: 12px;
+    }
+
+    @include big-tablet {
+      margin-bottom: 12px;
+    }
+  }
+
+  // .sec-blockquote__descr
+  &__descr {
+    margin: 0;
+    font-weight: 400;
+    font-size: px-to-vw(32px, 1440);
+    line-height: 120%;
+    text-align: center;
+    color: var(--black);
+
+    @include desktop {
+      font-size: 32px;
+    }
+
+    @include tablet {
+      font-size: 30px;
+    }
+
+    @include big-tablet {
+      font-size: 28px;
+    }
+
+    @include small-tablet {
+      font-size: 27px;
+    }
+
+    @include mobile {
+      font-size: 24px;
+    }
+
+    & b {
+      border: 1px solid var(--grey);
+      border-radius: 9999px;
+      padding: 4px 8px;
+      font-style: italic;
+      font-weight: 500;
+      font-size: px-to-vw(24px, 1440);
+      line-height: 110%;
+      text-transform: uppercase;
+      color: currentColor;
+
+      @include desktop {
+        font-size: 24px;
+      }
+
+      @include big-tablet {
+        font-size: 16px;
+      }
+    }
+  }
+}

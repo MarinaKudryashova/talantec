@@ -1,0 +1,137 @@
+.form-argee {
+  & label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    & span.wpcf7-list-item-label {
+      position: relative;
+      // padding-left: px-to-vw(30px, 1440);
+      font-weight: 400;
+      font-size: px-to-vw(14px, 1440);
+      line-height: 120%;
+      color: currentColor;
+      transition: color var(--transition-300);
+
+      @include desktop {
+        font-size: 14px;
+      }
+
+      @include tablet {
+        font-size: clamp(14px, px-to-vw(16px, 1024), 16px);
+      }
+
+      @include small-tablet {
+        color: var(--border);
+      }
+
+      @include small-mobile {
+        font-size: clamp(12px, px-to-vw(14px, 375), 14px);
+      }
+
+      & a {
+        position: relative;
+        z-index: 2;
+        font-weight: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        color: inherit;
+        transition: color var(--border);
+        text-decoration: none;
+        transition: color var(--transition-300);
+
+        &:focus {
+          outline: none;
+          color: var(--accent);
+        }
+
+        &:hover {
+          color: var(--accent);
+        }
+      }
+    }
+
+    & input[type="checkbox"],
+    &__input {
+      position: absolute;
+      inset: 0;
+      appearance: none;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+    }
+
+    & .wpcf7-list-item {
+      display: block;
+      margin: 0;
+    }
+
+    // & span.wpcf7-list-item-label::before {
+    //   content: "";
+    //   position: absolute;
+    //   top: 0;
+    //   left: 0;
+    //   flex-shrink: 0;
+    //   display: block;
+    //   margin-right: px-to-vw(10px, 1440);
+    //   border: 1px solid var(--grey);
+    //   width: px-to-vw(20px, 1440);
+    //   height: px-to-vw(20px, 1440);
+    //   background-color: transparent;
+    //   transition:
+    //     border-color var(--border),
+    //     background-color var(--border);
+    //   cursor: pointer;
+    // }
+
+    // & span.wpcf7-list-item-label::after {
+    //   content: "";
+    //   position: absolute;
+    //   top: px-to-vw(5px, 1440);
+    //   left: px-to-vw(11px, 1440);
+    //   border-left: 3px solid var(--white);
+    //   border-bottom: 3px solid var(--white);
+    //   border-radius: 0.5px;
+    //   width: px-to-vw(8px, 1440);
+    //   height: px-to-vw(5px, 1440);
+    //   opacity: 0;
+    //   visibility: hidden;
+    //   transform: rotate(-45deg) translate(-50%, -50%);
+    //   transition:
+    //     opacity var(--transition-300),
+    //     visible var(--transition-300);
+    // }
+
+    // & input[type="checkbox"] {
+    //   outline: none;
+    // }
+
+    // & input[type="checkbox"]:focus-visible + span.wpcf7-list-item-label::before {
+    //   border-color: var(--accent);
+    //   background-color: var(--accent);
+    // }
+
+    // & input[type="checkbox"]:focus-visible + span.wpcf7-list-item-label {
+    //   // color: var(--accent);
+    // }
+
+    // & input[type="checkbox"]:hover + span.wpcf7-list-item-label::before {
+    //   border-color: var(--accent);
+    //   background-color: var(--accent);
+    // }
+
+    // & input[type="checkbox"]:hover + span.wpcf7-list-item-label {
+    //   // color: var(--accent);
+    // }
+
+    // & input[type="checkbox"]:checked + span.wpcf7-list-item-label::before {
+    //   border-color: var(--accent);
+    //   background-color: var(--accent);
+    // }
+
+    // & input[type="checkbox"]:checked + span.wpcf7-list-item-label::after {
+    //   opacity: 1;
+    //   visibility: visible;
+    // }
+  }
+}

@@ -1,0 +1,323 @@
+.footer {
+  position: relative;
+  padding: px-to-vw(80px, 1440) 0 px-to-vw(16px, 1440) px-to-vw(24px, 1440);
+  background-color: var(--black);
+  color: var(--white);
+  z-index: 1100;
+
+  @include small-desktop {
+    padding: px-to-vw(80px, 1280) 0 px-to-vw(24px, 1280);
+  }
+
+  @include tablet {
+    padding: px-to-vw(32px, 1024) 0 px-to-vw(32px, 1024) px-to-vw(16px, 1024);
+  }
+
+  @include small-tablet {
+    padding: clamp(32px, px-to-vw(32px, 768), 32px) 0;
+  }
+
+  &__top {
+    display: flex;
+    align-items: start;
+    gap: px-to-vw(120px, 1440);
+
+    @media (max-width: 1074px) {
+      gap: px-to-vw(60px, 1074);
+    }
+
+    @include tablet {
+      flex-direction: column;
+      align-items: center;
+      gap: px-to-vw(64px, 1024);
+    }
+
+    @include small-tablet {
+      gap: px-to-vw(71px, 768);
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(79px, px-to-vw(79px, 1440), 145px);
+    margin-bottom: px-to-vw(126px, 1440);
+
+    @include tablet {
+      margin-bottom: px-to-vw(100px, 1024);
+    }
+
+    @include small-tablet {
+      width: 100%;
+      margin-bottom: clamp(62px, px-to-vw(62px, 768), 80px);
+    }
+  }
+
+  &__logo {
+    padding: clamp(8px, px-to-vw(8px, 1440), 15px) 0;
+    flex-shrink: 0;
+
+    & img {
+      width: clamp(192px, px-to-vw(192px, 1440), 350px);
+    }
+  }
+
+  &__contacts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(32px, px-to-vw(32px, 1440), 90px);
+
+    @media (max-width: 1074px) {
+      gap: px-to-vw(24px, 1074);
+    }
+
+    @include small-tablet {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: clamp(32px, px-to-vw(32px, 768), 40px);
+    }
+  }
+
+  &__phone,
+  &__email,
+  &__address {
+    display: flex;
+    flex-direction: column;
+    gap: px-to-vw(12px, 1440);
+
+    @include small-desktop {
+      gap: clamp(12px, px-to-vw(12px, 1280), 12px);
+    }
+
+    @include small-tablet {
+      align-items: center;
+    }
+  }
+
+  &__contacts-title {
+    font-weight: 400;
+    line-height: 120%;
+    font-size: px-to-vw(16px, 1440);
+    color: var(--grey);
+
+    @media (max-width: 1439px) {
+      font-size: clamp(16px, px-to-vw(16px, 1440), 16px);
+    }
+  }
+
+  &__contacts-link {
+    position: relative;
+    display: flex;
+    margin: 0;
+    font-weight: 400;
+    line-height: 110%;
+    font-size: px-to-vw(24px, 1440);
+    transition:
+      transform var(--transition-300),
+      color var(--transition-300);
+
+    @include small-desktop {
+      font-size: clamp(18px, px-to-vw(20px, 1280), 24px);
+    }
+
+    @include small-tablet {
+      text-align: center;
+      font-size: clamp(16px, px-to-vw(18px, 768), 20px);
+    }
+
+    @include mobile {
+      font-size: clamp(16px, px-to-vw(16px, 576), 18px);
+    }
+
+    // &::after {
+    //   content: attr(data-text);
+    //   position: absolute;
+    //   top: 100%;
+    //   left: 0;
+    //   width: 100%;
+    //   height: 100%;
+    //   color: currentColor;
+    //   transform: translateY(0);
+    //   transition: transform var(--transition-300);
+    // }
+
+    &:hover {
+      color: var(--accent);
+      // transform: translateY(-100%);
+    }
+
+    &--inactive {
+      pointer-events: none;
+    }
+  }
+
+  &__nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(32px, px-to-vw(32px, 1440), 90px);
+
+    @media (max-width: 1074px) {
+      gap: px-to-vw(24px, 1074);
+    }
+
+    @include small-tablet {
+      display: none;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    align-items: start;
+    gap: px-to-vw(199px, 1440);
+
+    @media (max-width: 1074px) {
+      gap: px-to-vw(60px, 1074);
+    }
+
+    @include tablet {
+      align-items: center;
+      gap: clamp(12px, px-to-vw(12px, 1024), 12px);
+    }
+
+    @include small-tablet {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &__bottom-right {
+    display: grid;
+    width: 100%;
+    align-items: start;
+    grid-template-columns: repeat(3, 1fr);
+    gap: px-to-vw(32px, 1440);
+
+    @include small-desktop {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    @include tablet {
+      gap: clamp(12px, px-to-vw(12px, 1024), 12px);
+    }
+
+    @include small-tablet {
+      flex-direction: column;
+    }
+  }
+
+  &__company,
+  &__policy,
+  &__made {
+    margin: 0;
+    font-weight: 400;
+    font-size: clamp(16px, px-to-vw(16px, 1440), 32px);
+    line-height: 120%;
+    color: var(--grey);
+    transition: color var(--transition-300);
+
+    @media (max-width: 900px) {
+      font-size: clamp(14px, px-to-vw(14px, 900), 14px);
+    }
+
+    @include small-tablet {
+      font-size: clamp(16px, px-to-vw(16px, 768), 16px);
+    }
+  }
+
+  &__policy {
+    &:hover {
+      color: var(--accent);
+    }
+
+    &:focus-visible {
+      color: var(--accent);
+      outline: none;
+    }
+  }
+
+  &__made-link {
+    color: var(--accent);
+    transition: color var(--transition-300);
+
+    &:hover {
+      color: var(--white);
+    }
+
+    &:focus-visible {
+      color: var(--white);
+      outline: none;
+    }
+  }
+
+  &__top-btn {
+    display: flex;
+    align-items: center;
+    gap: clamp(8px, px-to-vw(8px, 1440), 18px);
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    color: var(--accent);
+    font-weight: 400;
+    font-size: clamp(16px, px-to-vw(16px, 1440), 32px);
+    line-height: 120%;
+    font-family: var(--font-family);
+    cursor: pointer;
+    transition: color var(--transition-300);
+
+    &:hover {
+      color: var(--white);
+
+      .footer__btn-icon {
+        stroke: var(--white);
+      }
+    }
+
+    &:focus-visible {
+      outline: none;
+
+      .footer__btn-icon {
+        stroke: var(--white);
+      }
+    }
+
+    @media (max-width: 900px) {
+      font-size: clamp(14px, px-to-vw(14px, 900), 14px);
+    }
+
+    @include small-tablet {
+      font-size: clamp(16px, px-to-vw(16px, 768), 16px);
+    }
+  }
+
+  &__btn-icon {
+    width: clamp(20px, px-to-vw(20px, 1440), 40px);
+    height: clamp(20px, px-to-vw(20px, 1440), 40px);
+    stroke: var(--accent);
+    flex-shrink: 0;
+    transition: stroke var(--transition-300);
+  }
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  & .footer-mobile-nav {
+    display: none;
+
+    @include small-tablet {
+      display: flex;
+    }
+  }
+}

@@ -1,0 +1,73 @@
+.ui-link-arrow {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 8px;
+
+  &:focus-visible .ui-link-arrow__name,
+  &:hover .ui-link-arrow__name {
+    color: var(--accent);
+  }
+  &:focus-visible .ui-link-arrow__arrow,
+  &:hover .ui-link-arrow__arrow {
+    background-color: var(--black);
+  }
+  &:focus-visible .ui-arrow__svg,
+  &:hover .ui-arrow__svg {
+    color: var(--white);
+  }
+  &:focus-visible .ui-arrow__svg:first-child,
+  &:hover .ui-arrow__svg:first-child {
+    transform: translate(150%, -150%);
+  }
+  &:focus-visible .ui-arrow__svg--copy,
+  &:hover .ui-arrow__svg--copy {
+    transform: translate(0);
+  }
+
+  &__name {
+    font-weight: 500;
+    font-size: px-to-vw(16px, 1440);
+    line-height: 120%;
+    color: var(--black);
+    transition: color var(--transition-300);
+
+    @include desktop {
+      font-size: 16px;
+    }
+  }
+
+  &__arrow {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    border-radius: 100%;
+    width: px-to-vw(36px, 1440);
+    height: px-to-vw(36px, 1440);
+    color: var(--white);
+    background-color: var(--accent);
+    transition: background-color var(--transition-300);
+
+    @include desktop {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  &__icons {
+    & .ui-arrow__svg {
+      width: px-to-vw(16px, 1440);
+      height: px-to-vw(16px, 1440);
+      transition:
+        color var(--transition-300),
+        transform var(--transition-300);
+
+      @include desktop {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}

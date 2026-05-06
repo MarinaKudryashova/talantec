@@ -1,0 +1,118 @@
+.stageswork-content {
+  width: 100%;
+
+  &__nav {
+    @include list-reset;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: px-to-vw(32px, 1440);
+    background-color: transparent;
+
+    @include desktop {
+      margin-bottom: clamp(24px, px-to-vw(32px, 1440), 32px);
+    }
+
+    // Горизонтальный скролл для планшетов и мобильных
+    @include tablet {
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none; // Firefox - невидимый скролл
+      -ms-overflow-style: none; // IE и Edge - невидимый скролл
+      -webkit-overflow-scrolling: touch; // Убираем стандартное поведение скролла на iOS
+      scroll-snap-type: x mandatory; // Предотвращаем вертикальный скролл при горизонтальном
+
+      &::-webkit-scrollbar {
+        display: none; // Chrome, Safari, Opera - невидимый скролл
+      }
+    }
+
+    @include mobile {
+      margin-right: -16px;
+      padding-right: 16px;
+      margin-left: -16px;
+      padding-left: 16px;
+    }
+  }
+
+  &__nav-item {
+    // Для плавного скролла на мобильных
+    @include tablet {
+      flex-shrink: 0; // Предотвращаем сжатие элементов
+      scroll-snap-align: start;
+    }
+  }
+
+  &__btn {
+    position: relative;
+    @include btn-reset;
+    padding: px-to-vw(12px, 1440) px-to-vw(24px, 1440);
+    font-weight: 500;
+    font-size: px-to-vw(16px, 1440);
+    line-height: 120%;
+    text-align: center;
+    white-space: nowrap;
+    color: var(--black);
+    cursor: pointer;
+    transition: color var(--transition-300);
+
+    @include desktop {
+      padding: clamp(8px, px-to-vw(12px, 1440), 12px) clamp(16px, px-to-vw(24px, 1440), 24px);
+      font-size: clamp(14px, px-to-vw(16px, 1440), 16px);
+    }
+
+    @include tablet {
+      padding: 8px 16px;
+      font-size: clamp(14px, px-to-vw(16px, 1440), 16px);
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      z-index: 2;
+      width: 100%;
+      height: 1px;
+      background-color: var(--accent);
+      transform-origin: left;
+      transform: scaleX(0);
+      opacity: 0;
+      transition:
+        opacity var(--transition-300),
+        transform var(--transition-300);
+
+      @include desktop {
+        bottom: -1px;
+        height: 1px;
+      }
+
+      @include tablet {
+        bottom: -1px;
+        height: 2px;
+      }
+    }
+
+    &:focus {
+      outline: none;
+      color: var(--accent);
+      background-color: transparent;
+    }
+
+    &:hover {
+      outline: none;
+      color: var(--accent);
+      background-color: transparent;
+    }
+
+    &.tabs__nav-btn--active {
+      color: var(--accent);
+
+      &:after {
+        opacity: 1;
+        transform: scaleX(100%);
+      }
+    }
+  }
+}

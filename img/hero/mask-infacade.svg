@@ -1,0 +1,27 @@
+<svg width="1440" height="800" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_8175_3285)">
+<line x1="54.5" y1="106" x2="54.5" y2="906" stroke="white" stroke-opacity="0.16"/>
+<line x1="64.5" y1="106" x2="64.5" y2="906" stroke="white" stroke-opacity="0.16"/>
+<line x1="274.5" y1="106" x2="274.5" y2="906" stroke="white" stroke-opacity="0.16"/>
+<line x1="284.5" y1="106" x2="284.5" y2="906" stroke="white" stroke-opacity="0.16"/>
+<line x1="494.5" y1="106" x2="494.5" y2="906" stroke="white" stroke-opacity="0.16"/>
+<line x1="504.5" y1="106" x2="504.5" y2="906" stroke="white" stroke-opacity="0.16"/>
+<line x1="714.5" y1="106" x2="714.5" y2="906" stroke="white" stroke-opacity="0.16"/>
+<line x1="724.5" y1="106" x2="724.5" y2="906" stroke="white" stroke-opacity="0.16"/>
+<line x1="934.5" y1="106" x2="934.5" y2="906" stroke="white" stroke-opacity="0.16"/>
+<line x1="944.5" y1="106" x2="944.5" y2="906" stroke="white" stroke-opacity="0.16"/>
+<line x1="1154.5" y1="106" x2="1154.5" y2="906" stroke="white" stroke-opacity="0.16"/>
+<line x1="1164.5" y1="106" x2="1164.5" y2="906" stroke="white" stroke-opacity="0.16"/>
+<line x1="1374.5" y1="106" x2="1374.5" y2="906" stroke="white" stroke-opacity="0.16"/>
+<line x1="1384.5" y1="106" x2="1384.5" y2="906" stroke="white" stroke-opacity="0.16"/>
+<line x1="1440" y1="400.5" y2="400.5" stroke="white" stroke-opacity="0.16"/>
+<path d="M715 400H724V388H725V400H732V401H725V412H724V401H715V412H714V401H707V400H714V388H715V400Z" fill="white"/>
+<path d="M55 400H64V388H65V400H72V401H65V412H64V401H55V412H54V401H47V400H54V388H55V400Z" fill="white"/>
+<path d="M1375 400H1384V388H1385V400H1392V401H1385V412H1384V401H1375V412H1374V401H1367V400H1374V388H1375V400Z" fill="white"/>
+</g>
+<defs>
+<clipPath id="clip0_8175_3285">
+<rect width="1440" height="800" fill="white"/>
+</clipPath>
+</defs>
+</svg>

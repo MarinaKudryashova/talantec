@@ -1,0 +1,70 @@
+.sec-about {
+  background-color: var(--bg);
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: px-to-vw(64px, 1440);
+    padding-top: px-to-vw(80px, 1440);
+    padding-bottom: px-to-vw(80px, 1440);
+
+    @include desktop {
+      gap: clamp(40px, 4.444vw, 64px);
+      padding-top: clamp(64px, 5.556vw, 80px);
+      padding-bottom: clamp(64px, 5.556vw, 80px);
+    }
+
+    @include big-tablet {
+      gap: 40px;
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+  }
+
+  &__heading {
+    display: flex;
+    align-items: flex-start;
+    gap: px-to-vw(32px, 1440);
+
+    @include desktop {
+      gap: clamp(12px, 2.222vw, 32px);
+    }
+
+    @include big-tablet {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    width: 31.7%;
+  }
+
+  &__descr {
+    margin: 0;
+    width: calc(100% - 31.7% - px-to-vw(32px, 1440));
+    font-weight: 500;
+    font-size: px-to-vw(32px, 1440);
+    line-height: 110%;
+    color: var(--black);
+
+    @include desktop {
+      font-size: clamp(24px, 2.222vw, 32px);
+    }
+
+    @include big-tablet {
+      width: 100%;
+      font-size: 30px;
+    }
+
+    @include small-tablet {
+      font-size: 3.9vw;
+      font-size: clamp(27px, 3.9vw, 32px);
+    }
+
+    @include small-mobile {
+      font-size: 6.4vw; // 24px на 375px
+    }
+  }
+}

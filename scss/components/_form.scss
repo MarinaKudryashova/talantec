@@ -1,0 +1,69 @@
+.form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  color: currentColor;
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: px-to-vw(24px, 1440);
+
+    @include tablet {
+      gap: 20px;
+    }
+
+    @include mobile {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  & .form-field--full {
+    grid-column: 2 span;
+  }
+
+  &__control {
+    grid-column: 2 span;
+    display: flex;
+    align-items: center;
+    gap: px-to-vw(24px, 1440);
+
+    @include desktop {
+      gap: 24px;
+    }
+
+    @include mobile {
+      gap: 20px;
+    }
+
+    @include small-mobile {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    @media (max-width: 320px) {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  &__btn {
+    width: fit-content;
+
+    &:disabled {
+      opacity: 0.8;
+      cursor: not-allowed;
+    }
+  }
+
+  & .wpcf7-spinner,
+  & .wpcf7-response-output {
+    display: none;
+  }
+
+  & fieldset {
+    padding: 0;
+    border: none;
+  }
+}

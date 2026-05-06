@@ -1,0 +1,107 @@
+.ui-btn-arrow {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 8px;
+  border-radius: 1000px;
+  padding: 4px;
+  padding-left: 24px;
+  outline: none;
+  background-color: var(--white);
+  transition:
+    color var(--transition-300),
+    background-color var(--transition-300);
+
+  &:focus-visible {
+    color: var(--white);
+    background-color: var(--accent);
+  }
+
+  &:focus-visible .ui-btn-arrow__text {
+    color: var(--white);
+  }
+
+  &:focus-visible .ui-btn-arrow__arrow {
+    background-color: var(--white);
+  }
+
+  &:focus-visible .ui-arrow__svg {
+    color: var(--black);
+  }
+
+  &:focus-visible .ui-arrow__svg:first-child {
+    transform: translate(150%, -150%);
+  }
+
+  &:focus-visible .ui-arrow__svg--copy {
+    transform: translate(0);
+  }
+  &:hover {
+    color: var(--white);
+    background-color: var(--accent);
+  }
+
+  &:hover .ui-btn-arrow__text {
+    color: var(--white);
+  }
+
+  &:hover .ui-btn-arrow__arrow {
+    background-color: var(--white);
+  }
+
+  &:hover .ui-arrow__svg {
+    color: var(--black);
+  }
+
+  &:hover .ui-arrow__svg:first-child {
+    transform: translate(150%, -150%);
+  }
+
+  &:hover .ui-arrow__svg--copy {
+    transform: translate(0);
+  }
+
+  &__text {
+    flex-grow: 1;
+    font-weight: 500;
+    font-size: px-to-vw(16px, 1440);
+    line-height: 120%;
+    color: var(--black);
+    transition: color var(--transition-300);
+
+    @include desktop {
+      font-size: 16px;
+    }
+  }
+
+  &__arrow {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    width: px-to-vw(36px, 1440);
+    height: px-to-vw(36px, 1440);
+    color: var(--white);
+    background-color: var(--accent);
+    transition: background-color var(--transition-300);
+
+    @include desktop {
+      width: 36px;
+      height: 36px;
+    }
+
+    & .ui-arrow__svg {
+      width: px-to-vw(16px, 1440);
+      height: px-to-vw(16px, 1440);
+      transition:
+        color var(--transition-300),
+        transform var(--transition-300);
+
+      @include desktop {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}

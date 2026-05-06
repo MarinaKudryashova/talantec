@@ -1,0 +1,231 @@
+.solutions-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  outline: none;
+
+  @media (min-width: 769px) {
+    &:focus-visible .solutions-card__content::before {
+      clip-path: polygon(0 0, 0 0, 0 100%, 0 100%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 0);
+    }
+
+    &:focus-visible .solutions-card-link__icons::before {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &:focus-visible .ui-arrow__svg:first-child {
+      transform: translate(150%, -150%);
+    }
+
+    &:focus-visible .ui-arrow__svg--copy {
+      transform: translate(0);
+    }
+
+    &:focus-visible .solutions-card__img::before {
+      clip-path: polygon(0 0, 0 0, 0 100%, 0 100%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 0);
+    }
+
+    &:hover .solutions-card__content::before {
+      clip-path: polygon(0 0, 0 0, 0 100%, 0 100%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 0);
+    }
+
+    &:hover .solutions-card-link__icons::before {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &:hover .ui-arrow__svg:first-child {
+      transform: translate(150%, -150%);
+    }
+
+    &:hover .ui-arrow__svg--copy {
+      transform: translate(0);
+    }
+
+    &:hover .solutions-card__img::before {
+      clip-path: polygon(0 0, 0 0, 0 100%, 0 100%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 0);
+    }
+  }
+
+  @include tablet {
+    flex-direction: row;
+  }
+
+  @include small-tablet {
+    position: relative;
+    height: 300px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  &__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-grow: 1;
+    padding: px-to-vw(40px, 1440);
+    min-height: px-to-vw(300px, 1440);
+    height: 100%;
+
+    @include desktop {
+      padding: clamp(32px, 2.778vw, 40px);
+      min-height: clamp(280px, 20.833vw, 300px);
+    }
+
+    @include tablet {
+      width: 60%;
+      flex-grow: unset;
+    }
+
+    @include small-tablet {
+      padding: 32px 16px 85px 16px;
+      width: 100%;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--black);
+      transition: clip-path var(--transition-300);
+      will-change: clip-path;
+      clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%, 0 0, 100% 0, 100% 100%, 50% 100%, 50% 0);
+
+      @include small-tablet {
+        display: none; // Скрываем черный псевдоэлемент
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: -2;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--accent);
+
+      @include small-tablet {
+        display: none; // Скрываем красный псевдоэлемент
+      }
+    }
+
+    @include small-tablet {
+      position: relative;
+      z-index: 2;
+    }
+  }
+
+  &__title {
+    margin: 0 0 px-to-vw(12px, 1440);
+    font-weight: 500;
+    font-size: px-to-vw(24px, 1440);
+    line-height: 110%;
+    color: var(--white);
+
+    @include desktop {
+      font-size: clamp(20px, 1.667vw, 24px);
+      margin: 0 0 clamp(10px, 0.833vw, 12px);
+    }
+
+    @include big-tablet {
+      margin: 0 0 10px;
+    }
+
+    @include small-tablet {
+      font-size: 22px;
+      margin: 0 0 8px;
+    }
+
+    @include mobile {
+      font-size: 20px;
+    }
+  }
+
+  &__descr {
+    margin: 0;
+    font-weight: 400;
+    font-size: px-to-vw(16px, 1440);
+    line-height: 120%;
+    color: var(--border);
+
+    @include desktop {
+      font-size: clamp(14px, 1.111vw, 16px);
+    }
+
+    @include small-tablet {
+      font-size: clamp(16px, 4.267vw, 18px); // 16px на 375;
+    }
+
+    @include mobile {
+      font-size: clamp(14px, 4.267vw, 16px);
+    }
+  }
+
+  &__link {
+    margin-top: auto;
+
+    @include small-tablet {
+      margin-top: 32px;
+    }
+  }
+
+  &__img {
+    position: relative;
+    display: flex;
+
+    @include tablet {
+      width: 40%;
+    }
+
+    @include small-tablet {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--black);
+      opacity: 0.5;
+      transition: clip-path var(--transition-300);
+      will-change: clip-path;
+      clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%, 0 0, 100% 0, 100% 100%, 50% 100%, 50% 0);
+    }
+  }
+
+  &__pic {
+    display: flex;
+    width: 100%;
+
+    @include small-tablet {
+      width: 100%;
+      height: 100%;
+    }
+
+    & img {
+      width: 100%;
+      aspect-ratio: 480 / 300;
+
+      @include small-tablet {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        aspect-ratio: unset;
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+/*!
+Theme Name: architect
+Author: cosmo-design.ru
+Author URI: http://cosmo-design.ru
+Description: Description
+Version: 1.0.0
+Text Domain: architect
+ */
+/* Сдвигаем всё после панели */
+body:has(#wpadminbar) .site-container,
+#wpadminbar + .site-container,
+#wpadminbar ~ .site-container {
+  padding-top: 32px;
+}
+
+body:has(#wpadminbar) .header {
+  top: 32px;
+}
+
+/* Для мобильных */
+@media screen and (max-width: 782px) {
+  #wpadminbar ~ .site-container {
+    padding-top: 46px;
+  }
+
+  body:has(#wpadminbar) .header {
+    top: 46px;
+  }
+}

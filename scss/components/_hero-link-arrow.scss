@@ -1,0 +1,48 @@
+.hero-link-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: clamp(6px, px-to-vw(6px, 1440), 12px);
+  gap: clamp(8px, px-to-vw(8px, 1440), 16px);
+  color: var(--white);
+  outline: none;
+  cursor: pointer;
+  transition: color var(--transition-300);
+
+  &:focus-visible {
+    color: var(--accent);
+  }
+
+  &:focus-visible .ui-arrow__svg:first-child {
+    transform: translate(150%, -150%);
+  }
+
+  &:focus-visible .ui-arrow__svg--copy {
+    transform: translate(0);
+  }
+
+  &:hover {
+    color: var(--accent);
+  }
+
+  &:hover .ui-arrow__svg:first-child {
+    transform: translate(150%, -150%);
+  }
+
+  &:hover .ui-arrow__svg--copy {
+    transform: translate(0);
+  }
+
+  &__text {
+    font-weight: 500;
+    font-size: clamp(16px, px-to-vw(16px, 1440), 32px);
+    line-height: 120%;
+    text-transform: uppercase;
+    color: currentColor;
+
+    @include small-tablet {
+      font-size: clamp(14px, px-to-vw(16px, 768), 16px);
+    }
+  }
+}

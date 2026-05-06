@@ -1,0 +1,169 @@
+.form-field {
+  position: relative;
+
+  & .wpcf7-form-control-wrap {
+    display: block;
+  }
+
+  &__input {
+    position: relative;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    padding: 0 0 px-to-vw(16px, 1440);
+    width: 100%;
+    font-weight: 400;
+    font-size: px-to-vw(16px, 1440);
+    line-height: 120%;
+    color: currentColor;
+    background-color: transparent;
+    outline: none;
+    transform:
+      border-color var(--transition-300),
+      background-color var(--transition-300),
+      opacity var(--transition-300);
+
+    &::placeholder {
+      opacity: 0;
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+      border-color: var(--accent);
+      -webkit-box-shadow: 0 0 0px 40rem #ffffff inset;
+    }
+
+    @include desktop {
+      padding: 0 0 16px;
+      font-size: 16px;
+    }
+
+    @include mobile {
+      padding: 10px 20px 10px 0px;
+    }
+
+    &--textarea {
+      display: flex;
+      resize: none;
+      // min-height: px-to-vw(100px, 1440);
+      min-height: 100px;
+
+      @include tablet {
+        min-height: 71px;
+      }
+
+      @include big-tablet {
+        min-height: 75px;
+      }
+
+      @include mobile {
+        min-height: 91px;
+      }
+    }
+  }
+
+  &__border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform var(--transition-500);
+  }
+
+  // .wpcf7-form-control-wrap:has(.form-field__input--textarea) ~ .form-field__border,
+  // &__input--textarea ~ &__border {
+  //   bottom: 4px;
+
+  //   @include tablet {
+  //     bottom: 3px;
+  //   }
+
+  //   @include small-tablet {
+  //     // bottom: 2px;
+  //   }
+
+  //   @include mobile {
+  //     // bottom: 1px;
+  //   }
+  // }
+
+  .wpcf7-form-control-wrap:has(.form-field__input:hover) ~ .form-field__border,
+  &__input:hover ~ &__border {
+    transform: scale(1);
+  }
+  .wpcf7-form-control-wrap:has(.form-field__input:focus-visible) ~ .form-field__border,
+  &__input:focus-visible ~ &__border {
+    background-color: var(--white);
+  }
+
+  &__error,
+  & .wpcf7-not-valid-tip {
+    position: absolute;
+    left: 0;
+    bottom: calc(-1 * px-to-vw(13px, 1440));
+    font-weight: 400;
+    font-size: px-to-vw(11px, 1440);
+    line-height: 110%;
+    color: var(--accent);
+    z-index: 2;
+
+    @include desktop {
+      font-size: 11px;
+      bottom: calc(-1 * 13px);
+    }
+  }
+
+  &__label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-weight: 400;
+    font-size: px-to-vw(16px, 1440);
+    line-height: 120%;
+    color: var(--border);
+    opacity: 1;
+    transform: scale(1);
+    transition:
+      transform var(--transition-300),
+      opacity var(--transition-300);
+
+    @include desktop {
+      font-size: 16px;
+    }
+
+    @include mobile {
+      top: 10px;
+    }
+
+    &--required {
+      &::after {
+        content: "*";
+        margin-left: 3px;
+        color: var(--accent);
+      }
+    }
+
+    .form-field--not-valid & {
+      color: var(--accent);
+    }
+  }
+
+  &__input:focus ~ &__label,
+  &__input:not(:placeholder-shown) ~ &__label,
+  &__input:-webkit-autofill:focus ~ &__label,
+  &__input:-webkit-autofill:hover ~ &__label {
+    opacity: 0;
+    transform: translateY(-50%) scale(0.75);
+  }
+  .wpcf7-form-control-wrap:has(.form-field__input:focus) ~ .form-field__label,
+  .wpcf7-form-control-wrap:has(.form-field__input:not(:placeholder-shown)) ~ .form-field__label,
+  .wpcf7-form-control-wrap:has(.form-field__input:-webkit-autofill:focus) ~ .form-field__label,
+  .wpcf7-form-control-wrap:has(.form-field__input:-webkit-autofill:hover) ~ .form-field__label {
+    opacity: 0;
+    transform: translateY(-50%) scale(0.75);
+  }
+}

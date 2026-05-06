@@ -1,0 +1,53 @@
+.nav {
+
+  & ul {
+    @include list-reset;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: px-to-vw(40px, 1440);
+
+    @include small-desktop {
+      gap: px-to-vw(24px, 1280);
+    }
+  }
+
+  & li {
+    position: relative;
+    overflow: hidden;
+  }
+
+  & a {
+    position: relative;
+    display: flex;
+    font-weight: 400;
+    font-size: clamp(14px, px-to-vw(14px, 1440), 32px);
+    line-height: 120%;
+    text-align: center;
+    color: var(--white);
+    outline: none;
+    width: fit-content;
+    flex-shrink: 0;
+    transition: transform var(--transition-300);
+
+    &::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      color: currentColor;
+      transform: translateY(0);
+      transition: transform var(--transition-300);
+    }
+
+    &:focus-visible {
+      transform: translateY(-100%);
+    }
+
+    &:hover {
+      transform: translateY(-100%);
+    }
+  }
+}

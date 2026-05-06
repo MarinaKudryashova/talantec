@@ -1,0 +1,123 @@
+.brands-card {
+  display: flex;
+  flex-direction: column;
+  gap: px-to-vw(16px, 1440);
+  padding: px-to-vw(32px, 1440);
+  width: 100%;
+  background-color: var(--white);
+  aspect-ratio: 1 / 1;
+
+  @include desktop {
+    gap: 16px;
+    padding: 32px;
+  }
+
+  @include big-tablet {
+    gap: 14px;
+    padding: 24px;
+  }
+
+  &:focus-visible .brands-card__logo {
+    filter: grayscale(0);
+  }
+
+  &:focus-visible .brands-card__name {
+    color: var(--accent);
+  }
+
+  &:focus-visible .brands-card__arrow {
+    background-color: var(--black);
+  }
+
+  &:focus-visible .ui-arrow__svg:first-child {
+    transform: translate(150%, -150%);
+  }
+
+  &:focus-visible .ui-arrow__svg--copy {
+    transform: translate(0);
+  }
+
+  &:hover .brands-card__logo {
+    filter: grayscale(0);
+  }
+
+  &:hover .brands-card__name {
+    color: var(--accent);
+  }
+
+  &:hover .brands-card__arrow {
+    background-color: var(--black);
+  }
+
+  &:hover .ui-arrow__svg:first-child {
+    transform: translate(150%, -150%);
+  }
+
+  &:hover .ui-arrow__svg--copy {
+    transform: translate(0);
+  }
+
+  &__view {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: px-to-vw(52px, 1440);
+  }
+
+  &__logo {
+    width: 100%;
+    filter: grayscale(1);
+    transition: filter var(--transition-300);
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__name {
+    flex-grow: 1;
+    font-weight: 500;
+    font-size: px-to-vw(16px, 1440);
+    line-height: 120%;
+    color: var(--black);
+    transition: color var(--transition-300);
+
+    @include desktop {
+      font-size: 16px;
+    }
+  }
+
+  &__arrow {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    width: px-to-vw(36px, 1440);
+    height: px-to-vw(36px, 1440);
+    color: var(--white);
+    background-color: var(--accent);
+    transition: background-color var(--transition-300);
+
+    @include desktop {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  &__icons {
+    & .ui-arrow__svg {
+      width: px-to-vw(16px, 1440);
+      height: px-to-vw(16px, 1440);
+      transition: color var(--transition-300), transform var(--transition-300);
+
+      @include desktop {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}

@@ -1,0 +1,311 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 20;
+  color: var(--white);
+  // Анимация для появления/скрытия
+  transition: transform var(--transition-300), background-color 0.2s ease-out;
+
+  @include tablet {
+    border-bottom: 1px solid var(--white-160);
+  }
+
+  // Класс для скрытой шапки
+  &.header--hidden {
+    transform: translateY(-100%);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px);
+    background-color: var(--black-400);
+    opacity: 0;
+    transition: background-color var(--transition-300), opacity var(--transition-300);
+  }
+
+  &.scroll {
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  // .header__container
+  // &__container {}
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: px-to-vw(16px, 1440) 0;
+
+    @include desktop {
+      padding: 16px;
+    }
+
+    @include tablet {
+      gap: 15px;
+    }
+
+    @media (max-width: 970px) {
+      padding: 12px 0;
+    }
+
+    @include small-tablet {
+      padding: 10px 0;
+    }
+
+    @include small-mobile {
+      padding: 8px 0;
+    }
+  }
+
+  &__topmenu,
+  &__action {
+    width: 100%;
+    max-width: px-to-vw(374px, 1440);
+
+    @include desktop {
+      max-width: 374px;
+    }
+  }
+
+  &__topmenu.topmenu {
+    @include tablet {
+      display: none;
+    }
+  }
+
+  // .header__topmenu
+  // &__topmenu {}
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: px-to-vw(135px, 1440);
+    flex-shrink: 0;
+    fill: var(--white);
+
+    @include desktop {
+      width: 135px;
+    }
+
+    &:focus-visible {
+      outline: 1px solid var(--white-160);
+      outline-offset: px-to-vw(6px, 1440);
+
+      @include desktop {
+        outline-offset: 6px;
+      }
+    }
+
+    // & img {
+    //   width: 100%;
+    //   aspect-ratio: 135 / 32;
+
+    //   @include mobile {
+    //     aspect-ratio: 101 / 24;
+    //   }
+    // }
+  }
+
+  &__action {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: px-to-vw(40px, 1440);
+
+    @include desktop {
+      gap: 40px;
+    }
+
+    @include tablet {
+      gap: 8px;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    position: relative;
+    flex-shrink: 0;
+    height: px-to-vw(16.8px, 1440);
+    color: var(--white);
+    outline: none;
+    overflow: hidden;
+
+    @include desktop {
+      height: 16.8px;
+    }
+
+    @include tablet {
+      height: 40px;
+      width: 40px;
+      border: 0.96px solid var(--white-160);
+      padding: 8px;
+    }
+
+    &:focus-visible span {
+      transform: translateY(-100%);
+    }
+
+    &:hover span {
+      transform: translateY(-100%);
+    }
+
+    & span {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      font-weight: 400;
+      font-size: px-to-vw(14px, 1440);
+      line-height: 120%;
+      text-align: center;
+      color: currentColor;
+      transition: transform var(--transition-300);
+
+      @include desktop {
+        font-size: 14px;
+      }
+
+      @include tablet {
+        display: none;
+      }
+
+      &::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        color: currentColor;
+        transform: translateY(0);
+        transition: transform var(--transition-300);
+      }
+    }
+
+    & svg {
+      display: none;
+      width: px-to-vw(24px, 1440);
+      height: px-to-vw(24px, 1440);
+      stroke: currentColor;
+      stroke-width: 1.5px;
+      fill: none;
+
+      @include desktop {
+        width: 24px;
+        height: 24px;
+      }
+
+      @include tablet {
+        display: block;
+      }
+    }
+  }
+
+  // &__link--phone,
+  // &__link--cost {
+
+  //   & span {
+  //     @include small-tablet {
+  //       display: none;
+  //     }
+  //   }
+
+  //   & svg {
+  //     @include small-tablet {
+  //       display: block;
+  //     }
+  //   }
+  // }
+
+  &__burger {
+    display: none;
+
+    @include tablet {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      width: 40px;
+      border: 0.96px solid var(--white-160);
+      padding: 8px;
+      cursor: pointer;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    border-bottom: 1px solid var(--white-160);
+    border-top: 1px solid var(--white-160);
+    padding: px-to-vw(11px, 1440) 0;
+
+    @include desktop {
+      padding: 11px;
+    }
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  &__navcontainer {
+    width: 100%;
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden;
+    // transform: translateY(-100%);
+    transition: opacity 0.2s ease-out,
+                visibility 0.2s ease-out,
+                transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+
+    &.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  // Стили для шапки при открытом бургере
+  &--burger {
+    background-color: var(--white);
+    color: var(--black);
+    z-index: 400;
+    border-bottom: 1px solid var(--border);
+
+    .header__logo {
+      fill: var(--black);
+    }
+
+    .header__link,
+    .header__burger {
+      border-color: var(--border);
+    }
+
+    .header__link svg {
+      stroke: var(--black);
+    }
+  }
+
+  &.scroll.header--burger {
+    &::after {
+      opacity: 0;
+    }
+  }
+}

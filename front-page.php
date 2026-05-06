@@ -1,0 +1,28 @@
+<?php
+/*
+Template Name: Главная страница
+Template Post Type: page
+*/
+
+$page_id = get_the_ID();
+?>
+
+<?php get_header(); ?>
+  <main class="main">
+    <?php 
+      /*-- Первый блок - фиксированный --*/
+      get_template_part( "template-parts/sections/hero", '', array('id' => $page_id));
+    ?>
+
+    <div class="content-overlay">
+      <?php 
+        $arSection = get_field('show_section_page');
+        if ($arSection) :
+          foreach ($arSection as $section) {
+            get_template_part( "template-parts/sections/sec-$section", '', array('id' => $page_id));
+          }
+        endif;
+      ?>
+    </div>
+  </main>
+<?php get_footer(); ?>

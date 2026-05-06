@@ -1,0 +1,67 @@
+.sec-components {
+  overflow: hidden;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: px-to-vw(56px, 1440);
+    padding-bottom: px-to-vw(120px, 1440);
+
+    @include desktop {
+      gap: 56px;
+      padding-bottom: 120px;
+    }
+
+    @include big-tablet {
+      gap: 40px;
+      padding-bottom: 64px;
+    }
+
+     @include mobile {
+      gap: 24px;
+    }
+  }
+
+  &__heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: px-to-vw(8px, 1440);
+    max-width: px-to-vw(645px, 1440);
+
+    @include desktop {
+      gap: 8px;
+      max-width: 645px;
+    }
+
+    @include big-tablet {
+      max-width: 100%;
+    }
+  }
+
+  &__subtitle {
+    margin: 0;
+    font-weight: 500;
+    font-size: px-to-vw(48px, 1440);
+    line-height: 100%;
+    text-align: center;
+    color: var(--black);
+
+    @include desktop {
+      font-size: 48px;
+    }
+
+    @include tablet {
+      font-size: 44px;
+    }
+
+    @include small-tablet {
+      font-size: 36px;
+    }
+
+    @include mobile {
+      font-size: 32px;
+    }
+  }
+}

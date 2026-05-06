@@ -1,0 +1,115 @@
+.sec-materials {
+  overflow: hidden;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    padding-top: px-to-vw(80px, 1440);
+    padding-bottom: px-to-vw(80px, 1440);
+
+    @include small-tablet {
+      gap: clamp(40px, px-to-vw(40px, 768), 24px);
+    }
+
+    @include mobile {
+      padding-top: clamp(64px, px-to-vw(64px, 576), 64px);
+      padding-bottom: clamp(64px, px-to-vw(64px, 576), 64px);
+    }
+  }
+
+  &__heading {
+    display: flex;
+    align-items: flex-start;
+    gap: px-to-vw(32px, 1440);
+    margin-bottom: px-to-vw(56px, 1440);
+
+    @include small-desktop {
+      margin-bottom: clamp(50px, px-to-vw(56px, 1280), 56px);
+      gap: clamp(15px, px-to-vw(15px, 1280), 15px);
+    }
+
+    @include small-tablet {
+      flex-direction: column;
+      align-items: start;
+      margin-bottom: 0;
+      gap: clamp(12px, px-to-vw(12px, 576), 12px);
+    }
+  }
+
+  &__title {
+    margin: 0;
+    width: 31.7%;
+  }
+
+  &__descr {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(12px, px-to-vw(16px, 1440), 32px);
+    width: calc(100% - 31.7% - px-to-vw(32px, 1440));
+    color: var(--black);
+
+    @include small-tablet {
+      width: 100%;
+    }
+  }
+
+  &__slogan {
+    margin: 0;
+    font-weight: 500;
+    font-size: clamp(32px, px-to-vw(32px, 1440), 64px);
+    line-height: 110%;
+    color: currentColor;
+
+    @include mobile {
+      font-size: clamp(22px, px-to-vw(24px, 375), 32px);
+    }
+  }
+
+  &__text {
+    margin: 0;
+    max-width: px-to-vw(640px, 1440);
+    font-weight: 400;
+    font-size: clamp(16px, px-to-vw(16px, 1440), 32px);
+    line-height: 120%;
+    color: currentColor;
+
+    @include small-desktop {
+      max-width: 100%;
+    }
+
+    @include mobile {
+      font-size: clamp(12px, px-to-vw(14px, 375), 16px);
+    }
+  }
+
+  &__list {
+    display: flex;
+    align-items: flex-start;
+    gap: px-to-vw(32px, 1440);
+
+    @include small-tablet {
+      flex-direction: column;
+    }
+  }
+
+  &__nav {
+    margin: 0;
+    width: 31.7%;
+    height: 100%;
+    align-self: flex-end;
+
+    @include small-tablet {
+      align-self: flex-start;
+
+    }
+  }
+
+  &__slider {
+    width: calc(100% - 31.7% - px-to-vw(32px, 1440));
+
+    @include small-tablet {
+      width: 100%;
+    }
+  }
+}

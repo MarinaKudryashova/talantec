@@ -1,0 +1,103 @@
+.sec-services {
+  background-color: var(--bg);
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: px-to-vw(64px, 1440);
+    padding-top: px-to-vw(120px, 1440);
+    padding-bottom: px-to-vw(120px, 1440);
+
+    @include desktop {
+      gap: 64px;
+      padding-top: 120px;
+      padding-bottom: 120px;
+    }
+
+    @include big-tablet {
+      gap: 40px;
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+  }
+
+  &__heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: px-to-vw(12px, 1440);
+    max-width: px-to-vw(694px, 1440);
+
+    @include desktop {
+      gap: 12px;
+      max-width: 694px;
+    }
+
+    @include big-tablet {
+      max-width: 100%;
+    }
+  }
+
+  &__subtitle {
+    margin: 0;
+    font-weight: 500;
+    font-size: px-to-vw(48px, 1440);
+    line-height: 100%;
+    text-align: center;
+    color: var(--black);
+
+    @include desktop {
+      font-size: 48px;
+    }
+
+    @include tablet {
+      font-size: 44px;
+    }
+
+    @include small-tablet {
+      font-size: 36px;
+    }
+
+    @include mobile {
+      font-size: 24px;
+    }
+  }
+
+  &__list {
+    @include list-reset;
+    display: flex;
+    flex-direction: column;
+    counter-reset: service-counter;
+  }
+
+  &__item {
+    position: relative;
+    border-top: 1px solid var(--border);
+    counter-increment: service-counter;
+    cursor: pointer;
+
+    &::before {
+      content: "";
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      z-index: 2;
+      background-color: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform var(--transition-300);
+    }
+
+    &:hover {
+      border-color: transparent;
+
+      &::before {
+        transform: scaleX(1);
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+.sec-stageswork {
+  overflow: hidden;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: px-to-vw(64px, 1440);
+    padding-bottom: px-to-vw(120px, 1440);
+
+    @include mobile {
+      padding-bottom: clamp(64px, px-to-vw(64px, 576), 64px);
+    }
+  }
+}

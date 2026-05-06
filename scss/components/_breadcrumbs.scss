@@ -1,0 +1,82 @@
+.breadcrumbs {
+  @include list-reset;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: px-to-vw(40px, 1440);
+
+  @include desktop {
+    margin-bottom: clamp(32px, 2.778vw, 40px);
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    font-size: clamp(16px, px-to-vw(16px, 1440), 32px);
+    line-height: 120%;
+    color: var(--border);
+
+    // @include desktop {
+    //   font-size: clamp(12px, px-to-vw(16px, 1440), 16px);
+    // }
+
+    // @include small-tablet {
+    //   font-size: 16px;
+    // }
+
+    // @include small-mobile {
+    //   font-size: clamp(12px, px-to-vw(14px, 1440), 14px);
+    // }
+
+    &:not(:last-child) {
+      &::after {
+        content: "";
+        flex-shrink: 0;
+        display: inline-block;
+        margin: 0 px-to-vw(8px, 1440);
+        width: px-to-vw(24px, 1440);
+        height: px-to-vw(24px, 1440);
+        background-image: url("../img/breadcrumbs.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+
+        @include desktop {
+          margin: 0 8px;
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    outline: none;
+    transition: color 0.3s ease-in-out;
+
+    &:focus-visible {
+      color: var(--accent);
+    }
+
+    &:hover {
+      color: var(--white);
+    }
+
+    &:active {
+      color: var(--accent);
+    }
+  }
+
+  &__item--current {
+    span {
+      user-select: none;
+    }
+  }
+}

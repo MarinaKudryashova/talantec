@@ -1,0 +1,132 @@
+.sec-technologies {
+  background-color: var(--bg);
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: px-to-vw(56px, 1440);
+    padding-top: px-to-vw(120px, 1440);
+    padding-bottom: px-to-vw(120px, 1440);
+
+    @include desktop {
+      gap: 56px;
+      padding-top: 120px;
+      padding-bottom: 120px;
+    }
+
+    @include big-tablet {
+      gap: 40px;
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+  }
+
+  &__heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: px-to-vw(8px, 1440);
+    max-width: px-to-vw(645px, 1440);
+
+    @include desktop {
+      gap: 8px;
+      max-width: 645px;
+    }
+
+    @include big-tablet {
+      max-width: 100%;
+    }
+  }
+
+  &__subtitle {
+    margin: 0;
+    font-weight: 500;
+    font-size: px-to-vw(48px, 1440);
+    line-height: 100%;
+    text-align: center;
+    color: var(--black);
+
+    @include desktop {
+      font-size: 48px;
+    }
+
+    @include tablet {
+      font-size: 44px;
+    }
+
+    @include small-tablet {
+      font-size: 36px;
+    }
+
+    @include mobile {
+      font-size: 24px;
+    }
+  }
+
+ &__list {
+    @include list-reset;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 32px;
+
+    @include tablet {
+      gap: 24px;
+    }
+
+    @include big-tablet {
+      grid-template-rows: repeat(4, auto);
+      row-gap: 24px;
+    }
+
+    @include small-tablet {
+      gap: 16px;
+    }
+
+    @include mobile {
+      gap: 8px;
+    }
+  }
+
+  &__item {
+    grid-column: 3 span;
+
+    &:first-child,
+    &:last-child {
+      grid-column: 6 span;
+
+      @include big-tablet {
+        grid-column: unset;
+      }
+    }
+
+    @include big-tablet {
+      grid-column: unset;
+
+      &:nth-child(1) {
+        grid-column: 1 / -1;
+        grid-row: 1;
+      }
+      &:nth-child(2) {
+        grid-column: 1 / span 6;
+        grid-row: 2;
+      }
+      &:nth-child(3) {
+        grid-column: 7 / -1;
+        grid-row: 2;
+      }
+      &:nth-child(4) {
+        grid-column: 1 / span 6;
+        grid-row: 4;
+      }
+      &:nth-child(5) {
+        grid-column: 7 / -1;
+        grid-row: 4;
+      }
+      &:nth-child(6) {
+        grid-column: 1 / -1;
+        grid-row: 3;
+      }
+    }
+  }
+}

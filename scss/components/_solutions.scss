@@ -1,0 +1,22 @@
+.solutions {
+  @include list-reset;
+  display: flex;
+  height: 100%;
+
+  @include tablet {
+    flex-direction: column;
+  }
+
+  @include small-tablet {
+    background-color: rgba(0, 4, 4, 0.72);
+  }
+
+  &__item {
+    display: flex;
+    width: calc(100% / 3);
+
+    @include tablet {
+      width: 100%;
+    }
+  }
+}

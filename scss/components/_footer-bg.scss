@@ -1,0 +1,34 @@
+.footer-bg {
+
+  &__line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    // z-index: 4;
+    overflow: hidden;
+    width: 100%;
+    padding: 0 px-to-vw(47px, 1440);
+
+    & img {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 1440 / 698;
+      pointer-events: none;
+    }
+
+    @include small-tablet {
+      opacity: 0;
+    }
+
+    &--mobile {
+      opacity: 0;
+      padding: 0;
+
+      @include small-tablet {
+        opacity: 1;
+      }
+    }
+  }
+}

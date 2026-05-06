@@ -1,0 +1,95 @@
+@import "vars";
+@import "fonts";
+@import "mixins";
+@import "settings";
+
+// Главная страница
+@import "./components/ui-arrow";
+@import "./components/slider-nav";
+@import "./components/ui-card";
+@import "./components/ui-card-link";
+@import "./components/ui-btn-arrow";
+@import "./components/ui-link-arrow";
+
+// Шапка
+@import "./components/header";
+@import "./components/topmenu";
+@import "./components/nav";
+@import "./components/mobile-menu";
+@import "./components/burger";
+
+// Первый блок - фиксированный
+@import "./components/hero";
+@import "./components/hero-bg";
+@import "./components/hero-link-arrow";
+
+// О нас
+@import "./components/sec-about";
+@import "./components/about-facts";
+
+// Решения
+@import "./components/sec-blockquote";
+@import "./components/solutions";
+@import "./components/solutions-card";
+@import "./components/solutions-card-link";
+
+// Услуги
+@import "./components/sec-services";
+@import "./components/service-card";
+
+// Изделия
+@import "./components/products";
+@import "./components/products-bgs";
+@import "./components/products-link";
+
+// Материалы
+@import "./components/sec-materials";
+@import "./components/materials-slider";
+
+// Технологии
+@import "./components/sec-technologies";
+
+// Сооружения
+@import "./components/sec-construction";
+@import "./components/construction-card";
+
+// Бренды
+@import "./components/sec-brands";
+@import "./components/brands-card";
+
+// Стиль
+@import "./components/sec-style";
+@import "./components/style-slider";
+
+// Новости и блог
+@import "./components/news";
+@import "./components/news-card";
+
+// Футер
+@import "./components/footer";
+@import "./components/footer-menu";
+@import "./components/footer-bg";
+@import "./components/footer-mobile-nav";
+
+//страница Продуктовая
+@import "./components/breadcrumbs";
+@import "./components/sec-stageswork";
+@import "./components/stageswork-content";
+@import "./components/block-description";
+@import "./components/block-stages";
+
+@import "./components/sec-galleryworks";
+@import "./components/sec-components";
+@import "./components/components-content";
+@import "./components/components-info";
+@import "./components/components-card";
+
+@import "./components/loading";
+@import "./components/sec-chars";
+@import "./components/chars-card";
+@import "./components/bannerform";
+@import "./components/form";
+@import "./components/form-field";
+@import "./components/form-argee";
+
+@import "./components/sec-projects";

@@ -1,0 +1,102 @@
+.footer-mobile-nav {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: clamp(20px, px-to-vw(24px, 375), 26px);
+  padding: clamp(4px, px-to-vw(5px, 375), 12px)
+           clamp(10px, px-to-vw(16px, 375), 20px);
+
+  &__item {
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__list {
+    @include list-reset;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(11px, px-to-vw(11px, 1440), 22px);
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 400;
+    font-size: clamp(24px, px-to-vw(24px, 1440), 48px);
+    line-height: 110%;
+    color: var(--grey);
+  }
+
+  &__link {
+    position: relative;
+    display: flex;
+    font-weight: 400;
+    line-height: 120%;
+    font-size: clamp(16px, px-to-vw(16px, 1440), 32px);
+    color: var(--white);
+    cursor: pointer;
+    transition: color var(--transition-300), transform var(--transition-300);
+
+    &::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      color: currentColor;
+      transform: translateY(0);
+      transition: transform var(--transition-300);
+    }
+
+    &:hover {
+      color: var(--accent);
+      transform: translateY(-100%);
+    }
+
+    &:focus-visible {
+      color: var(--accent);
+      outline: none;
+    }
+  }
+
+  & .accordion__control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    margin-bottom: clamp(12px, px-to-vw(16px, 375), 18px);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  & .accordion__icon svg {
+    width: clamp(16px, px-to-vw(16px, 375), 18px);
+    height: clamp(16px, px-to-vw(16px, 375), 18px);
+    flex-shrink: 0;
+    stroke: var(--white);
+    transform: rotate(180deg);
+    transition: transform var(--transition-300), stroke var(--transition-300);
+  }
+
+  & .accordion__content {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all var(--transition-300);
+  }
+
+  & .accordion__item.is-open {
+
+    .accordion__icon svg{
+      stroke: var(--accent);
+      transform: rotate(0deg);
+    }
+
+    .accordion__content {
+      opacity: 1;
+      margin-bottom: clamp(12px, px-to-vw(16px, 375), 18px);
+    }
+  }
+}
