@@ -16,11 +16,22 @@ $page_id = get_the_ID();
 
     <div class="content-overlay">
       <?php 
-        $arSection = get_field('show_section_page');
-        if ($arSection) :
-          foreach ($arSection as $section) {
-            get_template_part( "template-parts/sections/sec-$section", '', array('id' => $page_id));
-          }
+        // $arSection = get_field('show_section_page');
+        // if ($arSection) :
+        //   foreach ($arSection as $section) {
+        //     get_template_part( "template-parts/sections/sec-$section", '', array('id' => $page_id));
+        //   }
+        // endif;
+      ?>
+      <?php 
+        $arlayouts = get_field('layouts');
+        // var_dump($arlayouts);
+        if ($arlayouts) :
+          foreach ($arlayouts as $ids => $layout) :
+            $layout_name = $layout['acf_fc_layout'];
+            $layout_ids = $ids;
+            get_template_part('template-parts/sections/' . $layout_name, '', array('id' => $page_id, 'layout-data' => $layout, 'layout-name' => $layout_name, 'layout-ids' => $layout_ids));
+          endforeach;
         endif;
       ?>
     </div>

@@ -185,6 +185,18 @@ require_once get_template_directory() . '/inc/Top_Menu_Walker.php';
 require_once get_template_directory() . '/inc/Footer_Menu_Walker.php';
 require_once get_template_directory() . '/inc/theme-form-cf7.php';
 
+// 1. Фильтр для пути к PHP шаблонам
+add_filter('acfe/flexible/path', 'theme_acfe_flexible_render_path', 10, 3);
+function theme_acfe_flexible_render_path($path, $layout, $field){
+    return get_template_directory() . '/template-parts/sections/' . $layout['name'] . '.php';
+}
+
+// 2. Фильтр — стили и скрипты уже подключены
+add_filter('acfe/flexible/render/data', 'theme_acfe_flexible_render_assets', 10, 4);
+function theme_acfe_flexible_render_assets($data, $layout, $field, $post_id) {
+    return $data;
+}
+
 
 /**
  * Implement the Custom Header feature.

@@ -3,31 +3,22 @@
 * Section: Решения 
 */
 
-  $sec_solutions_title = get_field('sec-solutions_sec_heading_title');
-  $sec_solutions_descr = get_field('sec-solutions_sec_heading_descr');
-  $sec_solutions_list = get_field('sec-solutions_list');
+$page_id = $args["id"];
+$layout_data = $args["layout-data"];
+$layout_name = $args["layout-name"];
+
+$field_list = $layout_name . '_list';
+
+$sec_solutions_list = $layout_data[$field_list];
+$sec_solutions_count = count($sec_solutions_list);
 ?>
-
-<section class="sec-blockquote">
-  <div class="sec-blockquote__container container">
-    <div class="sec-blockquote__content">
-      <?php if (!empty($sec_solutions_title)) : ?>
-      <h2 class="sec-blockquote__title sec-title"><?php esc_html_e($sec_solutions_title); ?></h2>
-      <?php endif; ?>
-
-      <?php if (!empty($sec_solutions_descr)) : ?>
-      <p class="sec-blockquote__descr"><?php echo wp_kses_post($sec_solutions_descr); ?></p>
-      <?php endif; ?>
-    </div>
-  </div>
-</section>
 
 <?php if($sec_solutions_list) : ?>
 <ul class="solutions">
-  <?php while(has_sub_field('sec-solutions_list')) : 
-    $item_name = get_sub_field('title');
-    $item_text = get_sub_field('text');
-    $item_img = get_sub_field('img');
+  <?php foreach ($sec_solutions_list as $item) :
+    $item_name = $item['title'];
+    $item_text = $item['text'];
+    $item_img = $item['img'];
     $item_img_versions = (!empty($item_img) && function_exists('get_image_versions')) 
         ? get_image_versions($item_img)
         : array(
@@ -36,7 +27,7 @@
             'full' => $template_dir . '/img/site-preview.jpg'
         );
   ?>
-  <li class="solutions__item">
+  <li class="solutions__item" style="width: calc(100% / <?php echo $sec_solutions_count; ?>);">
     <a href="#" class="solutions-card">
       <div class="solutions-card__content">
         <?php if (!empty($item_name)) : ?>
@@ -67,6 +58,6 @@
       </div>
     </a>
   </li>
-  <?php endwhile; ?>
+  <?php endforeach; ?>
 </ul>
 <?php endif; ?>

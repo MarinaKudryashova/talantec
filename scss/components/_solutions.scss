@@ -13,7 +13,7 @@
 
   &__item {
     display: flex;
-    width: calc(100% / 3);
+    // width: calc(100% / 3);
 
     @include tablet {
       width: 100%;

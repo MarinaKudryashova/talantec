@@ -2,12 +2,19 @@
 /* 
 * Section: О нас 
 */
-$page_id = $args["id"];
-$sec_about_title = get_field('sec-about_sec_heading_title', $page_id);
-$sec_about_descr = get_field('sec-about_sec_heading_descr', $page_id);
-$sec_about_facts = get_field('sec-about_about_facts', $page_id);
-?>
 
+$page_id = $args["id"];
+$layout_data = $args["layout-data"];
+$layout_name = $args["layout-name"];
+
+$field_title = $layout_name . '_sec_heading_title';
+$field_descr = $layout_name . '_sec_heading_descr';
+$field_list = $layout_name . '_about_facts';
+
+$sec_about_title = $layout_data[$field_title];
+$sec_about_descr = $layout_data[$field_descr];
+$sec_about_facts = $layout_data[$field_list];
+?>
 <section class="sec-about" id="about-company">
   <div class="sec-about__container container">
     <div class="sec-about__heading">
@@ -19,29 +26,25 @@ $sec_about_facts = get_field('sec-about_about_facts', $page_id);
       <p class="sec-about__descr"><?php echo wp_kses_post($sec_about_descr); ?></p>
       <?php endif; ?>
     </div>
-    <?php if($sec_about_facts) : ?>
+    <?php if ($sec_about_facts) : ?>
     <ul class="about-facts">
-      <?php while(has_sub_field('sec-about_about_facts')) : 
-        $fact_name = get_sub_field('title');
-        $fact_value = get_sub_field('value');
-        $fact_text = get_sub_field('text');
-      ?>
+      <?php foreach ($sec_about_facts as $fact) : ?>
       <li class="about-facts__item">
         <div class="about-facts__card">
-          <?php if (!empty($fact_name)) : ?>
-          <span class="about-facts__label"><?php esc_html_e($fact_name); ?></span>
+          <?php if (!empty($fact['title'])) : ?>
+          <span class="about-facts__label"><?php echo esc_html($fact['title']); ?></span>
           <?php endif; ?>
 
-          <?php if (!empty($fact_value)) : ?>
-          <span class="about-facts__value"><?php esc_html_e($fact_value); ?></span>
+          <?php if (!empty($fact['value'])) : ?>
+          <span class="about-facts__value"><?php echo esc_html($fact['value']); ?></span>
           <?php endif; ?>
 
-          <?php if (!empty($fact_text)) : ?>
-          <p class="about-facts__text"><?php esc_html_e($fact_text); ?></p>
+          <?php if (!empty($fact['text'])) : ?>
+          <p class="about-facts__text"><?php echo esc_html($fact['text']); ?></p>
           <?php endif; ?>
         </div>
       </li>
-      <?php endwhile; ?>
+      <?php endforeach; ?>
     </ul>
     <?php endif; ?>
   </div>

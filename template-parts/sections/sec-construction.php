@@ -2,10 +2,17 @@
 /*
 * Section: Сооружения 
 */
+$page_id = $args["id"];
+$layout_data = $args["layout-data"];
+$layout_name = $args["layout-name"];
 
-$sec_construction_title = get_field('sec-construction_title');
-$sec_construction_subtitle = get_field('sec-construction_subtitle');
-$sec_construction_list = get_field('sec-construction_list');
+$field_title = $layout_name . '_title';
+$field_subtitle = $layout_name . '_subtitle';
+$field_list = $layout_name . '_list';
+
+$sec_construction_title = $layout_data[$field_title];
+$sec_construction_subtitle = $layout_data[$field_subtitle];
+$sec_construction_list = $layout_data[$field_list];
 ?>
 <section class="sec-construction">
   <div class="sec-construction__container container">
@@ -46,19 +53,21 @@ $sec_construction_list = get_field('sec-construction_list');
     <?php if($sec_construction_list) : ?>
     <div class="swiper sec-construction__slider">
       <div class="swiper-wrapper">
-        <?php while(has_sub_field('sec-construction_list')) : 
-          $item_name = get_sub_field('title');
-          $item_link = get_sub_field('link');
+        <?php foreach ($sec_construction_list as $item) :
+          $item_name = $item['title'];
+
+          $item_link = $item['link'];
           $item_link_href = (!empty($item_link) && $item_link !== '#') ? $item_link : '#';
-          $item_img = get_sub_field('img');
+
+          $item_img = $item['img'];
           $template_dir = get_template_directory_uri();
           $item_img_versions = (!empty($item_img) && function_exists('get_image_versions')) 
-              ? get_image_versions($item_img)
-              : array(
-                  'webp_1x' => $template_dir . '/img/site-preview.webp',
-                  'original_1x' => $template_dir . '/img/site-preview.jpg',
-                  'full' => $template_dir . '/img/site-preview.jpg'
-              );
+            ? get_image_versions($item_img)
+            : array(
+                'webp_1x' => $template_dir . '/img/site-preview.webp',
+                'original_1x' => $template_dir . '/img/site-preview.jpg',
+                'full' => $template_dir . '/img/site-preview.jpg'
+            );
         ?>
         <div class="swiper-slide">
           <a href="<?php echo esc_url($item_link_href); ?>" class="construction-card">
@@ -85,7 +94,7 @@ $sec_construction_list = get_field('sec-construction_list');
             </div>
           </a>
         </div>
-        <?php endwhile; ?>
+        <?php endforeach; ?>
 
       </div>
     </div>
