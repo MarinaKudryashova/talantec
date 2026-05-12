@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Шаблон "Первый блок - фиксированный (главная)"
+ * Шаблон "Первый блок - (главная страница)"
 */
 
   $page_id = isset($args['id']) ? $args['id'] : get_the_ID();
@@ -21,6 +21,21 @@
 
   $mainpromo_link_name = get_field('mainpromo_link_name');
   $promo_link_text = !empty($mainpromo_link_name) ? esc_html($mainpromo_link_name) : 'Связаться с&#160;нами';
+
+  $mainpromo_mask_bg = get_field('mainpromo_mask_bg');
+  $mainpromo_mask_bg_text = $mainpromo_mask_bg["text"];
+  $mainpromo_mask_bg_fs = $mainpromo_mask_bg["font_size"];
+  $mainpromo_mask_bgk_fw = $mainpromo_mask_bg["font_weight"];
+  $mainpromo_mask_bgk_lh = $mainpromo_mask_bg["letter_spacing"];
+  $mainpromo_mask_bg_brightness = $mainpromo_mask_bg["brightness"];
+  $mainpromo_mask_bg_contrast = $mainpromo_mask_bg["contrast"];
+  $svg_content = '<svg width="1312" height="273" viewBox="0 0 1312 273" xmlns="http://www.w3.org/2000/svg">
+    <g fill="white">
+      <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Impact, Arial Black, sans-serif" font-size="'.$mainpromo_mask_bg_fs.'" font-weight="'.$mainpromo_mask_bgk_fw.'" letter-spacing="'.$mainpromo_mask_bgk_lh.'">'.$mainpromo_mask_bg_text.'</text>
+    </g>
+  </svg>';
+  $svg_encoded = rawurlencode($svg_content);
+  $mask_url = "data:image/svg+xml;utf8,{$svg_encoded}";
 ?>
 
 <section class="hero" aria-label="Главный баннер">
@@ -65,8 +80,20 @@
      
     <?php /*-- SVG маска --*/ ?>
     <div class="hero-bg__mask">
-      <div class="hero-bg__mask-inner" style="background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1)),
-      url('<?php echo esc_url($promo_image_versions['original_1x']); ?>'); background-size: cover; background-position: center bottom;background-repeat: no-repeat;"></div>
+      <div class="hero-bg__mask-inner"
+      style="background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1)), url('<?php echo esc_url($promo_image_versions['original_1x']); ?>');
+      background-size: cover;
+      background-position: center bottom;
+      background-repeat: no-repeat;
+      filter: brightness(<?php echo $mainpromo_mask_bg_brightness ?>) contrast(<?php echo $mainpromo_mask_bg_contrast ?>);
+      -webkit-mask-image: url('<?php echo $mask_url; ?>');
+      mask-image: url('<?php echo $mask_url; ?>');
+      -webkit-mask-size: 100% 100%;
+      mask-size: 100% 100%;
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      mask-position: center;"></div>
     </div>
 
     <?php /*-- затемнее --*/ ?>

@@ -3,9 +3,17 @@
 * Section: Услуги 
 */
 
-$sec_services_title = get_field('sec-services_title');
-$sec_services_subtitler = get_field('sec-services_subtitle');
-$sec_services_list = get_field('sec-services_list');
+$page_id = $args["id"];
+$layout_data = $args["layout-data"];
+$layout_name = $args["layout-name"];
+
+$field_title = $layout_name . '_title';
+$field_subtitler = $layout_name . '_subtitle';
+$field_list = $layout_name . '_list';
+
+$sec_services_title = $layout_data[$field_title];
+$sec_services_subtitler = $layout_data[$field_subtitler];
+$sec_services_list = $layout_data[$field_list];
 ?>
 
 <section class="sec-services">
@@ -22,14 +30,22 @@ $sec_services_list = get_field('sec-services_list');
 
     <?php if($sec_services_list) : ?>
     <ul class="sec-services__list">
-      <?php while(has_sub_field('sec-services_list')) : 
-        $item_name = get_sub_field('title');
-        $item_text = get_sub_field('text');
-        $item_link = get_sub_field('link');
-        $item_link_href = (!empty($item_link) && $item_link !== '#') ? $item_link : '#';
+      <?php foreach ($sec_services_list as $item) :
+        $item_name = $item['title'];
+        $item_text = $item['text'];
+        $item_link = $item['link'];
+
+        $has_link = !empty($item_link) && $item_link !== '#';
+        $item_link_href = $has_link ? esc_url($item_link) : '';
       ?>
       <li class="sec-services__item">
-        <a href="<?php echo esc_url($item_link_href); ?>" class="service-card">
+
+        <?php if ($has_link) : ?>
+          <a href="<?php echo $item_link_href; ?>" class="service-card">
+        <?php else : ?>
+          <span class="service-card">
+        <?php endif; ?>
+
           <div class="service-card__number"></div>
           <?php if (!empty($item_name)) : ?>
           <h2 class="service-card__title"><?php esc_html_e($item_name); ?></h2>
@@ -38,19 +54,28 @@ $sec_services_list = get_field('sec-services_list');
           <?php if (!empty($item_text)) : ?>
           <p class="service-card__text"><?php esc_html_e($item_text); ?></p>
           <?php endif; ?>
-          <span class="service-card__link">
-            <span class="service-card__icons">
-              <svg class="service-card__svg">
-                <use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#icon-arrow"></use>
-              </svg>
-              <svg class="service-card__svg service-card__svg--copy">
-                <use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#icon-arrow"></use>
-              </svg>
+
+          <?php if ($has_link) : ?>
+            <span class="service-card__link">
+              <span class="service-card__icons">
+                <svg class="service-card__svg">
+                  <use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#icon-arrow"></use>
+                </svg>
+                <svg class="service-card__svg service-card__svg--copy">
+                  <use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#icon-arrow"></use>
+                </svg>
+              </span>
             </span>
+          <?php endif; ?>
+
+         <?php if ($has_link) : ?>
+          </a>
+        <?php else : ?>
           </span>
-        </a>
+        <?php endif; ?>
+
       </li>
-      <?php endwhile; ?>
+      <?php endforeach; ?>
     </ul>
     <?php endif; ?>
   </div>

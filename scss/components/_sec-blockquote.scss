@@ -1,5 +1,4 @@
 .sec-blockquote {
-
   // .sec-blockquote__container
   &__container {
     display: flex;
@@ -16,9 +15,22 @@
 
   // .sec-blockquote__content
   &__content {
+    display: flex;
+    flex-direction: column;
+    gap: px-to-vw(12px, 1440);
     max-width: px-to-vw(673px, 1440);
 
+    &--reverse {
+      flex-direction: column-reverse;
+      gap: px-to-vw(16px, 1440);
+
+      @include desktop {
+        gap: 16px;
+      }
+    }
+
     @include desktop {
+      gap: 12px;
       max-width: 673px;
     }
 
@@ -34,16 +46,16 @@
 
   // .sec-blockquote__title
   &__title {
-    margin-bottom: px-to-vw(12px, 1440);
+    // margin-bottom: px-to-vw(12px, 1440);
     text-align: center;
 
-    @include desktop {
-      margin-bottom: 12px;
-    }
+    // @include desktop {
+    //   margin-bottom: 12px;
+    // }
 
-    @include big-tablet {
-      margin-bottom: 12px;
-    }
+    // @include big-tablet {
+    //   margin-bottom: 12px;
+    // }
   }
 
   // .sec-blockquote__descr

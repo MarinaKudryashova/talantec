@@ -1,0 +1,123 @@
+.sec-media {
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 32px;
+    padding-top: px-to-vw(120px, 1440);
+    padding-bottom: px-to-vw(120px, 1440);
+
+    @include desktop {
+      padding-top: 120px;
+      padding-bottom: 120px;
+    }
+
+    @include big-tablet {
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+  }
+
+  &__heading {
+    grid-column: 5 span;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: px-to-vw(12px, 1440);
+
+    @include desktop {
+      gap: 12px;
+    }
+  }
+
+  // &__title {}
+
+  &__subtitle {
+    margin: 0;
+    font-weight: 500;
+    font-size: px-to-vw(48px, 1440);
+    line-height: 100%;
+    color: var(--black);
+
+    @include desktop {
+      font-size: 48px;
+    }
+
+    @include tablet {
+      font-size: 44px;
+    }
+
+    @include small-tablet {
+      font-size: 36px;
+    }
+
+    @include mobile {
+      font-size: 24px;
+    }
+  }
+
+  &__text {
+    margin: 0;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    color: var(--black);
+  }
+
+  &__images {
+    @include list-reset;
+    grid-column: 7 / 6 span;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: px-to-vw(198px, 1440);
+    gap: 4px;
+
+    @include small-desktop {
+      grid-auto-rows: 198px;
+    }
+  }
+
+  &__item {
+    &:nth-child(2) {
+      grid-row: 2 span;
+    }
+  }
+
+  &__img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 318 / 198;
+      object-position: top;
+    }
+  }
+
+  &__container--reverse {
+    .sec-media__heading {
+      grid-column: 7 / 5 span;
+    }
+    .sec-media__images {
+      grid-column: 6 span;
+      order: -1;
+    }
+  }
+
+  &__images--double {
+    .sec-media__item {
+      grid-row: 2 span;
+    }
+  }
+
+  &__images--single {
+    .sec-media__item {
+      grid-column: 2 span;
+      grid-row: 2 span;
+    }
+  }
+}

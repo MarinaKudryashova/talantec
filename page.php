@@ -12,27 +12,26 @@
  * @package architect
  */
 
-get_header();
+	get_header();
 ?>
+  <main class="main">
+    <?php 
+      /*-- Первый блок - фиксированный --*/
+      get_template_part( "template-parts/sections/hero-production", '', array('id' => $page_id));
+    ?>
 
-	<main id="primary" class="site-main">
-
-		<?php
-		while ( have_posts() ) :
-			the_post();
-
-			get_template_part( 'template-parts/content', 'page' );
-
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
-
-		endwhile; // End of the loop.
-		?>
-
-	</main><!-- #main -->
-
-<?php
-get_sidebar();
-get_footer();
+    <div class="content-overlay">
+      <?php 
+        $arlayouts = get_field('layouts');
+        // var_dump($arlayouts);
+        if ($arlayouts) :
+          foreach ($arlayouts as $ids => $layout) :
+            $layout_name = $layout['acf_fc_layout'];
+            $layout_ids = $ids;
+            get_template_part('template-parts/sections/' . $layout_name, '', array('id' => $page_id, 'layout-data' => $layout, 'layout-name' => $layout_name, 'layout-ids' => $layout_ids));
+          endforeach;
+        endif;
+      ?>
+    </div>
+  </main>
+<?php get_footer();

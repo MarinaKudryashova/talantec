@@ -101,15 +101,15 @@
       background-color: var(--accent);
     }
 
-    @include desktop{
+    @include desktop {
       padding: 32px;
     }
 
-@include tablet{
+    @include tablet {
       padding: 22px;
     }
 
-    @include mobile{
+    @include mobile {
       padding: 16px;
     }
   }
@@ -126,7 +126,6 @@
       margin: 0 0 clamp(10px, 0.833vw, 12px);
     }
 
-
     @include small-tablet {
       font-size: 22px;
     }
@@ -139,12 +138,12 @@
   &__descr {
     margin-bottom: px-to-vw(40px, 1440);
 
-    color: var(--border);
+    color: var(--white);
   }
 
   &__text {
     margin: 0 0 px-to-vw(12px, 1440);
-      font-weight: 400;
+    font-weight: 400;
     font-size: px-to-vw(16px, 1440);
     line-height: 120%;
 
@@ -157,7 +156,7 @@
       font-size: clamp(16px, 4.267vw, 18px);
     }
 
-     @include mobile {
+    @include mobile {
       font-size: 14px;
     }
   }
@@ -171,9 +170,9 @@
     display: flex;
     gap: px-to-vw(12px, 1440);
 
-  @include desktop {
-    gap: 12px;
-  }
+    @include desktop {
+      gap: 12px;
+    }
   }
 
   &__marker {
@@ -186,9 +185,9 @@
     stroke-linejoin: round;
 
     @include desktop {
-    width: 24px;
-    height: 24px;
-  }
+      width: 24px;
+      height: 24px;
+    }
   }
 
   &__span {
@@ -197,9 +196,9 @@
     line-height: 120%;
     color: var(--white);
 
-     @include desktop {
-    font-size: 14px;
-  }
+    @include desktop {
+      font-size: 14px;
+    }
   }
   &__link {
     margin-top: auto;
