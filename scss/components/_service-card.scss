@@ -187,4 +187,52 @@
     position: absolute;
     transform: translateX(-150%);
   }
+
+  /* ========== ГАЛОЧКА ДЛЯ ПУНКТОВ БЕЗ ССЫЛКИ ========== */
+  &__check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin-top: auto; */
+    opacity: 1;
+    visibility: visible;
+    transition:
+      opacity 0.3s,
+      visibility 0.3s;
+  }
+
+  &__check-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--accent);
+    color: var(--white);
+    transition:
+      background-color 0.3s,
+      color 0.3s;
+
+    @include mobile {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__check-svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    fill: none;
+
+    @include mobile {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &:hover .service-card__check-icon {
+    transform: scale(1.05);
+  }
 }

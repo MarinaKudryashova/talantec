@@ -11,10 +11,19 @@
       padding-bottom: 120px;
     }
 
-    @include big-tablet {
+    @include tablet {
       padding-top: 64px;
       padding-bottom: 64px;
+
+      display: flex;
+      flex-direction: column;
+      grid-template-columns: none;
+      gap: 32px;
     }
+  }
+
+  &__container--reverse {
+    flex-direction: column-reverse;
   }
 
   &__heading {
@@ -26,6 +35,11 @@
 
     @include desktop {
       gap: 12px;
+    }
+
+    @include big-tablet {
+      width: 100%;
+      grid-column: auto;
     }
   }
 
@@ -58,9 +72,13 @@
   &__text {
     margin: 0;
     font-weight: 400;
-    font-size: 16px;
+    font-size: px-to-vw(16px, 1440);
     line-height: 120%;
     color: var(--black);
+
+    @include desktop {
+      font-size: 16px;
+    }
   }
 
   &__images {
@@ -73,6 +91,12 @@
 
     @include small-desktop {
       grid-auto-rows: 198px;
+    }
+
+    @include tablet {
+      width: 100%;
+      grid-column: auto;
+      grid-auto-rows: 33vw;
     }
   }
 
