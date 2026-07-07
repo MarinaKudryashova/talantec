@@ -42,15 +42,18 @@ $sec_bannerform_shortcode = get_field('sec-bannerform_shortcode', 'options');
     </picture>
   </div>
   <div class="bannerform__container container">
-    <?php if (!empty($sec_bannerform_title)) : ?>
-    <h2 class="bannerform__title"><?php echo esc_html($sec_bannerform_title); ?></h2>
-    <?php endif; ?>
+    
 
     <div class="bannerform__content">
-      <?php if (!empty($sec_bannerform_descr)) : ?>
-      <p class="bannerform__descr"><?php echo esc_html($sec_bannerform_descr); ?></p>
-      <?php endif; ?>
-
+      <div class="bannerform__left">
+        <?php if (!empty($sec_bannerform_title)) : ?>
+        <h2 class="bannerform__title"><?php echo esc_html($sec_bannerform_title); ?></h2>
+        <?php endif; ?>
+        <?php if (!empty($sec_bannerform_descr)) : ?>
+        <p class="bannerform__descr"><?php echo esc_html($sec_bannerform_descr); ?></p>
+        <?php endif; ?>
+      </div>
+      
       <?php if (!empty($sec_bannerform_shortcode)) : ?>
       <div class="bannerform__form form">
         <?php echo do_shortcode( $sec_bannerform_shortcode ); ?>

@@ -56,6 +56,7 @@ $sec_services_list = $layout_data[$field_list];
           <?php endif; ?>
 
           <?php if ($has_link) : ?>
+             <!-- Стрелка (есть ссылка) -->
             <span class="service-card__link">
               <span class="service-card__icons">
                 <svg class="service-card__svg">
@@ -66,6 +67,15 @@ $sec_services_list = $layout_data[$field_list];
                 </svg>
               </span>
             </span>
+            <?php else : ?>
+              <!-- Галочка (нет ссылки)-->
+              <span class="service-card__check">
+                <span class="service-card__check-icon">
+                  <svg class="service-card__check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+              </span>
           <?php endif; ?>
 
          <?php if ($has_link) : ?>

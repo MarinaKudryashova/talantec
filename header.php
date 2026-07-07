@@ -125,6 +125,58 @@
           </div>
         </div>
       </div>
+
+      <!-- Новая шапка -->
+       <div class="container">
+                <div class="header-compact__top" style="display: none;">
+                  <a href="https://talantek.cosmo-design.ru/" class="header-compact__logo" aria-label="Перейти на главную страницу" rel="home">
+                    <img src="https://talantek.cosmo-design.ru/wp-content/uploads/2026/05/logo-belyj.svg" alt="Логотип Talantec" width="135" height="32">
+                  </a>
+                      
+                  <ul class="header-compact__menu topmenu">
+                    <li class="header-compact__menu-item">
+                      <a class="header-compact__menu-link" href="/#about-company" data-text="О компании">О компании</a>
+                    </li>
+                    <li class="header-compact__menu-item">
+                      <a class="header-compact__menu-link" href="/#projects" data-text="Наши проекты">Наши проекты</a>
+                    </li>
+                    <li class="header-compact__menu-item">
+                      <a class="header-compact__menu-link" href="/#services" data-text="Услуги">Услуги</a>
+                    </li>
+                    <li class="header-compact__menu-item">
+                      <a class="header-compact__menu-link" href="/#contacts" data-text="Контакты">Контакты</a>
+                    </li>
+                  </ul>
+                      
+                  <div class="header-compact__action">
+                    <!-- Телефон -->
+                    <a href="tel:+79991234567" class="header-compact__link header-compact__link--phone" aria-label="позвонить нам">
+                      <span data-text="+7 (999) 123-45-67">+7 (999) 123-45-67</span>
+                      <svg>
+                        <!-- <use xlink:href="https://talantek.cosmo-design.ru/wp-content/themes/architect/img/sprite.svg#icon-phone"></use> -->
+                         <use xlink:href="<?php echo get_template_directory_uri(); ?>/img/sprite.svg#icon-phone"></use>
+                      </svg>
+                    </a>
+                        
+                    <!-- Кнопка "Рассчитать стоимость" -->
+                    <a href="#" class="header-compact__link header-compact__link--cost">
+                      <span data-text="Рассчитать стоимость">Рассчитать стоимость</span>
+                      <svg>
+                        <!-- <use xlink:href="https://talantek.cosmo-design.ru/wp-content/themes/architect/img/sprite.svg#icon-pencil"></use> -->
+                         <use xlink:href="<?php echo get_template_directory_uri(); ?>/img/sprite.svg#icon-pencil"></use>
+                      </svg>
+                    </a>
+                        
+                    <!-- Бургер -->
+                    <div class="header-compact__burger">
+                      <button type="button" class="burger" aria-label="Открыть меню" aria-expanded="false" data-burger>
+                        <span class="burger__line"></span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+       </div>
+
       <div class="header__nav">
         <div class="header__navcontainer container">
           <nav class="nav" title="main navigation" data-menu>
