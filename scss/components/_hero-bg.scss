@@ -108,14 +108,18 @@
     z-index: 4;
     display: flex;
     margin: 0 auto;
-    // padding: 0 px-to-vw(64px, 1440);
-    // width: 100%;
+    padding-top: var(--header-height, 6.46vw);
     width: calc(100% + 2 * px-to-vw(64px, 1440));
-    height: calc(100vh - px-to-vw(105px, 1440) + 1px);
-    overflow: hidden;
+    height: 100%;
+    overflow: clip;
+
+    @include desktop {
+      padding-top: var(--header-height, 104px);
+    }
 
     @include tablet {
-      height: calc(100vh - px-to-vw(72px, 1024) + 1px);
+      padding-top: var(--header-height, 72px);
+      // min-height: 100vw;
     }
 
     & img {
@@ -129,12 +133,26 @@
       }
     }
 
+    &--compact {
+      padding-top: var(--header-height, 4.44vw);
+
+      @include desktop {
+        padding-top: var(--header-height, 64px);
+      }
+    }
+
     &--production {
+      padding-top: var(--header-height, 6.46vw);
       height: 100%;
-      max-height: calc(px-to-vw(500px, 1440) - px-to-vw(105px, 1440) + 1px);
+      max-height: px-to-vw(500px, 1440);
+
+      @include desktop {
+        padding-top: var(--header-height, 104px);
+        max-height: 500px;
+      }
 
       @include tablet {
-        max-height: calc(px-to-vw(500px, 1440) - px-to-vw(72px, 1024) + 1px);
+        padding-top: var(--header-height, 72px);
       }
     }
   }

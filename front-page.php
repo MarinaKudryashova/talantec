@@ -7,7 +7,7 @@ Template Post Type: page
 $page_id = get_the_ID();
 ?>
 
-<?php get_header(); ?>
+<?php architect_get_header(); ?>
   <main class="main">
     <?php 
       /*-- Первый блок - фиксированный --*/

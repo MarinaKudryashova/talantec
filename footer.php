@@ -13,12 +13,9 @@
     <footer class="footer">
       <div class="footer__container container">
         <div class="footer__top">
-          <!-- <a href="<?php //echo esc_url( home_url( '/' ) ); ?>" class="footer__logo">
-            <img src="<?php //echo get_field('site_logo', 'option') ?>" alt="Логотип architect" width="256" height="59">
-          </a> -->
 
           <?php 
-          $footer_logo = get_theme_mod('footer_logo');
+          $footer_logo = get_theme_mod('logo_light');
           if ( $footer_logo ) : ?>
               <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="footer__logo">
                   <img src="<?php echo esc_url( $footer_logo ); ?>" alt="Логотип <?php bloginfo('name'); ?>" width="256" height="59">
@@ -28,26 +25,6 @@
 
           <div class="footer__content">
             <div class="footer__contacts">
-              <?php
-                // $phone = get_field('company_tel', 'options');
-                // $phone = explode(PHP_EOL, $phone);
-                // $phone_href = preg_replace('![^0-9]+!', '', $phone);
-              ?>
-              <!-- <div class="footer__phone">
-                <span class="footer__contacts-title"><?php //esc_html_e( 'Телефон', 'architect' ); ?></span>
-                <a class="footer__contacts-link" href="tel:<?php //echo $phone_href[0]; ?>"
-                  data-text="<?php //echo $phone[0]; ?>"><?php //echo $phone[0]; ?></a>
-              </div>
-              <div class="footer__email">
-                <span class="footer__contacts-title"><?php //esc_html_e( 'Почта', 'architect' ); ?></span>
-                <a class="footer__contacts-link" href="mailto:<?php //echo get_field('company_mail', 'option') ?>"
-                  data-text="<?php //echo get_field('company_mail', 'option') ?>"><?php //echo get_field('company_mail', 'option') ?></a>
-              </div>
-              <div class="footer__address">
-                <span class="footer__contacts-title"><?php //esc_html_e( 'Адрес', 'architect' ); ?></span>
-                <p class="footer__contacts-link footer__contacts-link--inactive"><?php echo get_field('company_address', 'option') ?></p>
-              </div> -->
-
               <!-- Телефон -->
                 <div class="footer__phone">
                   <span class="footer__contacts-title"><?php esc_html_e( 'Телефон', 'architect' ); ?></span>
