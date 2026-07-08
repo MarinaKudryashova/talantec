@@ -4,9 +4,12 @@
   left: 0;
   width: 100%;
   z-index: 20;
+  border-bottom: 1px solid var(--white-160);
   color: var(--white);
   // Анимация для появления/скрытия
-  transition: transform var(--transition-300), background-color 0.2s ease-out;
+  transition:
+    transform var(--transition-300),
+    background-color 0.2s ease-out;
 
   @include tablet {
     border-bottom: 1px solid var(--white-160);
@@ -18,7 +21,7 @@
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     z-index: -1;
@@ -27,7 +30,9 @@
     backdrop-filter: blur(8px);
     background-color: var(--black-400);
     opacity: 0;
-    transition: background-color var(--transition-300), opacity var(--transition-300);
+    transition:
+      background-color var(--transition-300),
+      opacity var(--transition-300);
   }
 
   &.scroll {
@@ -114,6 +119,20 @@
     //     aspect-ratio: 101 / 24;
     //   }
     // }
+  }
+
+  &__imglogo {
+    &--dark {
+      display: none;
+    }
+  }
+
+  .header--burger &__imglogo {
+    display: none;
+
+    &--dark {
+      display: block;
+    }
   }
 
   &__action {
@@ -244,7 +263,6 @@
 
   &__nav {
     display: flex;
-    border-bottom: 1px solid var(--white-160);
     border-top: 1px solid var(--white-160);
     padding: px-to-vw(11px, 1440) 0;
 
@@ -272,9 +290,10 @@
     opacity: 0;
     visibility: hidden;
     // transform: translateY(-100%);
-    transition: opacity 0.2s ease-out,
-                visibility 0.2s ease-out,
-                transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+    transition:
+      opacity 0.2s ease-out,
+      visibility 0.2s ease-out,
+      transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
 
     &.is-open {
       opacity: 1;

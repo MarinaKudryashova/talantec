@@ -12,7 +12,7 @@
  * @package architect
  */
 
-	get_header();
+	architect_get_header();
 ?>
   <main class="main">
     <?php 

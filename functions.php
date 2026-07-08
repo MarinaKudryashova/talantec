@@ -27,6 +27,7 @@ function architect_setup() {
 	register_nav_menus(
 		array(
 			'header' => esc_html__("Главное меню", 'architect'),
+			'header_compact' => esc_html__("Главное меню (компактный)", 'architect'),
 			'header_top' => esc_html__("Верхнее меню", 'architect'),
 			'footer_primary' => esc_html__("Основное нижнее", 'architect'),
 			'footer_nav' => esc_html__("Навигация", 'architect'),
@@ -216,8 +217,7 @@ require get_template_directory() . '/inc/template-functions.php';
 /**
  * Customizer additions.
  */
-require get_template_directory() . '/inc/customizer.php';
-
+  require_once get_template_directory() . '/inc/customizer.php';
 
 /**
  * Load Jetpack compatibility file.
@@ -235,109 +235,3 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 //     }
 //     return $classes;
 // }
-
-/**
- * Настройки в кастомайзер (секция "Свойства сайта")
- */
-add_action('customize_register', 'architect_customizer_settings');
-
-function architect_customizer_settings($wp_customize) {
-    
-    // 1. Логотип в шапке
-    $wp_customize->add_setting('header_logo', array(
-        'default'           => '',
-        'sanitize_callback' => 'esc_url_raw',
-    ));
-    
-    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'header_logo', array(
-        'label'       => __('Логотип в шапке', 'architect'),
-        'description' => __('Загрузите логотип для шапки сайта', 'architect'),
-        'section'     => 'title_tagline',
-        'priority'    => 20, 
-    )));
-
-    // 2. Логотип в подвале
-    $wp_customize->add_setting('footer_logo', array(
-        'default'           => '',
-        'sanitize_callback' => 'esc_url_raw',
-    ));
-    
-    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'footer_logo', array(
-        'label'       => __('Логотип в подвале', 'architect'),
-        'description' => __('Загрузите логотип для подвала сайта', 'architect'),
-        'section'     => 'title_tagline',
-        'priority'    => 25,  
-    )));
-    
-    // 3. Текст копирайта
-    $wp_customize->add_setting('footer_copyright', array(
-        'default'           => '© 2025 architect',
-        'sanitize_callback' => 'wp_kses_post',
-    ));
-    
-    $wp_customize->add_control('footer_copyright', array(
-        'label'       => __('Текст копирайта в подвале', 'architect'),
-        'description' => __('Измените текст копирайта. Можно использовать HTML-теги', 'architect'),
-        'section'     => 'title_tagline',
-        'type'        => 'textarea',
-        'priority'    => 30, 
-    ));
-
-/**
- * Секция "Контакты" в кастомайзер
- */
-    
-    $wp_customize->add_section('contacts_settings', array(
-        'title'       => __('Контакты', 'architect'),
-        'description' => __('Настройки контактной информации сайта', 'architect'),
-        'priority'    => 1, // Позиция в меню кастомайзера
-    ));
-    
-    // Телефон
-    $wp_customize->add_setting('company_phone', array(
-        'default'           => '+7 (999) 123-45-67',
-        'sanitize_callback' => 'sanitize_text_field',
-    ));
-    
-    $wp_customize->add_control('company_phone', array(
-        'label'       => __('Телефон', 'architect'),
-        'description' => __('Основной номер телефона', 'architect'),
-        'section'     => 'contacts_settings',
-        'type'        => 'text',
-        'input_attrs' => array(
-            'placeholder' => '+7 (999) 123-45-67',
-        ),
-    ));
-    
-    // Почта
-    $wp_customize->add_setting('company_email', array(
-        'default'           => 'info@architect.ru',
-        'sanitize_callback' => 'sanitize_email',
-    ));
-    
-    $wp_customize->add_control('company_email', array(
-        'label'       => __('Email', 'architect'),
-        'description' => __('Электронная почта', 'architect'),
-        'section'     => 'contacts_settings',
-        'type'        => 'email',
-        'input_attrs' => array(
-            'placeholder' => 'info@architect.ru',
-        ),
-    ));
-    
-    // Адрес
-    $wp_customize->add_setting('company_address', array(
-        'default'           => 'г. Москва, ул. Примерная, д. 123',
-        'sanitize_callback' => 'sanitize_text_field',
-    ));
-    
-    $wp_customize->add_control('company_address', array(
-        'label'       => __('Адрес', 'architect'),
-        'description' => __('Физический адрес компании', 'architect'),
-        'section'     => 'contacts_settings',
-        'type'        => 'text',
-        'input_attrs' => array(
-            'placeholder' => 'г. Москва, ул. Примерная, д. 123',
-        ),
-    ));
-}

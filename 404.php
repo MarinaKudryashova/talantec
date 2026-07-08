@@ -4,57 +4,57 @@
  *
  * @link https://codex.wordpress.org/Creating_an_Error_404_Page
  *
- * @package architect
+ * @package apartner
  */
 
 get_header();
 ?>
+<?php
+$error_title = get_theme_mod( 'error_404_title', '404' );
+$error_text = get_theme_mod( 'error_404_text', 'Страница не найдена' );
+$error_background_url = get_theme_mod( 'error_404_background' );
+$error_background = (!empty($error_background_url)) ? get_image_versions($error_background_url) : null;
+$button_text = get_theme_mod( 'error_404_button_text', 'На главную' );
 
-	<main id="primary" class="site-main">
+$button_page_id = get_theme_mod( 'error_404_button_page', 0 );
+$button_custom_url = get_theme_mod( 'error_404_button_url', '' );
 
+if ( $button_page_id && get_post( $button_page_id ) ) {
+	$button_url = get_permalink( $button_page_id );
+} elseif ( $button_custom_url ) {
+	$button_url = esc_url( $button_custom_url );
+} else {
+	$button_url = home_url( '/' );
+}
+
+?>
+
+	<main class="main">
 		<section class="error-404 not-found">
-			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'architect' ); ?></h1>
-			</header><!-- .page-header -->
+			<div class="container">
+				<?php if($error_background && is_array($error_background)) : ?>
+					<picture class="error-404__img">
+						<source srcset="<?php echo esc_url($error_background['webp_1x']); ?>" type="image/webp">
+						<img src="<?php echo esc_url($error_background['original_1x']); ?>" width="576" height="330" aria-hidden="true" alt="Ошибка 404">
+					</picture>
+				<?php endif; ?>
 
-			<div class="page-content">
-				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'architect' ); ?></p>
+				<div class="error-404__content">
+					<?php if($error_title) : ?>
+						<h1 class="error-404__title"><?php echo esc_html( $error_title ); ?></h1>
+					<?php endif; ?>
 
-					<?php
-					get_search_form();
+					<?php if($error_text) : ?>
+						<p class="error-404__decr"><?php echo esc_html( $error_text ); ?></p>
+					<?php endif; ?>
+				</div>
 
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
-
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'architect' ); ?></h2>
-						<ul>
-							<?php
-							wp_list_categories(
-								array(
-									'orderby'    => 'count',
-									'order'      => 'DESC',
-									'show_count' => 1,
-									'title_li'   => '',
-									'number'     => 10,
-								)
-							);
-							?>
-						</ul>
-					</div><!-- .widget -->
-
-					<?php
-					/* translators: %1$s: smiley */
-					$architect_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'architect' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$architect_archive_content" );
-
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-			</div><!-- .page-content -->
-		</section><!-- .error-404 -->
-
-	</main><!-- #main -->
+				<?php if($button_text && $button_url) : ?>
+					<a href="<?php echo esc_url( $button_url ); ?>" class="error-404__link ui-btn-arrow"><?php echo esc_html( $button_text ); ?></a>
+				<?php endif; ?>
+			</div>
+		</section>
+	</main>
 
 <?php
 get_footer();

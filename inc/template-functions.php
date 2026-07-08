@@ -35,3 +35,14 @@ function architect_pingback_header() {
 	}
 }
 add_action( 'wp_head', 'architect_pingback_header' );
+
+/**
+ * Получить шаблон шапки в зависимости от настроек кастомайзера
+ */
+function architect_get_header() {
+    $header_style = get_theme_mod( 'header_style', 'compact' );
+    
+    // Если two-level, передаем пустую строку (стандартная шапка)
+    // Иначе передаем значение $header_style
+    get_header( $header_style === 'default' ? '' : $header_style );
+}
