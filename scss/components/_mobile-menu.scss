@@ -14,11 +14,12 @@
   pointer-events: none;
   visibility: hidden;
   // transform: translateY(-100%);
-  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
-              opacity 0.2s ease-out,
-              visibility 0.2s linear ;
+  transition:
+    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.2s ease-out,
+    visibility 0.2s linear;
 
-  &.is-open{
+  &.is-open {
     opacity: 1;
     pointer-events: auto;
     visibility: visible;
@@ -50,6 +51,7 @@
     list-style: none;
   }
 
+  &__list a,
   &__link {
     font-size: clamp(24px, px-to-vw(24px, 375), 28px);
     line-height: 110%;
@@ -93,7 +95,9 @@
     width: 16px;
     height: 16px;
     transform: rotate(180deg);
-    transition: transform var(--transition-300), stroke var(--transition-300);
+    transition:
+      transform var(--transition-300),
+      stroke var(--transition-300);
   }
 
   & .accordion__item.is-open {
@@ -140,8 +144,8 @@
     padding: 16px 0;
     font-size: clamp(16px, px-to-vw(16px, 375), 20px);
     color: var(--black);
-    border-top: 1px solid #CFCED5;
-    border-bottom: 1px solid #CFCED5;
+    border-top: 1px solid #cfced5;
+    border-bottom: 1px solid #cfced5;
   }
 
   &__btn {
@@ -150,7 +154,6 @@
     border: none;
 
     & .ui-btn-arrow__text {
-
       font-size: clamp(14px, px-to-vw(14px, 375), 16px);
       color: var(--white);
     }
@@ -165,6 +168,5 @@
       color: var(--black);
       stroke-width: 2px;
     }
-
   }
 }

@@ -79,12 +79,12 @@ function architect_customize_register( $wp_customize ) {
 	 * Секция "Свойства сайта" в кастомайзер (title_tagline)
 	 */
 		//Добавляем логотип
-	  $wp_customize->add_setting('logo_light', array(
+	  $wp_customize->add_setting('site_logo', array(
         'default'           => '',
         'sanitize_callback' => 'esc_url_raw',
     ));
     
-    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'logo_light', array(
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'site_logo', array(
         'label'       => __('Логотип сайта', 'architect'),
         'description' => __('Загрузите логотип в формате PNG или SVG', 'architect'),
         'section'     => 'title_tagline',
@@ -92,12 +92,12 @@ function architect_customize_register( $wp_customize ) {
     )));
 
 		//Добавляем логотип (темный)
-    $wp_customize->add_setting('logo_dark', array(
+    $wp_customize->add_setting('site_logo_dark', array(
         'default'           => '',
         'sanitize_callback' => 'esc_url_raw',
     ));
     
-    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'logo_dark', array(
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'site_logo_dark', array(
         'label'       => __('Логотип сайта (темный)', 'architect'),
         'description' => __('Загрузите логотип в формате PNG или SVG', 'architect'),
         'section'     => 'title_tagline',

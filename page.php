@@ -34,4 +34,4 @@
       ?>
     </div>
   </main>
-<?php get_footer();
+<?php architect_get_footer();

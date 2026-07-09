@@ -1,33 +1,113 @@
 .footer-bg {
+  position: absolute;
+  inset: 0;
+  top: 0;
+  left: 0;
+  padding: 0 px-to-vw(47px, 1440);
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: clip;
+  display: flex;
+  // flex-direction: column;
 
-  &__line {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    // z-index: 4;
-    overflow: hidden;
+  // &__line {
+  //   position: absolute;
+  //   left: 0;
+  //   right: 0;
+  //   bottom: 0;
+  //   top: 0;
+  //   // z-index: 4;
+  //   overflow: hidden;
+  //   width: 100%;
+  //   padding: 0 px-to-vw(47px, 1440);
+
+  //   & img {
+  //     width: 100%;
+  //     height: 100%;
+  //     aspect-ratio: 1440 / 698;
+  //     pointer-events: none;
+  //   }
+
+  //   @include small-tablet {
+  //     opacity: 0;
+  //   }
+
+  //   &--mobile {
+  //     opacity: 0;
+  //     padding: 0;
+
+  //     @include small-tablet {
+  //       opacity: 1;
+  //     }
+  //   }
+  // }
+  &__vertical {
+    position: relative;
     width: 100%;
-    padding: 0 px-to-vw(47px, 1440);
+    height: 100%;
+    border-left: 1px solid var(--grey);
+    border-right: 1px solid var(--grey);
 
-    & img {
-      width: 100%;
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1px;
       height: 100%;
-      aspect-ratio: 1440 / 698;
-      pointer-events: none;
+      background-color: var(--grey);
     }
-
-    @include small-tablet {
-      opacity: 0;
+    &::before {
+      transform: translateX(px-to-vw(-10px, 1440));
+      @include desktop {
+        transform: translateX(-10px);
+      }
     }
+    &::after {
+      left: auto;
+      right: 0;
+      @include desktop {
+        transform: translateX(10px);
+      }
+    }
+  }
+  &__horizontal {
+    display: none;
 
-    &--mobile {
-      opacity: 0;
-      padding: 0;
+    @include tablet {
+      position: absolute;
+      left: px-to-vw(-47px, 1440);
+      display: block;
+      padding-top: 136px;
+      width: calc(100% + px-to-vw(47px, 1440));
+      // height: 1px;
+      // background-color: var(--grey);
+      border-bottom: 1px solid var(--grey);
 
-      @include small-tablet {
-        opacity: 1;
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        z-index: 1;
+        width: clamp(19px, px-to-vw(25px, 1440), 25px);
+        height: clamp(19px, px-to-vw(24px, 1440), 24px);
+        background-image: url("../img/svg/union.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      &::before {
+        left: calc(2 * px-to-vw(47px, 1440));
+        transform: translate(-65%, 50%);
+      }
+
+      &::after {
+        left: auto;
+        right: px-to-vw(47px, 1440);
+        transform: translate(65%, 50%);
       }
     }
   }

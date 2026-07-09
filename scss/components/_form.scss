@@ -26,7 +26,8 @@
   &__control {
     grid-column: 2 span;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     gap: px-to-vw(24px, 1440);
 
     @include desktop {
