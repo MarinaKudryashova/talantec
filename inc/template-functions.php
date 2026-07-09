@@ -46,3 +46,13 @@ function architect_get_header() {
     // Иначе передаем значение $header_style
     get_header( $header_style === 'default' ? '' : $header_style );
 }
+/**
+ * Получить шаблон футера в зависимости от настроек кастомайзера
+ */
+function architect_get_footer() {
+    $footer_style = get_theme_mod( 'footer_style', 'compact' );
+    
+    // Если two-level, передаем пустую строку (стандартная шапка)
+    // Иначе передаем значение $footer_style
+    get_footer( $footer_style === 'default' ? '' : $footer_style );
+}

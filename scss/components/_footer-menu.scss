@@ -31,7 +31,9 @@
     font-size: clamp(16px, px-to-vw(16px, 1440), 32px);
     color: var(--white);
     cursor: pointer;
-    transition: color var(--transition-300), transform var(--transition-300);
+    transition:
+      color var(--transition-300),
+      transform var(--transition-300);
 
     &::after {
       content: attr(data-text);

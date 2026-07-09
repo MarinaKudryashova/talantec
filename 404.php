@@ -7,7 +7,7 @@
  * @package apartner
  */
 
-get_header();
+architect_get_header();
 ?>
 <?php
 $error_title = get_theme_mod( 'error_404_title', '404' );
@@ -57,4 +57,4 @@ if ( $button_page_id && get_post( $button_page_id ) ) {
 	</main>
 
 <?php
-get_footer();
+architect_get_footer();

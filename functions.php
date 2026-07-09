@@ -27,6 +27,7 @@ function architect_setup() {
 	register_nav_menus(
 		array(
 			'header' => esc_html__("Главное меню", 'architect'),
+			'header_mobile' => esc_html__("Главное меню (мобильное)", 'architect'),
 			'header_compact' => esc_html__("Главное меню (компактный)", 'architect'),
 			'header_top' => esc_html__("Верхнее меню", 'architect'),
 			'footer_primary' => esc_html__("Основное нижнее", 'architect'),
@@ -184,6 +185,7 @@ require_once get_template_directory() . '/inc/post-types.php';
 require_once get_template_directory() . '/inc/Header_Menu_Walker.php';
 require_once get_template_directory() . '/inc/Top_Menu_Walker.php';
 require_once get_template_directory() . '/inc/Footer_Menu_Walker.php';
+require_once get_template_directory() . '/inc/Mobile_Menu_Walker.php';
 require_once get_template_directory() . '/inc/theme-form-cf7.php';
 
 // 1. Фильтр для пути к PHP шаблонам

@@ -13,7 +13,8 @@ body:has(#wpadminbar) .site-container,
   padding-top: 32px;
 }
 
-body:has(#wpadminbar) .header {
+body:has(#wpadminbar) .header,
+body:has(#wpadminbar) .hero {
   top: 32px;
 }
 

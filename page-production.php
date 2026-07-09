@@ -6,7 +6,7 @@ Template Post Type: page
 
 $page_id = get_the_ID();
 
-get_header();
+architect_get_header();
 ?>
 <main class="main">
   <?php 
@@ -24,4 +24,4 @@ get_header();
     ?>
   </div>
 </main>
-<?php get_footer(); ?>
+<?php architect_get_footer(); ?>

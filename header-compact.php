@@ -52,8 +52,8 @@
       <div class="container">
         <div class="header__top">
           <?php 
-            $header_logo = get_theme_mod('logo_light');
-            $header_logo_dark = get_theme_mod('logo_dark');
+            $header_logo = get_theme_mod('site_logo');
+            $header_logo_dark = get_theme_mod('site_logo_dark');
             if ( $header_logo && $header_logo_dark ) : ?>
               <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="header__logo" aria-label="Перейти на главную страницу" rel="home">
                 <img src="<?php echo esc_url( $header_logo ); ?>" class="header__imglogo" alt="Логотип <?php bloginfo('name'); ?>" width="135" height="32">
@@ -115,48 +115,7 @@
       </div>
       <div class="header__overlay"></div>
       <div class="mobile-menu" data-menu>
-        <!-- <ul class="mobile-menu__list"> -->
-          <!-- <li class="mobile-menu__item accordion"> -->
-            <!-- Вкладка аккордеона -->
-            <!-- <div class="accordion__item mobile-menu__accordion"> -->
-              <!-- <button class="accordion__control">
-                <span class="accordion__title">Каталог</span>
-                <span class="accordion__icon">
-                  <svg aria-hidden="true" width="24" height="24">
-                    <use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#icon-arrow-up"></use>
-                  </svg>
-                </span>
-              </button> -->
-              <!-- Содержимое аккордеона -->
-              <!-- <div class="accordion__content" aria-hidden="true">
-                <ul class="mobile-menu__nav nav">
-                  <li><a href="/production.html" data-menu-item data-text="Для потребителей">Для потребителей</a></li>
-                  <li><a href="#" data-menu-item data-text="Услуги">Услуги</a></li>
-                  <li><a href="#" data-menu-item data-text="Виды изделий">Виды изделий</a></li>
-                  <li><a href="#" data-menu-item data-text="Бренды">Бренды</a></li>
-                  <li><a href="#" data-menu-item data-text="Виды изделий">Виды изделий</a></li>
-                  <li><a href="#" data-menu-item data-text="Стили фасадов">Стили фасадов</a></li>
-                  <li><a href="#" data-menu-item data-text="Технология остекления">Технология остекления</a></li>
-                  <li><a href="#" data-menu-item data-text="Реализованные объекты">Реализованные объекты</a></li>
-                </ul>
-              </div> -->
-            <!-- </div> -->
-
-          <!-- </li> -->
-          <!-- <li class="mobile-menu__item">
-            <a class="mobile-menu__link" href="#">О компании</a>
-          </li>
-          <li class="mobile-menu__item">
-            <a class="mobile-menu__link" href="#">Блог</a>
-          </li>
-          <li class="mobile-menu__item">
-            <a class="mobile-menu__link" href="#">Экспертность</a>
-          </li>
-          <li class="mobile-menu__item">
-            <a class="mobile-menu__link" href="#">Контакты</a>
-          </li> -->
-        <!-- </ul> -->
-                  <?php
+        <?php
             wp_nav_menu( [
               'theme_location'  => 'header_compact',
               'menu'            => 'header_compact',
@@ -170,22 +129,20 @@
               'link_before'     => '  ',
               'link_after'      => '',
               'items_wrap'      => '<ul class="mobile-menu__list">%3$s</ul>',
-              'depth'           => 1,
-              'walker'          => new Header_Menu_Walker(),
+              'depth'           => 2,
+              'walker'          => new Mobile_Menu_Walker(),
             ] );
           ?>
         <div class="mobile-menu__action">
-          <!-- <a href="tel:+74996886263" class="mobile-menu__link mobile-menu__link--phone" aria-label="позвонить нам">+7 (499)688-62-63</a> -->
-              
-              <?php 
-                  $phone = get_theme_mod('company_phone', '+7 (999) 123-45-67');
-                  if ( $phone ) : 
-                      $phone_clean = preg_replace('/[^0-9+]/', '', $phone);
-                  ?>
-                      <a href="tel:<?php echo esc_attr( $phone_clean ); ?>" class="mobile-menu__link mobile-menu__link--phone" aria-label="Позвонить нам">
-                          <?php echo esc_html( $phone ); ?>
-                      </a>
-                  <?php endif; ?>
+          <?php 
+            $phone = get_theme_mod('company_phone', '+7 (999) 123-45-67');
+            if ( $phone ) : 
+              $phone_clean = preg_replace('/[^0-9+]/', '', $phone);
+            ?>
+              <a href="tel:<?php echo esc_attr( $phone_clean ); ?>" class="mobile-menu__link mobile-menu__link--phone" aria-label="Позвонить нам">
+                <?php echo esc_html( $phone ); ?>
+              </a>
+            <?php endif; ?>
           
           <button class="mobile-menu__btn ui-btn-arrow" type="submit">
             <span class="ui-btn-arrow__text">Рассчитать стоимость</span>
