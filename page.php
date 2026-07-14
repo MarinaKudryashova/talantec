@@ -28,6 +28,7 @@
           foreach ($arlayouts as $ids => $layout) :
             $layout_name = $layout['acf_fc_layout'];
             $layout_ids = $ids;
+            // var_dump($layout);
             get_template_part('template-parts/sections/' . $layout_name, '', array('id' => $page_id, 'layout-data' => $layout, 'layout-name' => $layout_name, 'layout-ids' => $layout_ids));
           endforeach;
         endif;

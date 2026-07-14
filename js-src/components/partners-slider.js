@@ -1,8 +1,9 @@
-import Swiper from './init-slider';
+import Swiper from "./init-slider";
 
-const brandsSlider = document.querySelector('.sec-brands__slider');
-if (brandsSlider) {
-  const swiper_brandsSlider = new Swiper(brandsSlider, {
+const partnersSlider = document.querySelector(".sec-partners__slider");
+
+if (partnersSlider) {
+  const swiper_partnersSlider = new Swiper(partnersSlider, {
     loop: true,
     freeMode: true,
     enabled: true,
@@ -17,7 +18,7 @@ if (brandsSlider) {
       delay: 0,
       disableOnInteraction: false,
     },
-    breakpoints: { 
+    breakpoints: {
       380: {
         slidesPerView: 2,
         spaceBetween: 8,
@@ -38,6 +39,6 @@ if (brandsSlider) {
         slidesPerView: 4,
         spaceBetween: 32,
       },
-    }
+    },
   });
 }

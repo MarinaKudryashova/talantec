@@ -61,6 +61,7 @@
               </a>
           <?php endif; ?>
 
+          <nav class="nav" title="main navigation" data-menu>
           <?php
             wp_nav_menu( [
               'theme_location'  => 'header_compact',
@@ -74,11 +75,12 @@
               'after'           => '',
               'link_before'     => '  ',
               'link_after'      => '',
-              'items_wrap'      => '<ul class="header-compact__menu topmenu">%3$s</ul>',
+              'items_wrap'      => '<ul class="header__menu menu">%3$s</ul>',
               'depth'           => 1,
               'walker'          => new Header_Menu_Walker(),
             ] );
           ?>
+          </nav>
               
           <div class="header-compact__action">
             <!-- Телефон -->

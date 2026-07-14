@@ -110,7 +110,7 @@
     flex-shrink: 0;
 
     & img {
-      width: clamp(192px, px-to-vw(192px, 1440), 350px);
+      width: clamp(192px, px-to-vw(182px, 1440), 300px);
     }
   }
 
@@ -164,7 +164,7 @@
     margin: 0;
     font-weight: 400;
     line-height: 110%;
-    font-size: px-to-vw(24px, 1440);
+    font-size: clamp(24px, px-to-vw(24px, 1440), 26px);
     transition:
       transform var(--transition-300),
       color var(--transition-300);

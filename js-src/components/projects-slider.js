@@ -1,4 +1,5 @@
-import Swiper from "./init-slider";
+import Swiper from "swiper";
+import { Navigation, Pagination, Autoplay, EffectFade, FreeMode, Grid, A11y, Thumbs } from "swiper/modules";
 
 const projectsSliders = document.querySelectorAll(".sec-projects__slider");
 
@@ -8,6 +9,7 @@ if (projectsSliders) {
     const btnPrevSlider = slider.parentNode.querySelector(".sec-projects__btn-prev");
 
     const projectsSwiper = new Swiper(slider, {
+      modules: [Navigation, FreeMode, A11y],
       // loop: true,
       lazy: true,
       // spaceBetween: 8,
@@ -17,26 +19,31 @@ if (projectsSliders) {
         prevEl: btnPrevSlider,
       },
       breakpoints: {
-        320: {  // Для очень маленьких экранов
+        320: {
+          // Для очень маленьких экранов
           slidesPerView: 1.1,
           spaceBetween: 8,
         },
-        576: {  // от 576px и выше
+        576: {
+          // от 576px и выше
           slidesPerView: 1.5,
           spaceBetween: 8,
         },
-        768: {  // от 768px и выше
+        768: {
+          // от 768px и выше
           slidesPerView: 2,
           spaceBetween: 16,
         },
-        1024: { // от 1024px и выше
+        1024: {
+          // от 1024px и выше
           slidesPerView: 2.4,
           spaceBetween: 24,
         },
-        1280: { // от 1280px и выше
+        1280: {
+          // от 1280px и выше
           slidesPerView: 2,
           spaceBetween: 32,
-        }
+        },
         // 320: {
         //   slidesPerView: 1.1,
         //   spaceBetween: 16,

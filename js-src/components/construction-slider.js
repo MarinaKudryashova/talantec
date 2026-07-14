@@ -1,4 +1,5 @@
-import Swiper from "./init-slider";
+import Swiper from "swiper";
+import { Navigation, Pagination, Autoplay, EffectFade, FreeMode, Grid, A11y, Thumbs } from "swiper/modules";
 
 const constructionSliders = document.querySelectorAll(".sec-construction__slider");
 
@@ -8,6 +9,7 @@ if (constructionSliders) {
     const btnPrevSlider = slider.parentNode.querySelector(".sec-construction__btn-prev");
 
     const constructionSwiper = new Swiper(slider, {
+      modules: [Navigation, FreeMode, A11y],
       // loop: true,
       lazy: true,
       // spaceBetween: 8,
