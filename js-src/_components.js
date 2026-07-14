@@ -4,7 +4,7 @@ import "./components/products-bgs";
 import "./components/init-slider"; // инициализация Swiper
 import "./components/materials-slider";
 import "./components/construction-slider";
-import "./components/brands-slider";
+import "./components/partners-slider";
 import "./components/news-slider";
 import "./components/style-slider";
 import "./components/scroll-up";

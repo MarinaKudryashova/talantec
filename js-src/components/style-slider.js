@@ -1,7 +1,9 @@
-import Swiper, { Navigation, Pagination, Autoplay, EffectFade, FreeMode, Grid, A11y, Thumbs } from "swiper";
-Swiper.use([Navigation, Pagination, Autoplay, EffectFade, FreeMode, Grid, A11y, Thumbs]);
+import Swiper from "swiper";
+import { Navigation, Pagination, Autoplay, EffectFade, FreeMode, Grid, A11y, Thumbs } from "swiper/modules";
 
 const styleSliders = document.querySelectorAll(".style-slider");
+const isMobile = () => window.innerWidth < 992;
+
 if (styleSliders) {
   styleSliders.forEach((slider) => {
     const styleSlider = slider.querySelector(".style-slider__large");
@@ -11,6 +13,7 @@ if (styleSliders) {
 
     // Инициализируем сначала слайдер с миниатюрами
     const sliderThumbs = new Swiper(styleSliderThumbs, {
+      modules: [Navigation, EffectFade, FreeMode, A11y, Thumbs],
       loop: true,
       spaceBetween: 32,
       slidesPerView: 2.16,
@@ -50,6 +53,7 @@ if (styleSliders) {
 
     // Затем инициализируем основной слайдер
     const sliderLarge = new Swiper(styleSlider, {
+      modules: [Navigation, EffectFade, FreeMode, A11y, Thumbs],
       loop: true,
       effect: "fade",
       fadeEffect: {
@@ -65,9 +69,7 @@ if (styleSliders) {
         init: function () {
           updateActiveThumbVisibility(sliderThumbs);
         },
-        // ПРОСТОЙ ПОДХОД: синхронизируем только при клике по кнопкам
         slideChange: function () {
-          // Просто обновляем видимость активного слайда
           if (sliderThumbs && !sliderThumbs.destroyed) {
             updateActiveThumbVisibility(sliderThumbs);
           }
@@ -83,7 +85,6 @@ if (styleSliders) {
           spaceBetween: 16,
         },
       },
-      // ВАЖНО: используем стандартную привязку к миниатюрам
       thumbs: {
         swiper: sliderThumbs,
       },
@@ -112,17 +113,18 @@ if (styleSliders) {
 }
 
 const mobileStyleSliders = document.querySelectorAll(".style-slider-mobile__slider");
-if (mobileStyleSliders) {
+if (isMobile && mobileStyleSliders) {
   mobileStyleSliders.forEach((slider) => {
-    const btnNext = slider.closest(".sec-style").querySelector(".sec-style__btn-next");
-    const btnPrev = slider.closest(".sec-style").querySelector(".sec-style__btn-prev");
+    const mobileBtnNext = slider.closest(".sec-style").querySelector(".sec-style__btn-next");
+    const mobileBtnPrev = slider.closest(".sec-style").querySelector(".sec-style__btn-prev");
 
     const swiper = new Swiper(slider, {
+      modules: [Navigation, EffectFade, FreeMode, A11y],
       spaceBetween: 8,
       slidesPerView: 1.18,
       navigation: {
-        nextEl: btnNext,
-        prevEl: btnPrev,
+        nextEl: mobileBtnNext,
+        prevEl: mobileBtnPrev,
       },
       breakpoints: {
         375: {
@@ -140,4 +142,5 @@ if (mobileStyleSliders) {
       },
     });
   });
+} else {
 }

@@ -18,9 +18,10 @@
     cursor: pointer;
     overflow: hidden;
     flex-shrink: 0;
-    transition: color var(--transition-300),
-                border-color var(--transition-300),
-                opacity var(--transition-300);
+    transition:
+      color var(--transition-300),
+      border-color var(--transition-300),
+      opacity var(--transition-300);
 
     &:focus-visible,
     &:hover {
@@ -97,6 +98,7 @@
     width: clamp(16px, px-to-vw(16px, 1440), 30px);
     height: clamp(16px, px-to-vw(16px, 1440), 30px);
     overflow: hidden;
+    pointer-events: none;
   }
 
   // Общие стили для иконок
@@ -110,6 +112,7 @@
     stroke-linecap: round;
     stroke-linejoin: round;
     transition: transform var(--transition-300);
+    pointer-events: none;
 
     // Оригинальная иконка (видимая по умолчанию)
     &--original {

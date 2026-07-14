@@ -166,8 +166,8 @@ function theme_styles_and_scripts() {
 
 
 	// основные скрипты темы	
-	// wp_enqueue_script( 'js-main', $js_path . 'main.min.js', array(), $ver, array( 'in_footer' => true, 'strategy' => 'defer'));
-	wp_enqueue_script( 'js-main', $js_path . 'main.js', array(), $ver, array( 'in_footer' => true, 'strategy' => 'defer'));
+	wp_enqueue_script( 'js-main', $js_path . 'main.min.js', array(), $ver, array( 'in_footer' => true, 'strategy' => 'defer'));
+	// wp_enqueue_script( 'js-main', $js_path . 'main.js', array(), $ver, array( 'in_footer' => true, 'strategy' => 'defer'));
 }
 
 add_action( 'wp_enqueue_scripts', 'theme_styles_and_scripts' );

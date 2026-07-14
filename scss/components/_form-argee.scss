@@ -41,7 +41,9 @@
         line-height: inherit;
         color: inherit;
         transition: color var(--border);
-        text-decoration: none;
+        text-decoration: underline;
+        text-underline-offset: 0.2em;
+        text-decoration-thickness: 1px;
         transition: color var(--transition-300);
 
         &:focus {

@@ -3,9 +3,20 @@
 * Section: Стиль
 */
 
-$sec_style_title = get_field('sec-style_title');
-$sec_style_subtitle = get_field('sec-style_subtitle');
-$sec_style_list = get_field('sec-style_list');
+$page_id = $args['id'] ?? 0;
+$layout_data = $args['layout-data'] ?? [];
+$layout_name = $args['layout-name'] ?? '';
+
+$field_title = $layout_name . '_title';
+$field_subtitle = $layout_name . '_subtitle';
+$field_list = $layout_name . '_list';
+
+$sec_partners_text = $layout_data[$field_list];
+
+$sec_style_title = $layout_data[$field_title];
+$sec_style_subtitle = $layout_data[$field_subtitle];
+$sec_style_list = $layout_data[$field_list];
+// var_dump($args);
 ?>
 <section class="sec-style">
   <div class="sec-style__container container">
@@ -50,10 +61,12 @@ $sec_style_list = get_field('sec-style_list');
       // Собираем все данные в массив
       $style_data = array();
       
-      while(has_sub_field('sec-style_list')) {
-        $item_name = get_sub_field('title');
-        $item_link = get_sub_field('link');
-        $item_img = get_sub_field('img');
+      // while(has_sub_field('sec-style_list')) {
+      foreach ($sec_style_list as $key => $slide) {
+
+        $item_name = $slide["title"];
+        $item_link = $slide["link"];
+        $item_img = $slide["img"];
         
         $item_img_versions = (!empty($item_img) && function_exists('get_image_versions')) 
             ? get_image_versions($item_img)

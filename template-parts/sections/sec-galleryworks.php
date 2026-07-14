@@ -3,13 +3,21 @@
 * Section: Галерея работ
 */
 
-$sec_galleryworks_title = get_field('sec-galleryworks_title');
-$sec_galleryworks_subtitle = get_field('sec-galleryworks_subtitle');
-$sec_galleryworks_list = get_field('sec-galleryworks_list');
+$page_id = $args['id'] ?? 0;
+$layout_data = $args['layout-data'] ?? [];
+$layout_name = $args['layout-name'] ?? '';
+
+$field_title = $layout_name . '_title';
+$field_subtitle = $layout_name . '_subtitle';
+$field_list = $layout_name . '_list';
+
+$sec_galleryworks_title = $layout_data[$field_title];
+$sec_galleryworks_subtitle = $layout_data[$field_subtitle];
+$sec_galleryworks_list = $layout_data[$field_list];
 
 ?>
 
-<section class="sec-galleryworks">
+<section class="sec-galleryworks" id="<?php echo $layout_name . '-'. $layout_ids; ?>">
   <div class="sec-galleryworks__container container">
     <div class="sec-galleryworks__heading">
       <?php if (!empty($sec_galleryworks_title)) : ?> 

@@ -26,6 +26,7 @@
         </p>
       </div>
     </div>
+    
     <div class="sec-materials__list">
       <div class="sec-materials__nav slider-nav">
         <button class="sec-materials__btn-prev slider-nav__btn slider-nav__btn--prev">
@@ -49,6 +50,7 @@
           </span>
         </button>
       </div>
+
       <div class="sec-materials__slider">
         <div class="swiper materials-slider">
           <div class="swiper-wrapper">

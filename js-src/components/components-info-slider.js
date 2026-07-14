@@ -1,6 +1,7 @@
 import GraphTabs from "graph-tabs";
-import Swiper, { Navigation, FreeMode } from "swiper";
-Swiper.use([Navigation, FreeMode]);
+// import Swiper, { Navigation, FreeMode } from "swiper";
+// Swiper.use([Navigation, FreeMode]);
+import Swiper from "./init-slider";
 
 let swiper_componentsInfoSlider;
 const componentsInfoSlider = document?.querySelectorAll(".components-info__slider");

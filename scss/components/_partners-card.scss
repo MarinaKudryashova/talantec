@@ -1,4 +1,4 @@
-.brands-card {
+.partners-card {
   display: flex;
   flex-direction: column;
   gap: px-to-vw(16px, 1440);
@@ -17,15 +17,15 @@
     padding: 24px;
   }
 
-  &:focus-visible .brands-card__logo {
+  &:focus-visible .partners-card__logo {
     filter: grayscale(0);
   }
 
-  &:focus-visible .brands-card__name {
+  &:focus-visible .partners-card__name {
     color: var(--accent);
   }
 
-  &:focus-visible .brands-card__arrow {
+  &:focus-visible .partners-card__arrow {
     background-color: var(--black);
   }
 
@@ -37,15 +37,15 @@
     transform: translate(0);
   }
 
-  &:hover .brands-card__logo {
+  &:hover .partners-card__logo {
     filter: grayscale(0);
   }
 
-  &:hover .brands-card__name {
+  &:hover .partners-card__name {
     color: var(--accent);
   }
 
-  &:hover .brands-card__arrow {
+  &:hover .partners-card__arrow {
     background-color: var(--black);
   }
 
@@ -112,7 +112,9 @@
     & .ui-arrow__svg {
       width: px-to-vw(16px, 1440);
       height: px-to-vw(16px, 1440);
-      transition: color var(--transition-300), transform var(--transition-300);
+      transition:
+        color var(--transition-300),
+        transform var(--transition-300);
 
       @include desktop {
         width: 16px;

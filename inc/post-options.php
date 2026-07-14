@@ -14,14 +14,6 @@ function custom_acf_options() {
 			'position'      => 2,
 		));
 
-		
-		acf_add_options_page(array(
-			"page_title" => __("Формы", 'architect'),
-			"menu_title" => __("Формы", 'architect'),
-			"menu_slug"  => "site_forms",
-			"icon_url"   => "dashicons-email-alt", // Иконка для форм
-			'position'   => 3,
-		));
 		// acf_add_options_sub_page(array(
 		// 	"page_title"  => __("Контактная информация", 'architect'),
 		// 	"menu_title"  => __("Контактная информация", 'architect'),
@@ -36,12 +28,12 @@ function custom_acf_options() {
 		// 	"menu_slug"   => "site_settings_social",
 		// ));
 
-		acf_add_options_sub_page(array(
-			"page_title"  => __("Бренды", 'architect'),
-			"menu_title"  => __("Бренды", 'architect'),
-			"parent_slug" => "site_settings",
-			"menu_slug"   => "site_settings_brands",
-		));
+		// acf_add_options_sub_page(array(
+		// 	"page_title"  => __("Бренды", 'architect'),
+		// 	"menu_title"  => __("Бренды", 'architect'),
+		// 	"parent_slug" => "site_settings",
+		// 	"menu_slug"   => "site_settings_brands",
+		// ));
 
 		acf_add_options_sub_page(array(
 			"page_title"  => __("Футер", 'architect'),
@@ -57,12 +49,20 @@ function custom_acf_options() {
 			"menu_slug"   => "site_settings_cookie",
 		));
 
-		acf_add_options_sub_page(array(
-			"page_title"  => "404",
-			"menu_title"  => "404",
-			"parent_slug" => "site_settings",
-			"menu_slug"   => "site_settings_404",
+		acf_add_options_page(array(
+			"page_title" => __("Формы", 'architect'),
+			"menu_title" => __("Формы", 'architect'),
+			"menu_slug"  => "site_forms",
+			"icon_url"   => "dashicons-email-alt", // Иконка для форм
+			'position'   => 3,
 		));
+		acf_add_options_page(array(
+			"page_title"  => __("Партнеры", 'architect'),
+			"menu_title"  => __("Партнеры", 'architect'),
+			"menu_slug"   => "site_partners",
+			'position'   => 4,
+		));
+
 	}
 }
 

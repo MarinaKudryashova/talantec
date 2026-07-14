@@ -107,5 +107,6 @@ $sec_projects_list = get_field('sec-projects_list');
       </div>
     </div>
     <?php endif; endif; ?>
+    
   </div>
 </section>
