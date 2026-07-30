@@ -1,0 +1,50 @@
+.gallery-layout {
+  --gallery-layout-offet: 2.2222222222vw;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gallery-layout-offet);
+  margin: 2.5em auto;
+  width: 100%;
+
+  @include desktop {
+    --gallery-layout-offet: clamp(24px, 2.2222222222vw, 32px);
+  }
+
+  @include small-tablet {
+    --gallery-layout-offet: 16px;
+  }
+
+  @include mobile {
+    --gallery-layout-offet: 8px;
+  }
+
+  &__item {
+    display: flex;
+    width: calc((100% / var(--columns)) - (var(--gallery-layout-offet) * (var(--columns) - 1)) / var(--columns));
+
+    @include desktop {
+      width: calc((100% / var(--columns)) - (var(--gallery-layout-offet) * (var(--columns) - 1)) / var(--columns));
+    }
+
+    @include small-desktop {
+      width: calc((100% / (var(--columns) - 1)) - (var(--gallery-layout-offet) * (var(--columns) - 2)) / (var(--columns) - 1));
+    }
+
+    @include big-tablet {
+      width: calc((100% / (var(--columns) - 2)) - (var(--gallery-layout-offet) * (var(--columns) - 3)) / (var(--columns) - 2));
+    }
+
+    @include mobile {
+      width: 100%;
+    }
+  }
+
+  &__link {
+    display: flex;
+  }
+
+  &__img {
+    width: 100%;
+    aspect-ratio: 318/198;
+  }
+}

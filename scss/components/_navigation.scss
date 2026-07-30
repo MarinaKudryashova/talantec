@@ -1,0 +1,60 @@
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 3em;
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 120%;
+    color: var(--black);
+    transition: color var(--transition-300);
+
+    &.prev {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+
+    &--disabled {
+      opacity: 0.5;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    span {
+      color: currentColor;
+      transition: color var(--transition-300);
+    }
+
+    &:focus-visible,
+    &:hover {
+      outline: none;
+    }
+
+    &:focus-visible span,
+    &:hover span {
+      color: var(--accent-dark);
+    }
+
+    &:focus-visible .navigation__icon,
+    &:hover .navigation__icon {
+      stroke: var(--accent-dark);
+    }
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 1.5px;
+    stroke-linecap: round;
+    transition: stroke var(--transition-300);
+  }
+}

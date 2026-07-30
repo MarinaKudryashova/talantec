@@ -1,15 +1,14 @@
 import Swiper from "swiper";
 import { Navigation, Pagination, Autoplay, EffectFade, FreeMode, Grid, A11y, Thumbs } from "swiper/modules";
 
-const newsSliders = document.querySelectorAll(".news__slider");
+const newsSliders = document.querySelectorAll(".sec-news__slider");
 if (newsSliders) {
   newsSliders.forEach((slider) => {
-    const btnNextSlider = slider.closest(".news").querySelector(".news__btn-next");
-    const btnPrevSlider = slider.closest(".news").querySelector(".news__btn-prev");
+    const btnNextSlider = slider.closest(".sec-news").querySelector(".sec-news__btn-next");
+    const btnPrevSlider = slider.closest(".sec-news").querySelector(".sec-news__btn-prev");
 
     const newsSwiper = new Swiper(slider, {
       modules: [Navigation, FreeMode, A11y],
-      // loop: true,
       lazy: true,
       spaceBetween: 8,
       slidesPerView: 1,

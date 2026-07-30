@@ -6,6 +6,7 @@
 $page_id = $args['id'] ?? 0;
 $layout_data = $args['layout-data'] ?? [];
 $layout_name = $args['layout-name'] ?? '';
+$layout_ids = $args['layout-ids'] ?? '';
 
 $field_title = $layout_name . '_title';
 $field_subtitle = $layout_name . '_subtitle';
@@ -17,7 +18,7 @@ $sec_galleryworks_list = $layout_data[$field_list];
 
 ?>
 
-<section class="sec-galleryworks" id="<?php echo $layout_name . '-'. $layout_ids; ?>">
+<section class="sec-galleryworks  sec-offset" id="<?php echo $layout_name . '-'. $layout_ids; ?>">
   <div class="sec-galleryworks__container container">
     <div class="sec-galleryworks__heading">
       <?php if (!empty($sec_galleryworks_title)) : ?> 

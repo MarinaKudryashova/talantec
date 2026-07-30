@@ -16,7 +16,7 @@ $sec_services_subtitler = $layout_data[$field_subtitler];
 $sec_services_list = $layout_data[$field_list];
 ?>
 
-<section class="sec-services">
+<section class="sec-services sec-offset">
   <div class="sec-services__container container">
     <div class="sec-services__heading">
       <?php if (!empty($sec_services_title)) : ?>

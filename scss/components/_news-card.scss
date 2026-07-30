@@ -16,49 +16,49 @@
     cursor: pointer;
 
     &:hover {
-      &~.news-card__info>.news-card__contact>.news-card__name {
+      & ~ .news-card__info > .news-card__contact > .news-card__name {
         color: var(--accent-dark);
       }
 
-      &~.news-card__info>.news-card__contact>.news-card__arrow>.ui-arrow>svg {
+      & ~ .news-card__info > .news-card__contact > .news-card__arrow > .ui-arrow > svg {
         stroke: var(--accent-dark);
       }
 
-      &~.news-card__view img {
+      & ~ .news-card__view img {
         transform: scale(1.05);
       }
 
-      &~.news-card__info::after {
+      & ~ .news-card__info::after {
         transform: scaleX(1);
       }
 
-      &~.news-card__info>.news-card__contact>.news-card__arrow>.ui-arrow>.ui-arrow__svg:first-child {
+      & ~ .news-card__info > .news-card__contact > .news-card__arrow > .ui-arrow > .ui-arrow__svg:first-child {
         transform: translate(150%, -150%);
       }
 
-      &~.news-card__info>.news-card__contact>.news-card__arrow>.ui-arrow>.ui-arrow__svg--copy {
+      & ~ .news-card__info > .news-card__contact > .news-card__arrow > .ui-arrow > .ui-arrow__svg--copy {
         transform: translate(0);
       }
     }
 
     &:focus-visible {
-      &~.news-card__info>.news-card__contact>.news-card__name {
+      & ~ .news-card__info > .news-card__contact > .news-card__name {
         color: var(--accent-dark);
       }
 
-      &~.news-card__info>.news-card__contact>.news-card__arrow>.ui-arrow>svg {
+      & ~ .news-card__info > .news-card__contact > .news-card__arrow > .ui-arrow > svg {
         stroke: var(--accent-dark);
       }
 
-      &~.news-card__view img {
+      & ~ .news-card__view img {
         transform: scale(1.05);
       }
 
-      &~.news-card__info>.news-card__contact>.news-card__arrow>.ui-arrow>.ui-arrow__svg:first-child {
+      & ~ .news-card__info > .news-card__contact > .news-card__arrow > .ui-arrow > .ui-arrow__svg:first-child {
         transform: translate(150%, -150%);
       }
 
-      &~.news-card__info>.news-card__contact>.news-card__arrow>.ui-arrow>.ui-arrow__svg--copy {
+      & ~ .news-card__info > .news-card__contact > .news-card__arrow > .ui-arrow > .ui-arrow__svg--copy {
         transform: translate(0);
       }
     }
@@ -153,7 +153,8 @@
 
   &__picture img {
     width: 100%;
-    transition: transform .3s linear;
+    aspect-ratio: 416 / 300;
+    transition: transform 0.3s linear;
   }
 
   &__arrow {

@@ -1,4 +1,5 @@
-.sec-projects {
+.sec-news {
+  background-color: var(--bg);
   overflow: hidden;
 
   &__container {
@@ -30,13 +31,9 @@
   }
 
   &__title {
-    margin-bottom: px-to-vw(8px, 1440);
+    margin-bottom: clamp(8px, px-to-vw(8px, 1440), 10px);
 
-    @include desktop {
-      margin-bottom: 8px;
-    }
-
-    @include big-tablet {
+    @include mobile {
       margin-bottom: 12px;
     }
   }
@@ -54,12 +51,9 @@
       max-width: px-to-vw(645px, 1280);
     }
 
-    @include big-tablet {
-      max-width: 100%;
-    }
-
     @include tablet {
       font-size: clamp(36px, px-to-vw(44px, 1023), 48px);
+      max-width: px-to-vw(645px, 1023);
     }
 
     @include mobile {
@@ -69,8 +63,14 @@
   }
 
   &__slider {
+    height: fit-content;
     margin: 0 calc(-1 * px-to-vw(64px, 1440));
     padding: 0 px-to-vw(64px, 1440);
-    max-width: calc(100% + px-to-vw(64px, 1440) * 2);
+  }
+
+  & .swiper-slide {
+    display: flex;
+    justify-content: center;
+    height: auto;
   }
 }

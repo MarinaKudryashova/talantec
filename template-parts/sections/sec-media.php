@@ -30,7 +30,8 @@ if ($images_count === 1) {
     $grid_class .= '';
 }
 ?>
-<section class="sec-media">
+
+<section class="sec-media sec-offset">
   <div class="sec-media__container container <?php if($sec_media_position !== 'default') : ?>sec-media__container--reverse<?php endif; ?>">
     <div class="sec-media__heading">
       <?php if (!empty($sec_media_title)) : ?>

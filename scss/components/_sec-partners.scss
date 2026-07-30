@@ -6,19 +6,13 @@
     display: flex;
     flex-direction: column;
     gap: px-to-vw(64px, 1440);
-    padding-top: px-to-vw(80px, 1440);
-    padding-bottom: px-to-vw(80px, 1440);
 
     @include desktop {
       gap: 64px;
-      padding-top: 80px;
-      padding-bottom: 80px;
     }
 
     @include big-tablet {
       gap: 40px;
-      padding-top: 64px;
-      padding-bottom: 64px;
     }
   }
 

@@ -109,17 +109,17 @@ a {
     margin-top: 630px;
   }
 
-  &--production {
+  &--page {
     margin-top: clamp(500px, px-to-vw(500px, 1440), 1000px);
-    padding-top: clamp(40px, px-to-vw(40px, 1440), 80px);
+    // padding-top: clamp(40px, px-to-vw(40px, 1440), 80px);
 
     @include small-tablet {
       margin-top: clamp(480px, px-to-vw(500px, 768), 1000px);
     }
 
-    @include mobile {
-      padding-top: clamp(24px, px-to-vw(24px, 576), 24px);
-    }
+    // @include mobile {
+    //   padding-top: clamp(24px, px-to-vw(24px, 576), 24px);
+    // }
 
     @include small-mobile {
       margin-top: clamp(417px, px-to-vw(417px, 375), 480px);

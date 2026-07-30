@@ -1,19 +1,11 @@
 .sec-blockquote {
-  // .sec-blockquote__container
   &__container {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: px-to-vw(120px, 1440);
-    padding-bottom: px-to-vw(120px, 1440);
 
-    @include big-tablet {
-      padding-top: 64px;
-      padding-bottom: 64px;
-    }
   }
 
-  // .sec-blockquote__content
   &__content {
     display: flex;
     flex-direction: column;
@@ -44,21 +36,10 @@
     }
   }
 
-  // .sec-blockquote__title
   &__title {
-    // margin-bottom: px-to-vw(12px, 1440);
     text-align: center;
-
-    // @include desktop {
-    //   margin-bottom: 12px;
-    // }
-
-    // @include big-tablet {
-    //   margin-bottom: 12px;
-    // }
   }
 
-  // .sec-blockquote__descr
   &__descr {
     margin: 0;
     font-weight: 400;

@@ -7,11 +7,11 @@ Version: 1.0.0
 Text Domain: architect
  */
 /* Сдвигаем всё после панели */
-body:has(#wpadminbar) .site-container,
+/* body:has(#wpadminbar) .site-container,
 #wpadminbar + .site-container,
 #wpadminbar ~ .site-container {
   padding-top: 32px;
-}
+} */
 
 body:has(#wpadminbar) .header,
 body:has(#wpadminbar) .hero {
@@ -20,9 +20,9 @@ body:has(#wpadminbar) .hero {
 
 /* Для мобильных */
 @media screen and (max-width: 782px) {
-  #wpadminbar ~ .site-container {
+  /* #wpadminbar ~ .site-container {
     padding-top: 46px;
-  }
+  } */
 
   body:has(#wpadminbar) .header {
     top: 46px;

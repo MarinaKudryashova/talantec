@@ -3,21 +3,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    // gap: px-to-vw(56px, 1440);
-    padding-bottom: px-to-vw(120px, 1440);
-
-    @include small-desktop {
-      // gap: clamp(54px, px-to-vw(56px, 1280), 56px);
-      padding-bottom: 120px;
-    }
-
-    @include big-tablet {
-      // gap: clamp(38px, px-to-vw(40px, 970), 40px);
-      padding-bottom: 64px;
-    }
-    @include mobile {
-      // gap: clamp(22px, px-to-vw(24px, 576), 24px);
-    }
   }
 
   &__heading {

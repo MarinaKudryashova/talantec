@@ -48,7 +48,7 @@
 @import "./components/materials-slider";
 
 // Технологии
-@import "./components/sec-technologies";
+@import "./components/sec-grid";
 
 // Сооружения
 @import "./components/sec-construction";
@@ -63,7 +63,7 @@
 @import "./components/style-slider";
 
 // Новости и блог
-@import "./components/news";
+@import "./components/sec-news";
 @import "./components/news-card";
 
 // Футер
@@ -95,3 +95,15 @@
 
 @import "./components/sec-projects";
 @import "./components/sec-media";
+
+//страница Проекты
+@import "./components/layout";
+@import "./components/categories-nav";
+
+@import "./components/sec-offset";
+
+//страница Новости
+@import "./components/news";
+@import "./components/textredactor";
+@import "./components/gallery-layout";
+@import "./components/navigation";

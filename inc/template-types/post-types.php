@@ -1,30 +1,5 @@
 <?php 
 
-//события(блог, новости)
-## заменим слово «записи» на «события»
-add_filter('post_type_labels_post', 'rename_posts_labels');
-function rename_posts_labels( $labels ){
-	// заменять автоматически не пойдет например заменили: Запись = Статья, а в тесте получится так "Просмотреть статья"
-	$new = array(
-		'name'                  => _x( 'Блог', 'architect' ),
-		'singular_name'         => _x( 'Статья', 'architect' ),
-		'add_new'               => __( 'Добавить статья', 'architect' ),
-		'add_new_item'          => __( 'Добавить новое статья', 'architect' ),
-		'edit_item'             => __( 'Редактировать статья', 'architect' ),
-		'new_item'              => __( 'Новое статья', 'architect' ),
-		'view_item'             => __( 'Посмотреть статья', 'architect' ),
-		'search_items'          => __( 'Поиск статей', 'architect' ),
-		'not_found'             => __( 'Статей не найдено.', 'architect' ),
-		'parent_item_colon'     => '',
-		'all_items'             => __( 'Все статьи', 'architect' ),
-		'archives'              => __( 'Архив статей', 'architect' ),
-		'menu_name'             => __( 'Блог', 'architect' ),
-		'name_admin_bar'        => __( 'Статья', 'architect' ), // пункте "добавить"
-	);
-
-	return (object) array_merge( (array) $labels, $new );
-}
-
 /* Создание кастомного типа записи Лицензии */
 // add_action( 'init', 'licenses_register_post_types' );
 
