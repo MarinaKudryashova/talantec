@@ -1,0 +1,110 @@
+.textredactor {
+  h2 {
+    margin: 40px 0 30px;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 120%;
+
+    @include tablet {
+      font-size: 24px;
+    }
+
+    @include mobile {
+      margin: 30px 0 10px;
+      font-size: 20px;
+    }
+  }
+
+  h3 {
+    margin: 30px 0 20px;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 120%;
+
+    @include tablet {
+      font-size: 22px;
+    }
+
+    @include mobile {
+      margin: 20px 0 10px;
+      font-size: 18px;
+    }
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 0.75em;
+    font-weight: 400;
+    font-size: px-to-vw(18px, 1440);
+    line-height: 120%;
+    color: currentColor;
+
+    &:has(img) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
+
+    @include desktop {
+      font-size: 18px;
+    }
+
+    @include small-tablet {
+      font-size: 16px;
+    }
+
+    @include mobile {
+      font-size: 15px;
+    }
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  ul {
+    margin: 1em 0;
+    padding-left: 1.75em;
+  }
+
+  li {
+    font-weight: 400;
+    font-size: px-to-vw(18px, 1440);
+    line-height: 120%;
+    color: currentColor;
+
+    @include desktop {
+      font-size: 18px;
+    }
+
+    @include small-tablet {
+      font-size: 16px;
+    }
+
+    @include mobile {
+      font-size: 15px;
+    }
+  }
+
+  a {
+    font-weight: 400;
+    font-size: px-to-vw(18px, 1440);
+    line-height: 120%;
+    color: var(--accent);
+    text-decoration: underline;
+
+    @include desktop {
+      font-size: 18px;
+    }
+
+    @include small-tablet {
+      font-size: 16px;
+    }
+
+    @include mobile {
+      font-size: 15px;
+    }
+  }
+}

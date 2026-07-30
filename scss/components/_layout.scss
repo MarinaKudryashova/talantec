@@ -1,0 +1,40 @@
+.layout {
+  --layout-offet: 2.2222222222vw;
+  @include list-reset;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: var(--layout-offet);
+  padding-bottom: px-to-vw(120px, 1440);
+
+  @include desktop {
+    --layout-offet: clamp(24px, 2.2222222222vw, 32px);
+    padding-bottom: 120px;
+  }
+
+  @include big-tablet {
+    padding-bottom: 64px;
+  }
+
+  &__item {
+    display: flex;
+    width: calc((100% / var(--columns)) - (var(--layout-offet) * (var(--columns) - 1)) / var(--columns));
+
+    @include desktop {
+      width: calc((100% / var(--columns)) - (var(--layout-offet) * (var(--columns) - 1)) / var(--columns));
+    }
+
+    @include small-desktop {
+      width: calc((100% / (var(--columns) - 1)) - (var(--layout-offet) * (var(--columns) - 2)) / (var(--columns) - 1));
+    }
+
+    @include big-tablet {
+      width: calc((100% / (var(--columns) - 2)) - (var(--layout-offet) * (var(--columns) - 3)) / (var(--columns) - 2));
+    }
+
+    @include mobile {
+      width: 100%;
+    }
+  }
+}

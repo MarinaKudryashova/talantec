@@ -15,7 +15,8 @@ $sec_about_title = $layout_data[$field_title];
 $sec_about_descr = $layout_data[$field_descr];
 $sec_about_facts = $layout_data[$field_list];
 ?>
-<section class="sec-about" id="about-company">
+
+<section class="sec-about sec-offset" id="about-company">
   <div class="sec-about__container container">
     <div class="sec-about__heading">
       <?php if (!empty($sec_about_title)) : ?>

@@ -13,14 +13,15 @@
  */
 
 	architect_get_header();
+  $page_id = get_the_ID();
 ?>
   <main class="main">
     <?php 
       /*-- Первый блок - фиксированный --*/
-      get_template_part( "template-parts/sections/hero-production", '', array('id' => $page_id));
+      get_template_part( "template-parts/sections/hero", 'page', array('id' => $page_id));
     ?>
 
-    <div class="content-overlay">
+    <div class="content-overlay content-overlay--page">
       <?php 
         $arlayouts = get_field('layouts');
         // var_dump($arlayouts);

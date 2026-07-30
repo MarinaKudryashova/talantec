@@ -2,7 +2,11 @@
 /*
 * Section: Баннер-форма 
 */
+
 $page_id = $args["id"];
+$layout_data = $args['layout-data'] ?? [];
+$layout_name = $args['layout-name'] ?? '';
+$layout_ids = $args['layout-ids'] ?? '';
 
 $sec_bannerform_title = get_field('sec-bannerform_title', 'options');
 $sec_bannerform_descr = get_field('sec-bannerform_descr', 'options');
@@ -25,7 +29,8 @@ $sec_bannerform_img__mobile_versions = (!empty($sec_bannerform_img_mobile) && fu
 $sec_bannerform_shortcode = get_field('sec-bannerform_shortcode', 'options');
   
 ?>
-<section class="bannerform">
+
+<section class="bannerform" id="bannerform-<?php echo $layout_ids; ?>">
   <div class="bannerform__bg">
     <picture class="bannerform__picture">
       <?php if (!empty($sec_bannerform_img__mobile_versions['webp_1x'])) : ?>

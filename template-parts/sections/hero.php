@@ -14,7 +14,7 @@
   $promo_bgimg_mobile = get_field('mainpromo_bgimg_tablet', $page_id);
   $promo_image_mobile_versions = (!empty($promo_bgimg_mobile) && function_exists('get_image_versions')) 
     ? get_image_versions($promo_bgimg_mobile)
-    : array('full' => get_template_directory_uri() . '/img/hero/hero-mobile.jpg');
+    : $promo_image_versions;
 
   $mainpromo_link = get_field('mainpromo_link');
   $promo_link_href = (!empty($mainpromo_link) && $mainpromo_link !== '#') ? $mainpromo_link : '#';

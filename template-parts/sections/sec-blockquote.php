@@ -2,6 +2,7 @@
 /*
 * Section: Цитата
 */
+
 $page_id = $args['id'] ?? 0;
 $layout_data = $args['layout-data'] ?? [];
 $layout_name = $args['layout-name'] ?? '';
@@ -16,7 +17,7 @@ $sec_blockquote_descr = $layout_data[$field_descr];
 $sec_blockquote_position = $layout_data[$field_position];
 ?>
 
-<section class="sec-blockquote">
+<section class="sec-blockquote sec-offset">
   <div class="sec-blockquote__container container">
     <div class="sec-blockquote__content <?php if ($sec_blockquote_position == 'reverse') : ?>sec-blockquote__content--reverse<?php endif; ?>">
       <?php if (!empty($sec_blockquote_title)) : ?>

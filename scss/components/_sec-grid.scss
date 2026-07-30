@@ -1,4 +1,4 @@
-.sec-technologies {
+.sec-grid {
   background-color: var(--bg);
 
   &__container {
@@ -6,19 +6,13 @@
     flex-direction: column;
     align-items: center;
     gap: px-to-vw(56px, 1440);
-    padding-top: px-to-vw(120px, 1440);
-    padding-bottom: px-to-vw(120px, 1440);
 
     @include desktop {
       gap: 56px;
-      padding-top: 120px;
-      padding-bottom: 120px;
     }
 
     @include big-tablet {
       gap: 40px;
-      padding-top: 64px;
-      padding-bottom: 64px;
     }
   }
 
@@ -64,7 +58,7 @@
     }
   }
 
- &__list {
+  &__list {
     @include list-reset;
     display: grid;
     grid-template-columns: repeat(12, 1fr);

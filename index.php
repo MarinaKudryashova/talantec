@@ -12,21 +12,18 @@
  * @package architect
  */
 
-get_header();
+architect_get_header();
+$page_id = get_the_ID();
 ?>
 
-	<main id="primary" class="site-main">
+	<main class="main">
+		<?php 
+			/*-- Первый блок - фиксированный --*/
+			get_template_part( "template-parts/sections/hero", 'page', array('id' => $page_id));
+		?>
 
 		<?php
 		if ( have_posts() ) :
-
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-				<?php
-			endif;
 
 			/* Start the Loop */
 			while ( have_posts() ) :
@@ -53,5 +50,5 @@ get_header();
 	</main><!-- #main -->
 
 <?php
-get_sidebar();
-get_footer();
+// get_sidebar();
+architect_get_footer(); 

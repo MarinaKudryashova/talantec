@@ -1,9 +1,11 @@
-import Swiper from "./init-slider";
+import Swiper from "swiper";
+import { Navigation, Pagination, Autoplay, EffectFade, FreeMode, Grid, A11y, Thumbs } from "swiper/modules";
 
 const partnersSlider = document.querySelector(".sec-partners__slider");
 
 if (partnersSlider) {
   const swiper_partnersSlider = new Swiper(partnersSlider, {
+    modules: [Navigation, FreeMode, A11y, Autoplay],
     loop: true,
     freeMode: true,
     enabled: true,

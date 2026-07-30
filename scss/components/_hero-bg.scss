@@ -141,7 +141,7 @@
       }
     }
 
-    &--production {
+    &--page {
       padding-top: var(--header-height, 6.46vw);
       height: 100%;
       max-height: px-to-vw(500px, 1440);

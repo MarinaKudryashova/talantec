@@ -2,6 +2,7 @@
 /*
 * Section: Слайдер
 */
+
 $page_id = $args['id'] ?? 0;
 $layout_data = $args['layout-data'] ?? [];
 $layout_name = $args['layout-name'] ?? '';
@@ -16,6 +17,7 @@ $sec_slider_title = $layout_data[$field_title];
 $sec_slider_subtitle = $layout_data[$field_subtitle];
 $sec_slider_type = $layout_data[$field_type];
 $sec_slider_list = $layout_data[$field_list];
+
 if($sec_slider_list) {
   $template_dir = get_template_directory_uri();
 
@@ -45,10 +47,10 @@ if($sec_slider_list) {
   }
   
 }
-// var_dump($sec_slider_type);
+
 ?>
 
-<section class="<?php echo esc_attr($sec_slider_type); ?>" id="<?php echo esc_attr($sec_slider_type) .'-'. $layout_ids; ?>">
+<section class="<?php echo esc_attr($sec_slider_type); ?> sec-offset" id="<?php echo esc_attr($sec_slider_type) .'-'. $layout_ids; ?>">
   <div class="<?php echo esc_attr($sec_slider_type); ?>__container container">
   <?php if ($sec_slider_type !== 'sec-materials') : ?>
     <div class="<?php echo esc_attr($sec_slider_type); ?>__heading">

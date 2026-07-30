@@ -74,6 +74,32 @@ function architect_customize_register( $wp_customize ) {
 				),
 		));
 
+		// Цветовая тема
+		$wp_customize->add_setting('color_theme', array(
+				'default'           => 'default',
+				'sanitize_callback' => 'sanitize_key',
+				'transport'         => 'refresh',
+		));
+
+		$wp_customize->add_control('color_theme', array(
+				'label'       => __('Цветовая тема', 'architect'),
+				'description' => __('Выберите цветовую схему сайта', 'architect'),
+				'section'     => 'theme_settings',
+				'type'        => 'radio',
+				'choices'     => array(
+						'default'    => __('По умолчанию', 'architect'),
+						'flame'   => __('Пламенный красный', 'architect'),
+
+						'sage'   => __('Сливочный шалфей', 'architect'),
+						'milk_eucalyptus'   => __('Молочный эвкалипт', 'architect'),
+						'emerald_dew'   => __('Изумрудная роса', 'architect'),
+
+						'digital_ocean'   => __('Цифровой океан', 'architect'),
+
+				),
+				'priority' => 20,
+		));
+
 
 	/**
 	 * Секция "Свойства сайта" в кастомайзер (title_tagline)
@@ -288,6 +314,8 @@ function architect_customize_register( $wp_customize ) {
 		'section'     => 'error_404_section',
 		'type'        => 'dropdown-pages',
 	) );
+
+
 
 }
 add_action( 'customize_register', 'architect_customize_register' );

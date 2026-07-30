@@ -3,18 +3,8 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 32px;
-    padding-top: px-to-vw(120px, 1440);
-    padding-bottom: px-to-vw(120px, 1440);
-
-    @include desktop {
-      padding-top: 120px;
-      padding-bottom: 120px;
-    }
 
     @include tablet {
-      padding-top: 64px;
-      padding-bottom: 64px;
-
       display: flex;
       flex-direction: column;
       grid-template-columns: none;

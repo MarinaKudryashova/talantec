@@ -2,6 +2,7 @@
 /*
 * Section: Парнеры слайдер
 */
+
 $page_id = $args['id'] ?? 0;
 $layout_data = $args['layout-data'] ?? [];
 $layout_name = $args['layout-name'] ?? '';
@@ -17,7 +18,7 @@ $sec_partners_text = $layout_data[$field_text];
 $sec_partners_list = get_field('sec-partners_list', 'option');
 ?>
 
-<section class="sec-partners" id="<?php echo $layout_name . '-'. $layout_ids; ?>">
+<section class="sec-partners sec-offset" id="<?php echo $layout_name . '-'. $layout_ids; ?>">
   <div class="sec-partners__container container">
     <div class="sec-partners__heading">
       <?php if (!empty($sec_partners_title)) : ?>

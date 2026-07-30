@@ -119,9 +119,9 @@
     overflow: hidden;
   }
 
-  // Hero--production
+  // Hero--page
 
-  &--production {
+  &--page {
     height: 100%;
     max-height: clamp(500px, px-to-vw(500px, 1440), 1000px);
 
@@ -134,7 +134,7 @@
     }
   }
 
-  &--production &__content {
+  &--page &__content {
     width: 100%;
     color: var(--white);
     display: flex;
@@ -166,7 +166,7 @@
     }
   }
 
-  &--production &__textcontent {
+  &--page &__textcontent {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -175,7 +175,7 @@
     margin-bottom: clamp(32px, px-to-vw(40px, 1440), 80px);
   }
 
-  &--production &__description {
+  &--page &__description {
     max-width: px-to-vw(500px, 1440);
     font-size: clamp(16px, px-to-vw(16px, 1440), 36px);
     text-transform: inherit;
@@ -195,7 +195,7 @@
     }
   }
 
-  &--production &__link {
+  &--page &__link {
     align-self: flex-start;
     display: flex;
     align-items: flex-start;

@@ -2,9 +2,9 @@
 /**
  * Шаблон "Карточка"
 */
+
 $page_id = $args['id'] ?? 0;
 $item = $args['item-data'] ?? [];
-
 ?>
 <a href="<?php echo esc_url($item['link']); ?>" class="ui-card">
   <picture class="ui-card__img">

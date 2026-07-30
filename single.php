@@ -7,34 +7,40 @@
  * @package architect
  */
 
-get_header();
+architect_get_header();
+$page_id = get_the_ID();
 ?>
 
-	<main id="primary" class="site-main">
+  <main class="main">
+    <?php 
+      /*-- Первый блок - фиксированный --*/
+      get_template_part( "template-parts/sections/hero", 'page', array('id' => $page_id));
+    ?>
 
-		<?php
-		while ( have_posts() ) :
-			the_post();
+    <div class="content-overlay content-overlay--page">
+      <?php 
+				get_template_part('template-parts/content-post-news', '', array('page_id' => $page_id, 'type' => 'post-news'));
 
-			get_template_part( 'template-parts/content', get_post_type() );
+				// while ( have_posts() ) :
+				// 	the_post();
 
-			the_post_navigation(
-				array(
-					'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'architect' ) . '</span> <span class="nav-title">%title</span>',
-					'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'architect' ) . '</span> <span class="nav-title">%title</span>',
-				)
-			);
+				// 	// get_template_part( 'template-parts/content', get_post_type() );
 
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
 
-		endwhile; // End of the loop.
-		?>
 
-	</main><!-- #main -->
+				// endwhile; // End of the loop.
+
+        $arlayouts = get_field('layouts');
+        if ($arlayouts) :
+          foreach ($arlayouts as $ids => $layout) :
+            $layout_name = $layout['acf_fc_layout'];
+            $layout_ids = $ids;
+            get_template_part('template-parts/sections/' . $layout_name, '', array('id' => $page_id, 'layout-data' => $layout, 'layout-name' => $layout_name, 'layout-ids' => $layout_ids));
+          endforeach;
+        endif;
+      ?>
+    </div>
+  </main>
 
 <?php
-get_sidebar();
-get_footer();
+architect_get_footer();
