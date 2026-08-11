@@ -64,8 +64,11 @@
     grid-template-columns: repeat(12, 1fr);
     gap: 32px;
 
-    @include tablet {
+    @include desktop {
       gap: 24px;
+    }
+    @include tablet {
+      gap: 16px;
     }
 
     @include big-tablet {

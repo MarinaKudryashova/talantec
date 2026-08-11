@@ -1,0 +1,173 @@
+.tariff-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-grow: 1;
+  border: 1px solid var(--border);
+  padding: px-to-vw(32px, 1440);
+  height: 100%;
+  color: var(--black);
+
+  @include desktop {
+    padding: 32px;
+  }
+
+  @include tablet {
+    padding: 22px;
+  }
+
+  @include mobile {
+    padding: 16px;
+  }
+
+  &.is-popular {
+    color: var(--white);
+    background-color: var(--black);
+  }
+
+  &__title {
+    margin: 0 0 px-to-vw(12px, 1440);
+    font-weight: 500;
+    font-size: px-to-vw(24px, 1440);
+    line-height: 110%;
+    color: currentColor;
+
+    @include desktop {
+      font-size: clamp(20px, 1.667vw, 24px);
+      margin: 0 0 clamp(10px, 0.833vw, 12px);
+    }
+
+    @include small-tablet {
+      font-size: 22px;
+    }
+
+    @include mobile {
+      font-size: 20px;
+    }
+  }
+
+  &__descr {
+    margin-bottom: px-to-vw(20px, 1440);
+    color: currentColor;
+
+    @include desktop {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__text {
+    margin: 0 0 px-to-vw(12px, 1440);
+    font-weight: 400;
+    font-size: px-to-vw(16px, 1440);
+    line-height: 120%;
+
+    @include desktop {
+      margin: 0 0 12px;
+      font-size: clamp(14px, 1.111vw, 16px);
+    }
+
+    @include small-tablet {
+      font-size: clamp(16px, 4.267vw, 18px);
+    }
+
+    @include mobile {
+      font-size: 14px;
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: baseline;
+    gap: 0.3em;
+    margin: 0 0 px-to-vw(16px, 1440);
+
+    @include desktop {
+      margin: 0 0 16px;
+    }
+
+    @include small-tablet {
+    }
+
+    @include mobile {
+    }
+  }
+
+  &__amount {
+    font-weight: 500;
+    font-size: px-to-vw(28px, 1440);
+    line-height: 110%;
+    color: var(--accent);
+
+    @include desktop {
+      font-size: clamp(24px, 1.667vw, 28px);
+    }
+
+    @include small-tablet {
+      font-size: 26px;
+    }
+
+    @include mobile {
+      font-size: 24px;
+    }
+  }
+
+  &__period {
+    font-weight: 400;
+    font-size: px-to-vw(16px, 1440);
+    line-height: 110%;
+
+    @include desktop {
+      font-size: 14px;
+    }
+    @include mobile {
+      font-size: 12px;
+    }
+  }
+
+  &__list {
+    @include list-reset;
+  }
+
+  &__item {
+    display: flex;
+    gap: px-to-vw(12px, 1440);
+
+    @include desktop {
+      gap: 12px;
+    }
+  }
+
+  &__marker {
+    flex-shrink: 0;
+    width: px-to-vw(24px, 1440);
+    height: px-to-vw(24px, 1440);
+    fill: none;
+    stroke: var(--green);
+    stroke-width: 1.5px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    @include desktop {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__span {
+    font-weight: 400;
+    font-size: px-to-vw(14px, 1440);
+    line-height: 120%;
+    color: currentColor;
+
+    @include desktop {
+      font-size: 14px;
+    }
+  }
+
+  &__btn {
+    margin-top: auto;
+    width: fit-content;
+    cursor: pointer;
+  }
+}

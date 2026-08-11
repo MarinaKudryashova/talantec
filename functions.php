@@ -15,6 +15,14 @@ if ( ! defined( '_S_VERSION' ) ) {
 
 
 /**
+ * Подключение цветовых тем
+ */
+
+require_once get_template_directory() . '/inc/color-themes.php';
+
+
+
+/**
  * Функцию для загрузки темы
  */
 function architect_setup() {
@@ -176,7 +184,6 @@ add_action( 'wp_enqueue_scripts', 'theme_styles_and_scripts' );
 /**
  * THEME EXTRAS
 */
-require_once get_template_directory() . '/inc/color-themes.php'; //Подключение цветовых тем
 require_once get_template_directory() . '/inc/thumbnail.php'; // Подключаем функционал управления миниатюрами записей из общего списка записей в админ-панели WordPress
 require_once get_template_directory() . '/inc/theme-svg.php'; // Добавляет поддержку SVG изображений в медиабиблиотеку
 require_once get_template_directory() . '/inc/disable_default_image_sizes.php'; // Отключаем только конкретные стандартные размеры изображений
@@ -196,6 +203,9 @@ require_once get_template_directory() . '/inc/custom-post-navigation.php';
  */
 require_once get_template_directory() . '/inc/template-types/rename-posts.php'; // Переименовываем стандартный тип записи "Записи" в "Новости"/ "Блог"
 require_once get_template_directory() . '/inc/template-types/type-projects.php'; // Подключаем функционал кастомного типа записи Проекты
+require_once get_template_directory() . '/inc/template-types/type-faq.php'; // Подключаем функционал кастомного типа записи FAQ
+require_once get_template_directory() . '/inc/template-types/type-employees.php'; // Подключаем функционал кастомного типа записи Сотрудники
+require_once get_template_directory() . '/inc/template-types/type-services.php'; // Подключаем функционал кастомного типа записи Услуги
 
 
 // 1. Фильтр для пути к PHP шаблонам
