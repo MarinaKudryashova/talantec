@@ -19,6 +19,7 @@ $sec_solutions_count = count($sec_solutions_list);
     $item_name = $item['title'];
     $item_text = $item['text'];
     $item_img = $item['img'];
+    $item_link = (!empty($item['link']) && $item['link'] !== '#') ? $item['link'] : '#';
     $item_img_versions = (!empty($item_img) && function_exists('get_image_versions')) 
         ? get_image_versions($item_img)
         : array(
@@ -28,7 +29,7 @@ $sec_solutions_count = count($sec_solutions_list);
         );
   ?>
   <li class="solutions__item" style="width: calc(100% / <?php echo $sec_solutions_count; ?>);">
-    <a href="#" class="solutions-card">
+    <a href="<?php echo esc_url($item_link); ?>" class="solutions-card">
       <div class="solutions-card__content">
         <?php if (!empty($item_name)) : ?>
         <h3 class="solutions-card__title"><?php esc_html_e($item_name); ?></h3>

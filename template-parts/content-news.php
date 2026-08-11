@@ -78,7 +78,7 @@ $page_slug = get_post_field('post_name', $page_id);
           while($news_query->have_posts()) : $news_query->the_post();
             $item_id = get_the_ID();
             $item_name = get_the_title($item_id);
-            $item_link = get_permalink($item_link);
+            $item_link = get_permalink($item_id);
             $item_cat = get_the_category($item_id)[0]->name;
             $item_img = get_the_post_thumbnail_url($item_id);
             

@@ -1,38 +1,29 @@
 <?php
 /*
-* Section: Изделия 
+* Section: Продукция 
 */
 
-  $sec_products_title = get_field('sec-products_sec_heading_title');
-  $sec_products_descr = get_field('sec-products_sec_heading_descr');
-  $sec_products_list = get_field('sec-products_list');
+  $page_id = $args["id"];
+  $layout_data = $args["layout-data"];
+  $layout_name = $args["layout-name"];
+
+  $field_list = $layout_name . '_list';
+  $sec_products_list = $layout_data[$field_list];
 ?>
 
-<section class="sec-blockquote">
-  <div class="sec-blockquote__container container">
-    <div class="sec-blockquote__content">
-      <?php if (!empty($sec_products_title)) : ?>
-      <h2 class="sec-blockquote__title sec-title"><?php esc_html_e($sec_products_title); ?></h2>
-      <?php endif; ?>
-      <?php if (!empty($sec_products_descr)) : ?>
-      <p class="sec-blockquote__descr"><?php echo wp_kses_post($sec_products_descr); ?></p>
-      <?php endif; ?>
-    </div>
-  </div>
-</section>
 
 <?php 
-if($sec_products_list) : 
+if($sec_products_list && is_array($sec_products_list)) : 
   $template_dir = get_template_directory_uri();
   
   // Собираем все данные в массив
   $products_data = array();
   $counter = 1;
-  
-  while(has_sub_field('sec-products_list')) {
-    $item_name = get_sub_field('title');
-    $item_link = get_sub_field('link');
-    $item_img = get_sub_field('img');
+
+  foreach ($sec_products_list as $key => $item) {
+    $item_name = $item["title"];
+    $item_link = $item["link"];
+    $item_img = $item["img"];
     
     $item_img_versions = (!empty($item_img) && function_exists('get_image_versions')) 
         ? get_image_versions($item_img)
@@ -94,6 +85,6 @@ if($sec_products_list) :
   </ul>
 </div>
 <?php 
-    endif; // !empty($products_data)
-endif; // $sec_products_list
+    endif;
+endif;
 ?>

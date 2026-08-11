@@ -18,8 +18,14 @@ $page_id = isset($args['id']) ? $args['id'] : get_the_ID();
     ? get_image_versions($page_promo_bgimg_mobile)
     : $page_promo_image_versions;
 
-  $page_promo_link = get_field('page-promo_link');
-  $promo_link_href = (!empty($page_promo_link) && $page_promo_link !== '#') ? $page_promo_link : '#';
+  $page_promo_show_link = get_field('page-promo_show_link');
+  if ($page_promo_show_link) {
+    $page_promo_link_name = get_field('page-promo_link_name');
+    $promo_link_name = (!empty($page_promo_link_name)) ? $page_promo_link_name : 'Заказать услугу';
+
+    $page_promo_link = get_field('page-promo_link');
+    $promo_link_href = (!empty($page_promo_link) && $page_promo_link !== '#') ? $page_promo_link : '#';
+  }
 
   // Определяем заголовок страницы
   if (is_home() && !is_front_page()) {
@@ -48,9 +54,11 @@ $page_id = isset($args['id']) ? $args['id'] : get_the_ID();
         </p>
         <?php endif; ?>
       </div>
+
+      <?php if ($page_promo_show_link) :  ?>
       <div class="hero__link">
         <a href="<?php echo esc_url($promo_link_href); ?>" class="ui-btn-arrow">
-          <span class="ui-btn-arrow__text"><?php _e('Заказать услугу', 'veterinary'); ?></span>
+          <span class="ui-btn-arrow__text"><?php echo $promo_link_name; ?></span>
           <span class="ui-btn-arrow__arrow">
             <span class="ui-arrow">
               <svg class="ui-arrow__svg">
@@ -63,6 +71,7 @@ $page_id = isset($args['id']) ? $args['id'] : get_the_ID();
           </span>
         </a>
       </div>
+      <?php endif; ?>
     </div>
   </div>
   <!-- фон -->

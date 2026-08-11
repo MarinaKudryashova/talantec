@@ -17,7 +17,8 @@ $item = $args['item-data'] ?? [];
       <p class="news-card__text is-clamp" style="--lines: 2;"><?php echo esc_html($item['name']); ?></p>
     <?php endif; ?>
     <div class="news-card__contact">
-      <span class="news-card__name">Связаться с&#160;нами</span>
+      <!-- <span class="news-card__name">Читать</span> -->
+      <span class="news-card__name">Читать&#160;далее</span>
       <span class="news-card__arrow">
         <span class="ui-arrow">
           <svg class="ui-arrow__svg">

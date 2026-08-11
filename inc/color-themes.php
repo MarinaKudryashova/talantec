@@ -169,7 +169,6 @@ function architect_get_theme_css_variables() {
 }
 
 
-
 /**
  * Вывод CSS переменных в head
  */
@@ -181,6 +180,7 @@ function architect_custom_colors() {
     echo '<style id="architect-color-theme">' . $css . '</style>';
 }
 add_action('wp_head', 'architect_custom_colors', 10);
+
 
 /**
  * Добавляем CSS переменные в админку для превью
