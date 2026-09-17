@@ -1,7 +1,9 @@
 <?php
 /*
-Template Name: Продуктовая страница
-Template Post Type: page
+ * Template Name: Продуктовая страница
+ * Template Post Type: page
+ *
+ * @package architect
 */
 
 $page_id = get_the_ID();
@@ -16,9 +18,17 @@ architect_get_header();
   <div class="content-overlay content-overlay--page">
     <?php 
       $arSection = get_field('page-production_show_section');
-      if ($arSection) :
+      if ( is_array( $arSection ) && $arSection ) :
         foreach ($arSection as $section) {
-          get_template_part( "template-parts/sections/sec", "$section", array('id' => $page_id));
+          $section = sanitize_file_name((string) $section);
+          if ($section === '' || strpos($section, '.') !== false) {
+            continue;
+          }
+          $file = get_template_directory() . '/template-parts/sections/sec-' . $section . '.php';
+          if (!is_file($file)) {
+            continue;
+          }
+          get_template_part( "template-parts/sections/sec", $section, array('id' => $page_id));
         }
       endif;
     ?>

@@ -1,0 +1,508 @@
+# Copyright (C) 2026 cosmo-design.ru
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: architect 1.0.2\n"
+"Report-Msgid-Bugs-To: https://cosmo-design.ru\n"
+"POT-Creation-Date: 2026-09-16 16:31+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Generator: Cursor\n"
+"X-Domain: architect\n"
+
+#. Theme Name of the theme
+msgid "architect"
+msgstr ""
+
+#. Theme URI of the theme
+msgid "http://cosmo-design.ru"
+msgstr ""
+
+#. Description of the theme
+msgid "Description"
+msgstr ""
+
+#. Author of the theme
+msgid "cosmo-design.ru"
+msgstr ""
+
+#: functions.php:37
+msgid "Главное меню"
+msgstr ""
+
+#: functions.php:38
+msgid "Главное меню (мобильное)"
+msgstr ""
+
+#: functions.php:39
+msgid "Главное меню (компактный)"
+msgstr ""
+
+#: functions.php:40
+msgid "Верхнее меню"
+msgstr ""
+
+#: functions.php:41
+msgid "Основное нижнее"
+msgstr ""
+
+#: functions.php:42
+msgid "Навигация"
+msgstr ""
+
+#: functions.php:43
+msgid "Информация"
+msgstr ""
+
+#: functions.php:44
+msgid "Дополнительная информация"
+msgstr ""
+
+#: 404.php:42
+#: inc/customizer.php:322
+msgid "Страница не найдена"
+msgstr ""
+
+#: footer.php:32
+#: footer-compact.php:32
+#: page-contacts.php:43
+#: inc/customizer.php:198
+msgid "Телефон"
+msgstr ""
+
+#: footer.php:46
+#: footer-compact.php:46
+#: page-contacts.php:74
+msgid "Почта"
+msgstr ""
+
+#: footer.php:58
+#: footer-compact.php:58
+#: page-contacts.php:36
+#: inc/customizer.php:230
+msgid "Адрес"
+msgstr ""
+
+#: footer.php:79
+#: page-contacts.php:56
+#: inc/customizer.php:175
+msgid "ИНН"
+msgstr ""
+
+#: footer.php:82
+#: page-contacts.php:59
+#: inc/customizer.php:186
+msgid "ОГРН"
+msgstr ""
+
+#: footer.php:189
+#: footer-compact.php:123
+msgid "Настройки cookie"
+msgstr ""
+
+#: page-contacts.php:50
+msgid "Реквизиты"
+msgstr ""
+
+#: page-contacts.php:67
+#: inc/customizer.php:244
+msgid "График работы"
+msgstr ""
+
+#: page-contacts.php:85
+msgid "Карта проезда"
+msgstr ""
+
+#: template-parts/components/modal-leadform.php:25
+msgid "Спасибо"
+msgstr ""
+
+#: template-parts/components/modal-leadform.php:28
+msgid "Ваши данные успешно отправлены. Скоро свяжемся с вами!"
+msgstr ""
+
+#: template-parts/components/modal-leadform.php:31
+msgid "Ошибка"
+msgstr ""
+
+#: template-parts/components/modal-leadform.php:34
+msgid "Форма не отправлена. Пожалуйста, проверьте правильность заполнения формы"
+msgstr ""
+
+#: template-parts/components/modal-leadform.php:39
+msgid "Закрыть модальное окно"
+msgstr ""
+
+#: inc/theme-form-cf7.php:31
+msgid "Send"
+msgstr ""
+
+#: inc/theme-form-cf7.php:56
+msgid "Введите имя от 3 до 30 символов"
+msgstr ""
+
+#: inc/theme-form-cf7.php:86
+msgid "Введите корректный номер телефона"
+msgstr ""
+
+#: template-parts/components/cookie-notice.php:10
+msgid "Мы используем необходимые cookie, чтобы сайт работал. Аналитику подключаем только с вашего согласия."
+msgstr ""
+
+#: template-parts/components/cookie-notice.php:15
+msgid "Принять"
+msgstr ""
+
+#: template-parts/components/cookie-notice.php:20
+msgid "Только необходимые"
+msgstr ""
+
+#: template-parts/components/cookie-notice.php:25
+msgid "Подробнее"
+msgstr ""
+
+#: template-parts/components/cookie-notice.php:69
+msgid "Уведомление об использовании cookie"
+msgstr ""
+
+#: template-parts/sections/sec-price.php:85
+#: template-parts/sections/sec-faq.php:57
+msgid "В этом разделе пока нет информации."
+msgstr ""
+
+#: inc/customizer.php:41
+msgid "Внешний вид"
+msgstr ""
+
+#: inc/customizer.php:52
+msgid "Вариант шапки"
+msgstr ""
+
+#: inc/customizer.php:56
+msgid "Компактная"
+msgstr ""
+
+#: inc/customizer.php:57
+msgid "Стандартная"
+msgstr ""
+
+#: inc/customizer.php:68
+msgid "Вариант футера"
+msgstr ""
+
+#: inc/customizer.php:72
+msgid "Компактный"
+msgstr ""
+
+#: inc/customizer.php:73
+msgid "Стандартный"
+msgstr ""
+
+#: inc/customizer.php:85
+msgid "Цветовая тема"
+msgstr ""
+
+#: inc/customizer.php:86
+msgid "Выберите цветовую схему сайта"
+msgstr ""
+
+#: inc/customizer.php:90
+msgid "По умолчанию"
+msgstr ""
+
+#: inc/customizer.php:91
+#: inc/color-themes.php:27
+msgid "Пламенный красный"
+msgstr ""
+
+#: inc/customizer.php:93
+#: inc/color-themes.php:46
+msgid "Сливочный шалфей"
+msgstr ""
+
+#: inc/customizer.php:94
+#: inc/color-themes.php:63
+msgid "Молочный эвкалипт"
+msgstr ""
+
+#: inc/customizer.php:95
+#: inc/color-themes.php:80
+msgid "Изумрудная роса"
+msgstr ""
+
+#: inc/customizer.php:97
+#: inc/color-themes.php:99
+msgid "Цифровой океан"
+msgstr ""
+
+#: inc/customizer.php:114
+msgid "Логотип сайта"
+msgstr ""
+
+#: inc/customizer.php:115
+#: inc/customizer.php:128
+msgid "Загрузите логотип в формате PNG или SVG"
+msgstr ""
+
+#: inc/customizer.php:127
+msgid "Логотип сайта (темный)"
+msgstr ""
+
+#: inc/customizer.php:140
+msgid "Текст копирайта в подвале"
+msgstr ""
+
+#: inc/customizer.php:141
+msgid "Измените текст копирайта. Можно использовать HTML-теги"
+msgstr ""
+
+#: inc/customizer.php:152
+msgid "Контакты"
+msgstr ""
+
+#: inc/customizer.php:153
+msgid "Настройки контактной информации сайта"
+msgstr ""
+
+#: inc/customizer.php:164
+msgid "Наименование компании"
+msgstr ""
+
+#: inc/customizer.php:199
+msgid "Основной номер телефона"
+msgstr ""
+
+#: inc/customizer.php:214
+msgid "Email"
+msgstr ""
+
+#: inc/customizer.php:215
+msgid "Электронная почта"
+msgstr ""
+
+#: inc/customizer.php:231
+msgid "Физический адрес компании"
+msgstr ""
+
+#: inc/customizer.php:257
+msgid "Широта карты"
+msgstr ""
+
+#: inc/customizer.php:268
+msgid "Долгота карты"
+msgstr ""
+
+#: inc/customizer.php:278
+msgid "Масштаб карты"
+msgstr ""
+
+#: inc/customizer.php:292
+msgid "API-ключ Яндекс Карт"
+msgstr ""
+
+#: inc/customizer.php:293
+msgid "Ключ из кабинета разработчика Яндекса. Без ключа карта может не загрузиться."
+msgstr ""
+
+#: inc/customizer.php:302
+msgid "404 страница"
+msgstr ""
+
+#: inc/customizer.php:303
+msgid "Настройки страницы \"Не найдено\""
+msgstr ""
+
+#: inc/customizer.php:314
+msgid "Заголовок"
+msgstr ""
+
+#: inc/customizer.php:315
+msgid "Основной заголовок страницы 404"
+msgstr ""
+
+#: inc/customizer.php:327
+msgid "Текст"
+msgstr ""
+
+#: inc/customizer.php:328
+msgid "Краткое описание ошибки"
+msgstr ""
+
+#: inc/customizer.php:340
+msgid "Фоновое изображение"
+msgstr ""
+
+#: inc/customizer.php:341
+msgid "Загрузите фоновое изображение для страницы 404"
+msgstr ""
+
+#: inc/customizer.php:347
+msgid "На главную"
+msgstr ""
+
+#: inc/customizer.php:352
+msgid "Текст кнопки"
+msgstr ""
+
+#: inc/customizer.php:353
+msgid "Текст на кнопке возврата на страницу"
+msgstr ""
+
+#: inc/customizer.php:371
+msgid "Страница для кнопки"
+msgstr ""
+
+#: inc/customizer.php:372
+msgid "Выберите страницу, на которую будет вести кнопка"
+msgstr ""
+
+#: inc/customizer.php:378
+msgid "Аналитика"
+msgstr ""
+
+#: inc/customizer.php:379
+msgid "Счётчики загружаются после первого действия пользователя или через 3.5 секунды."
+msgstr ""
+
+#: inc/customizer.php:388
+msgid "ID Яндекс Метрики"
+msgstr ""
+
+#: inc/customizer.php:389
+msgid "Только числовой идентификатор счётчика"
+msgstr ""
+
+#: inc/customizer.php:399
+msgid "ID Google Analytics / GTM"
+msgstr ""
+
+#: inc/customizer.php:400
+msgid "Например G-XXXXXXX или GT-XXXXXXX"
+msgstr ""
+
+#: inc/color-themes.php:10
+msgid "Тема по умолчанию"
+msgstr ""
+
+#: inc/color-themes.php:120
+msgid "Темная тема"
+msgstr ""
+
+#: inc/post-options.php:10
+msgid "Настройки сайта"
+msgstr ""
+
+#: inc/post-options.php:39
+msgid "Футер"
+msgstr ""
+
+#: inc/post-options.php:53
+msgid "Формы"
+msgstr ""
+
+#: inc/post-options.php:60
+msgid "Партнеры"
+msgstr ""
+
+#: inc/template-types/type-projects.php:85
+msgctxt "Post Type General Name"
+msgid "Проекты"
+msgstr ""
+
+#: inc/template-types/type-projects.php:86
+msgctxt "Post Type Singular Name"
+msgid "Проект"
+msgstr ""
+
+#: inc/template-types/type-services.php:93
+msgid "Услуги"
+msgstr ""
+
+#: inc/template-types/type-employees.php:11
+msgid "Сотрудники"
+msgstr ""
+
+#: inc/template-types/type-faq.php:12
+msgid "FAQ"
+msgstr ""
+
+#: inc/template-types/rename-posts.php:21
+msgid "Блог"
+msgstr ""
+
+#: template-parts/content-none.php:14
+msgid "Nothing Found"
+msgstr ""
+
+#. translators: 1: link to WP admin new post page.
+#: template-parts/content-none.php:24
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: template-parts/content-none.php:37
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr ""
+
+#: template-parts/content-none.php:44
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr ""
+
+#: template-parts/content.php:53
+#: template-parts/content-page.php:25
+msgid "Pages:"
+msgstr ""
+
+#. translators: %s: Name of current post. Only visible to screen readers
+#: template-parts/content.php:40
+msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr ""
+
+#. translators: %s: Name of current post. Only visible to screen readers
+#: template-parts/content-page.php:39
+#: inc/template-tags.php:100
+msgid "Edit <span class=\"screen-reader-text\">%s</span>"
+msgstr ""
+
+#. translators: %s: post date.
+#: inc/template-tags.php:30
+msgctxt "post date"
+msgid "Posted on %s"
+msgstr ""
+
+#. translators: %s: post author.
+#: inc/template-tags.php:46
+msgctxt "post author"
+msgid "by %s"
+msgstr ""
+
+#. translators: used between list items, there is a space after the comma
+#: inc/template-tags.php:63
+msgid ", "
+msgstr ""
+
+#. translators: 1: list of categories.
+#: inc/template-tags.php:66
+msgid "Posted in %1$s"
+msgstr ""
+
+#. translators: used between list items, there is a space after the comma
+#: inc/template-tags.php:70
+msgctxt "list item separator"
+msgid ", "
+msgstr ""
+
+#. translators: 1: list of tags.
+#: inc/template-tags.php:73
+msgid "Tagged %1$s"
+msgstr ""
+
+#. translators: %s: post title
+#: inc/template-tags.php:83
+msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
+msgstr ""

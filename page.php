@@ -22,17 +22,8 @@
     ?>
 
     <div class="content-overlay content-overlay--page">
-      <?php 
-        $arlayouts = get_field('layouts');
-        // var_dump($arlayouts);
-        if ($arlayouts) :
-          foreach ($arlayouts as $ids => $layout) :
-            $layout_name = $layout['acf_fc_layout'];
-            $layout_ids = $ids;
-            // var_dump($layout);
-            get_template_part('template-parts/sections/' . $layout_name, '', array('id' => $page_id, 'layout-data' => $layout, 'layout-name' => $layout_name, 'layout-ids' => $layout_ids));
-          endforeach;
-        endif;
+      <?php
+        architect_render_flexible_layouts($page_id, get_field('layouts'));
       ?>
     </div>
   </main>

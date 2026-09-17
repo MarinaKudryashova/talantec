@@ -3,8 +3,8 @@
 * Section: Часто задаваемые вопросы
 */
 
-$page_id = $args["id"];
-$layout_data = $args['layout-data'] ?? [];
+$page_id = $args['id'] ?? 0;
+$layout_data = is_array($args['layout-data'] ?? null) ? $args['layout-data'] : array();
 $layout_name = $args['layout-name'] ?? '';
 $layout_ids = $args['layout-ids'] ?? '';
 
@@ -12,9 +12,9 @@ $field_title = $layout_name . '_title';
 $field_subtitler = $layout_name . '_subtitle';
 $field_list = $layout_name . '_list';
 
-$sec_faq_title = $layout_data[$field_title];
-$sec_faq_subtitler = $layout_data[$field_subtitler];
-$sec_faq_list = $layout_data[$field_list];
+$sec_faq_title = $layout_data[$field_title] ?? '';
+$sec_faq_subtitler = $layout_data[$field_subtitler] ?? '';
+$sec_faq_list = $layout_data[$field_list] ?? array();
 
 ?>
 
@@ -32,10 +32,15 @@ $sec_faq_list = $layout_data[$field_list];
 
     <?php if($sec_faq_list && is_array($sec_faq_list)) : ?>
       <div class="sec-faq__content accordion" data-aos="fade-up">
-        <?php foreach($sec_faq_list as $faq) : ?>
+        <?php foreach($sec_faq_list as $faq) :
+          $faq_post = is_object($faq) ? $faq : get_post($faq);
+          if ( ! $faq_post ) {
+            continue;
+          }
+        ?>
           <div class="accordion__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
             <button class="accordion__control">
-              <span class="accordion__title" itemprop="name"><?php echo esc_html($faq->post_title); ?></span>
+              <span class="accordion__title" itemprop="name"><?php echo esc_html($faq_post->post_title); ?></span>
               <span class="accordion__icon">
                 <svg>
                   <use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#plus"></use>
@@ -43,7 +48,7 @@ $sec_faq_list = $layout_data[$field_list];
               </span>
             </button>
             <div class="accordion__content" aria-hidden="true" itemprop="acceptedAnswer" itemscope="" itemtype="http://schema.org/Answer">
-              <div class="accordion__text" itemprop="text"><?php echo wpautop( wp_kses_post($faq->post_content) ); ?></div>
+              <div class="accordion__text" itemprop="text"><?php echo wpautop( wp_kses_post($faq_post->post_content) ); ?></div>
             </div>
           </div>
         <?php endforeach; ?>

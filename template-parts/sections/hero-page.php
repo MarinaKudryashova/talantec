@@ -4,19 +4,21 @@
 */
 
 $page_id = isset($args['id']) ? $args['id'] : get_the_ID();
+  $placeholder = get_template_directory_uri() . '/img/hero/hero.jpg';
   $page_promo_bgimg_desktop = get_field('page-promo_bgimg', $page_id);
-  $page_promo_image_versions = (!empty($page_promo_bgimg_desktop) && function_exists('get_image_versions')) 
-    ? get_image_versions($page_promo_bgimg_desktop)
+  $page_promo_image_versions = (!empty($page_promo_bgimg_desktop) && function_exists('get_image_versions'))
+    ? get_image_versions($page_promo_bgimg_desktop, 'full', false)
     : array(
-      'full' => get_template_directory_uri() . '/img/hero/hero.jpg',
-      'original_1x' => get_template_directory_uri() . '/img/hero/hero.jpg',
-      'webp_1x' => get_template_directory_uri() . '/img/hero/hero.webp'
+      'original_1x' => $placeholder,
+      'webp_1x'     => get_template_directory_uri() . '/img/hero/hero.webp',
+      'format'      => 'jpg',
       );
 
   $page_promo_bgimg_mobile = get_field('page-promo_bgimg_tablet', $page_id);
-  $page_promo_image_mobile_versions = ($page_promo_bgimg_mobile && !empty($page_promo_bgimg_mobile) && function_exists('get_image_versions')) 
-    ? get_image_versions($page_promo_bgimg_mobile)
-    : $page_promo_image_versions;
+  $page_promo_image_mobile_versions = architect_get_mobile_image_versions($page_promo_bgimg_mobile, $page_promo_bgimg_desktop, 'large');
+  if (empty($page_promo_image_mobile_versions['original_1x'])) {
+    $page_promo_image_mobile_versions = $page_promo_image_versions;
+  }
 
   $page_promo_show_link = get_field('page-promo_show_link');
   if ($page_promo_show_link) {
@@ -33,7 +35,7 @@ $page_id = isset($args['id']) ? $args['id'] : get_the_ID();
       $page_promo_title = single_post_title('', false);
   } elseif (is_archive() || is_search()) {
       // Архивы и поиск
-      $pagpage_promo_titlee_title = get_the_archive_title();
+      $page_promo_title = get_the_archive_title();
   } else {
       // Все остальные страницы (посты, страницы, главная)
       $page_promo_title = get_the_title($page_id);
@@ -46,7 +48,7 @@ $page_id = isset($args['id']) ? $args['id'] : get_the_ID();
       <?php get_template_part( "template-parts/components/breadcrumbs", "", $page_id); ?>
 
       <div class="hero__textcontent">
-        <h1 class="hero__title"><?php echo $page_promo_title; ?></h1>
+        <h1 class="hero__title"><?php echo esc_html($page_promo_title); ?></h1>
 
         <?php if (!empty(get_field('page-promo_descr'))) : ?>
         <p class="hero__description">
@@ -58,7 +60,7 @@ $page_id = isset($args['id']) ? $args['id'] : get_the_ID();
       <?php if ($page_promo_show_link) :  ?>
       <div class="hero__link">
         <a href="<?php echo esc_url($promo_link_href); ?>" class="ui-btn-arrow">
-          <span class="ui-btn-arrow__text"><?php echo $promo_link_name; ?></span>
+          <span class="ui-btn-arrow__text"><?php echo esc_html($promo_link_name); ?></span>
           <span class="ui-btn-arrow__arrow">
             <span class="ui-arrow">
               <svg class="ui-arrow__svg">
@@ -78,17 +80,12 @@ $page_id = isset($args['id']) ? $args['id'] : get_the_ID();
   <div class="hero__bg hero-bg">
     <!-- фото -->
     <picture class="hero-bg__img">
-      <?php if ($page_promo_image_mobile_versions['webp_1x']) : ?>
-      <source media="(max-width: 576px)" srcset="<?php echo esc_url($page_promo_image_mobile_versions['webp_1x']); ?>"
-        type="image/webp">
-      <?php endif; ?>
-      <?php if ($page_promo_image_mobile_versions['original_1x']) : ?>
-      <source media="(max-width: 576px)" srcset="i<?php echo esc_url($page_promo_image_mobile_versions['original_1x']); ?>"
-        type="image/jpg">
-      <?php endif; ?>
+      <?php architect_picture_mobile_sources($page_promo_image_mobile_versions); ?>
+      <?php if (!empty($page_promo_image_versions['webp_1x'])) : ?>
       <source srcset="<?php echo esc_url($page_promo_image_versions['webp_1x']); ?>" type="image/webp">
-      <img loading="lazy" src="<?php echo esc_url($page_promo_image_versions['original_1x']); ?>" width="1440" height="800"
-        aria-hidden="true" alt="">
+      <?php endif; ?>
+      <img src="<?php echo esc_url($page_promo_image_versions['original_1x']); ?>" width="1440" height="800"
+        aria-hidden="true" alt="" loading="eager" decoding="async" fetchpriority="high">
     </picture>
     <!-- затемнее -->
     <div class="hero-bg__filter"></div>

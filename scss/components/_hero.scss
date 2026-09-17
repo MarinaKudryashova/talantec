@@ -45,6 +45,7 @@
     justify-content: space-between;
     align-items: flex-end;
     gap: clamp(32px, px-to-vw(32px, 1440), 64px);
+    width: 100%;
 
     @include tablet {
       flex-direction: column;
@@ -167,8 +168,8 @@
     }
 
     @include small-tablet {
-      padding-top: px-to-vw(258px, 768);
-      padding-bottom: px-to-vw(248px, 768);
+      padding-top: clamp(72px, px-to-vw(80px, 768), 90px);
+      padding-bottom: clamp(32px, px-to-vw(40px, 768), 48px);
     }
 
     @include small-mobile {
@@ -184,6 +185,7 @@
     align-items: flex-start;
     gap: clamp(12px, px-to-vw(16px, 1440), 40px);
     margin-bottom: clamp(32px, px-to-vw(40px, 1440), 80px);
+    width: 100%;
   }
 
   &--page &__description {

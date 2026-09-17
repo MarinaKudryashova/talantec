@@ -4,7 +4,8 @@
   flex-direction: column;
   align-items: flex-start;
   flex-grow: 1;
-  border: 1px solid var(--border);
+  border: 1px solid transparent;
+  background-color: var(--white);
   padding: px-to-vw(32px, 1440);
   height: 100%;
   color: var(--black);
@@ -22,8 +23,41 @@
   }
 
   &.is-popular {
-    color: var(--white);
-    background-color: var(--black);
+    border-color: var(--accent);
+    box-shadow: 0 12px 32px rgba(0, 4, 4, 0.08);
+
+    .tariff-card__btn.ui-btn-arrow {
+      background-color: var(--accent);
+
+      .ui-btn-arrow__text {
+        color: var(--white);
+      }
+
+      .ui-btn-arrow__arrow {
+        background-color: var(--white);
+      }
+
+      .ui-arrow__svg {
+        color: var(--accent);
+      }
+
+      &:hover,
+      &:focus-visible {
+        background-color: var(--accent-dark);
+
+        .ui-btn-arrow__text {
+          color: var(--white);
+        }
+
+        .ui-btn-arrow__arrow {
+          background-color: var(--white);
+        }
+
+        .ui-arrow__svg {
+          color: var(--accent-dark);
+        }
+      }
+    }
   }
 
   &__title {
@@ -165,7 +199,7 @@
     }
   }
 
-  &__btn {
+  &__btn.ui-btn-arrow {
     margin-top: auto;
     width: fit-content;
     cursor: pointer;

@@ -19,11 +19,12 @@
 
   <meta name="description" content="<?php bloginfo( 'name' ); ?> - <?php bloginfo('description'); ?>">
 
-
-  <link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_template_directory_uri();?>/favicons/apple-touch-icon.png?v=2">
-  <link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_template_directory_uri();?>/favicons/favicon-32x32.png?v=2">
-  <link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_template_directory_uri();?>/favicons/favicon-16x16.png?v=2">
-  <link rel="manifest" href="<?php echo get_template_directory_uri();?>/site.webmanifest">
+  <?php if ( ! architect_has_custom_site_icon() ) : ?>
+  <link rel="icon" href="<?php echo esc_url( get_template_directory_uri() ); ?>/favicons/talantec/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" sizes="180x180" href="<?php echo esc_url( get_template_directory_uri() ); ?>/favicons/talantec/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="<?php echo esc_url( get_template_directory_uri() ); ?>/favicons/talantec/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="<?php echo esc_url( get_template_directory_uri() ); ?>/favicons/talantec/favicon-16x16.png">
+  <?php endif; ?>
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="<?php echo esc_attr(get_bloginfo('name')); ?>">
@@ -39,16 +40,14 @@
     content="<?php bloginfo( 'name' ); ?> - <?php bloginfo('description'); ?>">
   <meta name="twitter:image" content="<?php echo get_template_directory_uri();?>/img/site-preview.jpg">
 
-  <link rel="preload" href="<?php echo get_template_directory_uri();?>/fonts/InterTight-Regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="<?php echo get_template_directory_uri();?>/fonts/InterTight-Medium.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="<?php echo get_template_directory_uri();?>/fonts/InterTight-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+  <?php architect_font_preloads(); ?>
 
   <?php wp_head(); ?>
 </head>
 
-<body class="page__body">
+<body <?php body_class( 'page__body' ); ?>>
   <div class="site-container">
-    <header class="header header--compact" id="header">
+    <header class="header header--compact fix-block" id="header">
       <div class="container">
         <div class="header__top">
           <?php 
@@ -76,7 +75,7 @@
               'link_before'     => '  ',
               'link_after'      => '',
               'items_wrap'      => '<ul class="header__menu menu">%3$s</ul>',
-              'depth'           => 1,
+              'depth'           => 2,
               'walker'          => new Header_Menu_Walker(),
             ] );
           ?>
@@ -99,7 +98,7 @@
 
                 
             <!-- Кнопка "Рассчитать стоимость" -->
-            <a href="#" class="header-compact__link header-compact__link--cost">
+            <a href="#" class="header-compact__link header-compact__link--cost" data-graph-path="modal-leadform">
               <span data-text="Рассчитать стоимость">Рассчитать стоимость</span>
               <svg>
                   <use xlink:href="<?php echo get_template_directory_uri(); ?>/img/sprite.svg#icon-pencil"></use>
@@ -146,7 +145,7 @@
               </a>
             <?php endif; ?>
           
-          <button class="mobile-menu__btn ui-btn-arrow" type="submit">
+          <button class="mobile-menu__btn ui-btn-arrow" type="button" data-graph-path="modal-leadform">
             <span class="ui-btn-arrow__text">Рассчитать стоимость</span>
             <span class="ui-btn-arrow__arrow">
               <span class="ui-arrow">

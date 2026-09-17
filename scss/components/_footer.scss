@@ -68,6 +68,11 @@
         padding-top: 40px;
       }
     }
+    
+    @include small-desktop {
+      padding-left: clamp(16px, 1.778vw, 2px);
+      padding-right: clamp(16px, 1.778vw, 24px);
+    }
 
     @include tablet {
       display: flex;
@@ -75,8 +80,14 @@
       align-items: center;
       gap: 80px;
 
+
       .footer__top & {
         flex-direction: column;
+      }
+
+      &:has(.footer__info) {
+        gap: 40px;
+        padding-bottom: 32px;
       }
     }
   }
@@ -96,12 +107,13 @@
     margin-bottom: px-to-vw(126px, 1440);
 
     @include tablet {
-      margin-bottom: px-to-vw(100px, 1024);
+      width: 100%;
+      margin-bottom: 0;
     }
 
     @include small-tablet {
       width: 100%;
-      margin-bottom: clamp(62px, px-to-vw(62px, 768), 80px);
+      margin-bottom: 0;
     }
   }
 
@@ -195,8 +207,33 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    align-self: start;
     gap: 4px;
     color: var(--grey);
+
+    .sec-contacts__text {
+      font-size: clamp(14px, px-to-vw(14px, 1440), 16px);
+      line-height: 120%;
+    }
+
+    @include tablet {
+      align-self: stretch;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      text-align: left;
+    }
+
+    @include small-tablet {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      align-self: center;
+      width: auto;
+      text-align: center;
+    }
   }
 
   &__nav {
@@ -223,7 +260,7 @@
     @include small-desktop {
       display: flex;
       align-items: center;
-      justify-content: space-around;
+      justify-content: space-between;
     }
 
     @include tablet {
@@ -235,9 +272,21 @@
     }
   }
 
+  &__legal {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+
+    @include small-tablet {
+      align-items: center;
+    }
+  }
+
   &__company,
   &__policy,
-  &__made {
+  &__made,
+  &__cookie-settings {
     margin: 0;
     font-weight: 400;
     font-size: clamp(16px, px-to-vw(16px, 1440), 32px);
@@ -258,7 +307,8 @@
     white-space: nowrap;
   }
 
-  &__policy {
+  &__policy,
+  &__cookie-settings {
     &:hover {
       color: var(--accent);
     }
@@ -267,6 +317,15 @@
       color: var(--accent);
       outline: none;
     }
+  }
+
+  &__cookie-settings {
+    padding: 0;
+    border: 0;
+    background: none;
+    font-family: inherit;
+    cursor: pointer;
+    text-align: inherit;
   }
 
   &__made-link {
@@ -370,53 +429,41 @@
         }
       }
     }
-    .footer__info {
-      @include tablet {
-        margin-bottom: 20px;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        width: 100%;
-        max-width: 800px;
-      }
-      @include mobile {
-        flex-direction: column;
-        align-items: center;
-        width: auto;
-      }
-    }
+
     .footer__content {
       margin-bottom: px-to-vw(80px, 1440);
 
       @include desktop {
         margin-bottom: 80px;
       }
+
       @include tablet {
-        // margin-bottom: 0;
+        margin-bottom: 0;
         width: 100%;
       }
-      @include mobile {
-        margin-bottom: 60px;
-      }
     }
+
     .footer-menu {
       @include tablet {
         align-items: center;
         width: 100%;
       }
     }
+
     .footer-menu__list {
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: space-between;
 
       @include tablet {
-        max-width: 820px;
         width: 100%;
+        max-width: none;
       }
-      @include small-mobile {
+
+      @include small-tablet {
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         gap: 32px;
       }
     }

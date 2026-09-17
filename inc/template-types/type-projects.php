@@ -3,6 +3,7 @@
 // проектови projects
 add_action( 'init', 'projects_register_post_types' );
 add_action( 'init', 'theme_register_projects_category');
+add_action( 'init', 'theme_register_projects_tags'); // Только теги
 
 // Register new Taxonomy Категории проектов
 function theme_register_projects_category(){
@@ -39,6 +40,42 @@ function theme_register_projects_category(){
 	);
 	
 	register_taxonomy( 'projects_category', [ 'projects' ], $args );
+}
+
+// Register new Taxonomy Теги проектов
+function theme_register_projects_tags(){
+	
+	$labels = array(
+		'name'              => _x( 'Теги проектов', 'taxonomy general name', 'architect' ),
+		'singular_name'     => _x( 'Тег проекта', 'taxonomy singular name', 'architect' ),
+		'search_items'      => 'Поиск тега',
+		'all_items'         => 'Все теги',
+		'view_item '        => 'Посмотреть тег',
+		'edit_item'         => 'Редактировать тег',
+		'update_item'       => 'Обновить тег',
+		'add_new_item'      => 'Добавить новый тег',
+		'new_item_name'     => 'Новый тег',
+		'menu_name'         => 'Теги проектов',
+	);
+	
+	$args = array (
+		'label'                 => 'Теги проектов', 
+		'labels'                => $labels,
+		'description'           => 'Теги проектов для удобной навигации', 
+		'public'                => true,
+		'hierarchical'			=> false, // false - как теги (не иерархические)
+		'show_in'     		    => true,
+		'show_in_menu'          => true,
+		'show_in_nav_menus'     => true,
+		'show_admin_column'     => true,
+		'show_in_quick_edit'	=> true,
+		'rewrite'               => array(
+				'slug' => 'projects-tag',
+				'with_front' => false
+		),
+	);
+	
+	register_taxonomy( 'projects_tags', [ 'projects' ], $args );
 }
 
 // Create new Custom Post Type
@@ -83,7 +120,7 @@ function projects_register_post_types(){
 		'menu_position'         => 4,
 		'menu_icon'             => 'dashicons-portfolio',
 		'supports'              => array('title', 'thumbnail', 'excerpt', 'custom-fields', 'page-attributes', 'editor'),
-		'taxonomies'            => array('projects_category'),
+		'taxonomies'            => array('projects_category', 'projects_tags'), // Убрана характеристика
 		'has_archive'           => false,
 	);
 	
@@ -95,18 +132,21 @@ function projects_true_taxonomy_filter() {
 	global $typenow;
 	
 	if( $typenow == 'projects' ) {
-		$taxes = array('projects_category');
+		$taxes = array('projects_category', 'projects_tags'); // Убрана характеристика
 		
 		foreach ($taxes as $tax) {
-			$current_tax = isset( $_GET[$tax] ) ? $_GET[$tax] : '';
+			$current_tax = isset( $_GET[$tax] ) ? sanitize_title( wp_unslash( $_GET[$tax] ) ) : '';
 			$tax_obj = get_taxonomy($tax);
+			if ( ! $tax_obj ) {
+				continue;
+			}
 			$tax_name = mb_strtolower($tax_obj->labels->name);
 			$terms = get_terms(array(
 				'taxonomy' => $tax,
 				'hide_empty' => false,
 			));
 			
-			if(count($terms) > 0) {
+			if ( ! is_wp_error( $terms ) && is_array( $terms ) && count( $terms ) > 0 ) {
 				echo "<select name='$tax' id='$tax' class='postform'>";
 				echo "<option value=''>Все $tax_name</option>";
 				
@@ -172,7 +212,7 @@ function projects_settings_page_callback() {
                     <th scope="row">
                         <label for="page_for_projects">Страница записей проектов</label>
                     </th>
-                    <tr>
+                    <td>
                         <?php
                         wp_dropdown_pages(array(
                             'name' => 'page_for_projects',

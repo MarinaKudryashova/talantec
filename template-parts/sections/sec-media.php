@@ -3,9 +3,9 @@
 * Section: Текст с изображениями
 */
 
-$page_id = $args["id"];
-$layout_data = $args["layout-data"];
-$layout_name = $args["layout-name"];
+$page_id = $args['id'] ?? 0;
+$layout_data = is_array($args['layout-data'] ?? null) ? $args['layout-data'] : array();
+$layout_name = $args['layout-name'] ?? '';
 
 $field_position = $layout_name . '_position';
 $field_title = $layout_name . '_title';
@@ -13,11 +13,11 @@ $field_subtitler = $layout_name . '_subtitle';
 $field_text = $layout_name . '_text';
 $field_imgs = $layout_name . '_imgs';
 
-$sec_media_position = $layout_data[$field_position];
-$sec_media_title = $layout_data[$field_title];
-$sec_media_subtitler = $layout_data[$field_subtitler];
-$sec_media_text = $layout_data[$field_text];
-$sec_media_imgs = $layout_data[$field_imgs];
+$sec_media_position = $layout_data[$field_position] ?? '';
+$sec_media_title = $layout_data[$field_title] ?? '';
+$sec_media_subtitler = $layout_data[$field_subtitler] ?? '';
+$sec_media_text = $layout_data[$field_text] ?? '';
+$sec_media_imgs = $layout_data[$field_imgs] ?? array();
 
 $images_count = is_array($sec_media_imgs) ? count($sec_media_imgs) : 0;
 $grid_class = 'sec-media__images';
@@ -66,6 +66,7 @@ if ($images_count === 1) {
       ?>
       <li class="sec-media__item">
         <picture class="sec-media__img">
+          <?php architect_picture_mobile_sources($img); ?>
           <?php if (!empty($img['webp_1x'])) : ?>
           <source srcset="<?php echo esc_url($img['webp_1x']); ?>" type="image/webp">
           <?php endif; ?>

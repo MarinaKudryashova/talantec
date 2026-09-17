@@ -236,6 +236,65 @@ function architect_customize_register( $wp_customize ) {
         ),
     ));
 
+		$wp_customize->add_setting( 'company_hours', array(
+			'default'           => 'пн–пт 8:00–17:00',
+			'sanitize_callback' => 'sanitize_text_field',
+		) );
+		$wp_customize->add_control( 'company_hours', array(
+			'label'       => __( 'График работы', 'architect' ),
+			'section'     => 'contacts_settings',
+			'type'        => 'text',
+			'input_attrs' => array(
+				'placeholder' => 'пн–пт 8:00–17:00',
+			),
+		) );
+
+		$wp_customize->add_setting( 'company_map_lat', array(
+			'default'           => '55.8184',
+			'sanitize_callback' => 'architect_sanitize_map_coord',
+		) );
+		$wp_customize->add_control( 'company_map_lat', array(
+			'label'       => __( 'Широта карты', 'architect' ),
+			'description' => __( 'Координата метки (ул. Космонавта Волкова, д. 10)', 'architect' ),
+			'section'     => 'contacts_settings',
+			'type'        => 'text',
+		) );
+
+		$wp_customize->add_setting( 'company_map_lng', array(
+			'default'           => '37.5002',
+			'sanitize_callback' => 'architect_sanitize_map_coord',
+		) );
+		$wp_customize->add_control( 'company_map_lng', array(
+			'label'       => __( 'Долгота карты', 'architect' ),
+			'section'     => 'contacts_settings',
+			'type'        => 'text',
+		) );
+
+		$wp_customize->add_setting( 'company_map_zoom', array(
+			'default'           => 16,
+			'sanitize_callback' => 'absint',
+		) );
+		$wp_customize->add_control( 'company_map_zoom', array(
+			'label'       => __( 'Масштаб карты', 'architect' ),
+			'section'     => 'contacts_settings',
+			'type'        => 'number',
+			'input_attrs' => array(
+				'min' => 10,
+				'max' => 19,
+			),
+		) );
+
+		$wp_customize->add_setting( 'yandex_maps_api_key', array(
+			'default'           => '',
+			'sanitize_callback' => 'sanitize_text_field',
+		) );
+		$wp_customize->add_control( 'yandex_maps_api_key', array(
+			'label'       => __( 'API-ключ Яндекс Карт', 'architect' ),
+			'description' => __( 'Ключ из кабинета разработчика Яндекса. Без ключа карта может не загрузиться.', 'architect' ),
+			'section'     => 'contacts_settings',
+			'type'        => 'text',
+		) );
+
 	/**
 	 * Секция "404 страница" в кастомайзер
 	 */
@@ -315,10 +374,50 @@ function architect_customize_register( $wp_customize ) {
 		'type'        => 'dropdown-pages',
 	) );
 
+	$wp_customize->add_section( 'analytics_settings', array(
+		'title'       => __( 'Аналитика', 'architect' ),
+		'description' => __( 'Счётчики загружаются после первого действия пользователя или через 3.5 секунды.', 'architect' ),
+		'priority'    => 40,
+	) );
 
+	$wp_customize->add_setting( 'yandex_metrika_id', array(
+		'default'           => '',
+		'sanitize_callback' => 'absint',
+	) );
+	$wp_customize->add_control( 'yandex_metrika_id', array(
+		'label'       => __( 'ID Яндекс Метрики', 'architect' ),
+		'description' => __( 'Только числовой идентификатор счётчика', 'architect' ),
+		'section'     => 'analytics_settings',
+		'type'        => 'number',
+	) );
+
+	$wp_customize->add_setting( 'google_analytics_id', array(
+		'default'           => '',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'google_analytics_id', array(
+		'label'       => __( 'ID Google Analytics / GTM', 'architect' ),
+		'description' => __( 'Например G-XXXXXXX или GT-XXXXXXX', 'architect' ),
+		'section'     => 'analytics_settings',
+		'type'        => 'text',
+	) );
 
 }
 add_action( 'customize_register', 'architect_customize_register' );
+
+/**
+ * Sanitize map latitude / longitude.
+ *
+ * @param mixed $value Raw value.
+ * @return string
+ */
+function architect_sanitize_map_coord( $value ) {
+	if ( ! is_numeric( $value ) ) {
+		return '';
+	}
+
+	return (string) $value;
+}
 
 /**
  * Render the site title for the selective refresh partial.

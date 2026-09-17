@@ -15,24 +15,10 @@ function custom_acf_options() {
 		));
 
 		// acf_add_options_sub_page(array(
-		// 	"page_title"  => __("Контактная информация", 'architect'),
-		// 	"menu_title"  => __("Контактная информация", 'architect'),
-		// 	"parent_slug" => "site_settings",
-		// 	"menu_slug"   => "site_settings_contacts",
-		// ));
-		
-		// acf_add_options_sub_page(array(
 		// 	"page_title"  => __("Социальные сети", 'architect'),
 		// 	"menu_title"  => __("Социальные сети", 'architect'),
 		// 	"parent_slug" => "site_settings",
 		// 	"menu_slug"   => "site_settings_social",
-		// ));
-
-		// acf_add_options_sub_page(array(
-		// 	"page_title"  => __("Бренды", 'architect'),
-		// 	"menu_title"  => __("Бренды", 'architect'),
-		// 	"parent_slug" => "site_settings",
-		// 	"menu_slug"   => "site_settings_brands",
 		// ));
 
 		acf_add_options_sub_page(array(

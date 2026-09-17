@@ -80,3 +80,26 @@
     }
   }
 }
+
+body:has(.main--no-bg) {
+  .breadcrumbs {
+    &__item {
+      color: var(--grey);
+    }
+
+    &__link {
+      &:hover,
+      &:focus-visible {
+        color: var(--accent);
+      }
+
+      &:active {
+        color: var(--black);
+      }
+    }
+
+    &__item--current {
+      color: var(--black);
+    }
+  }
+}

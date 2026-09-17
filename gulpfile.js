@@ -39,7 +39,6 @@ const paths = {
   js: {
     src: "./js-src/main.js", // Исходники из папки js-src
     components: "./js-src/components/**/*.js", // Компоненты там же
-    vendor: "./js-src/vendor/**/*.js",
     dest: "./js/", // Результат в папку js
     outputName: "main.min.js", // Имя выходного файла
   },
@@ -138,7 +137,17 @@ const styles = () => {
         overrideBrowserslist: ["last 5 versions"],
       }),
     )
-    .pipe(gulpif(isProd, cleanCSS({ level: 2 })))
+    .pipe(gulpif(isProd, cleanCSS({
+      level: 1,
+      compatibility: {
+        colors: {
+          hexAlpha: false,
+        },
+        properties: {
+          zeroUnits: false,
+        },
+      },
+    })))
     .pipe(gulpif(!isProd && !isBackend, sourcemaps.write(".")))
     .pipe(dest(paths.scss.dest))
     .pipe(browserSync.stream());

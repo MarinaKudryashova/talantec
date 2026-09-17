@@ -1,0 +1,148 @@
+.page-contacts {
+  &__container {
+    padding-bottom: px-to-vw(80px, 1440);
+
+    @include desktop {
+      padding-bottom: clamp(48px, 5.556vw, 80px);
+    }
+  }
+
+  &__title {
+    margin: 0 0 1em;
+    font-weight: 500;
+    font-size: px-to-vw(40px, 1440);
+    line-height: 110%;
+    color: var(--black);
+
+    @include small-desktop {
+      font-size: clamp(32px, 2.778vw, 40px);
+    }
+
+    @include small-tablet {
+      font-size: clamp(28px, 5vw, 32px);
+    }
+  }
+
+  &__list {
+    @include list-reset;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: px-to-vw(32px, 1440);
+
+    @include desktop {
+      gap: clamp(24px, 2.222vw, 32px);
+    }
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    @include mobile {
+      gap: 16px;
+    }
+
+    @include small-mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: px-to-vw(12px, 1440);
+
+    @include desktop {
+      gap: 12px;
+    }
+    @include tablet {
+      gap: 8px;
+    }
+
+    &--requisites {
+      @include tablet {
+        order: 1;
+      }
+    }
+  }
+
+  &__label {
+    font-weight: 400;
+    font-size: px-to-vw(16px, 1440);
+    line-height: 120%;
+    color: var(--grey);
+
+    @include desktop {
+      font-size: 16px;
+    }
+  }
+
+  &__value {
+    margin: 0;
+    font-weight: 400;
+    font-size: clamp(24px, px-to-vw(24px, 1440), 26px);
+    line-height: 110%;
+    color: var(--black);
+
+    @include small-desktop {
+      font-size: clamp(18px, px-to-vw(20px, 1280), 24px);
+    }
+
+    @include small-tablet {
+      font-size: clamp(16px, px-to-vw(18px, 768), 20px);
+    }
+
+    &--stack {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &--link {
+      transition: color var(--transition-300);
+
+      &:hover,
+      &:focus-visible {
+        color: var(--accent);
+      }
+    }
+  }
+
+  &__map {
+    width: 100%;
+    height: px-to-vw(560px, 1440);
+    min-height: 360px;
+    background-color: var(--bg);
+
+    @include desktop {
+      height: clamp(360px, 38.889vw, 560px);
+    }
+
+    @include small-tablet {
+      height: 360px;
+    }
+
+    [class*="map-copyrights-promo"] {
+      display: none !important;
+    }
+  }
+}
+
+.contacts-map__pin {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 44px;
+  height: 54px;
+  color: var(--accent);
+  filter: drop-shadow(0 8px 16px rgba(0, 4, 4, 0.28));
+  pointer-events: none;
+  transform: translate(-50%, -100%);
+
+  svg {
+    display: block;
+    width: 44px;
+    height: 54px;
+  }
+}

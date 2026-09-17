@@ -4,7 +4,7 @@
 */
 
 $page_id = $args['id'] ?? 0;
-$layout_data = $args['layout-data'] ?? [];
+$layout_data = is_array($args['layout-data'] ?? null) ? $args['layout-data'] : array();
 $layout_name = $args['layout-name'] ?? '';
 $layout_ids = $args['layout-ids'] ?? '';
 
@@ -12,13 +12,13 @@ $field_title = $layout_name . '_title';
 $field_slogan = $layout_name . '_slogan';
 $field_text = $layout_name . '_text';
 
-$sec_partners_title = $layout_data[$field_title];
-$sec_partners_slogan = $layout_data[$field_slogan];
-$sec_partners_text = $layout_data[$field_text];
+$sec_partners_title = $layout_data[$field_title] ?? '';
+$sec_partners_slogan = $layout_data[$field_slogan] ?? '';
+$sec_partners_text = $layout_data[$field_text] ?? '';
 $sec_partners_list = get_field('sec-partners_list', 'option');
 ?>
 
-<section class="sec-partners sec-offset" id="<?php echo $layout_name . '-'. $layout_ids; ?>">
+<section class="sec-partners sec-bg sec-offset" id="<?php echo $layout_name . '-'. $layout_ids; ?>">
   <div class="sec-partners__container container">
     <div class="sec-partners__heading">
       <?php if (!empty($sec_partners_title)) : ?>

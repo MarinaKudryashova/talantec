@@ -4,9 +4,9 @@
 * Section: Новости и блог
 */
 
-$page_id = $args["id"];
-$layout_data = $args["layout-data"];
-$layout_name = $args["layout-name"];
+$page_id = $args['id'] ?? 0;
+$layout_data = is_array($args['layout-data'] ?? null) ? $args['layout-data'] : array();
+$layout_name = $args['layout-name'] ?? '';
 $layout_ids = $args['layout-ids'] ?? '';
 
 
@@ -14,11 +14,11 @@ $field_title = $layout_name . '_title';
 $field_subtitle = $layout_name . '_subtitle';
 $field_list = $layout_name . '_list';
 
-$sec_news_title = $layout_data[$field_title];
-$sec_news_subtitle = $layout_data[$field_subtitle];
-$sec_news_list = $layout_data[$field_list];
+$sec_news_title = $layout_data[$field_title] ?? '';
+$sec_news_subtitle = $layout_data[$field_subtitle] ?? '';
+$sec_news_list = $layout_data[$field_list] ?? array();
 
-if($sec_news_list) {
+if ( is_array( $sec_news_list ) && $sec_news_list ) {
   $template_dir = get_template_directory_uri();
 
   // Собираем все данные в массив
@@ -52,7 +52,7 @@ if($sec_news_list) {
 
 // var_dump($news_data);
 ?>
-<section class="sec-news sec-offset" id="news-blog">
+<section class="sec-news sec-bg sec-offset" id="news-blog">
   <div class="sec-news__container container">
     <div class="sec-news__heading">
       <div class="sec-news__inner">

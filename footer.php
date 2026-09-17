@@ -9,6 +9,9 @@
  * @package architect
  */
 
+$company_name = get_theme_mod( 'company_name', '' );
+$company_ogrn = get_theme_mod( 'company_ogrn', '' );
+$company_inn  = get_theme_mod( 'company_inn', '' );
 ?>
     <footer class="footer">
       <div class="footer__top">
@@ -68,197 +71,107 @@
       </div>
       <div class="footer__container container">
         <div class="footer__row">
+          <div class="footer__info footer__col-3">
+            <?php if ( $company_name ) : ?>
+            <span class="sec-contacts__text" itemprop="name"><?php echo esc_html( $company_name ); ?></span>
+            <?php endif; ?>
+            <?php if ( $company_inn ) : ?>
+            <span class="sec-contacts__text"><?php esc_html_e( 'ИНН', 'architect' ); ?> <span itemprop="taxID"><?php echo esc_html( $company_inn ); ?></span></span>
+            <?php endif; ?>
+            <?php if ( $company_ogrn ) : ?>
+            <span class="sec-contacts__text"><?php esc_html_e( 'ОГРН', 'architect' ); ?> <?php echo esc_html( $company_ogrn ); ?></span>
+            <?php endif; ?>
+          </div>
           <div class="footer__content footer__col-9">
+            <?php
+            $footer_menus = array();
+            $footer_menu_map = array(
+              array(
+                'location' => 'footer_primary',
+                'title'    => get_field( 'footer-menu_title_1', 'option' ),
+              ),
+              array(
+                'location' => 'footer_nav',
+                'title'    => get_field( 'footer-menu_title_2', 'option' ),
+              ),
+              array(
+                'location' => 'footer_info',
+                'title'    => get_field( 'footer-menu_title_3', 'option' ),
+              ),
+            );
+            foreach ( $footer_menu_map as $footer_menu ) {
+              if ( architect_nav_menu_has_items( $footer_menu['location'] ) ) {
+                $footer_menus[] = $footer_menu;
+              }
+            }
+            $footer_menu_args = array(
+              'container'   => false,
+              'menu_class'  => false,
+              'menu_id'     => '',
+              'echo'        => true,
+              'fallback_cb' => false,
+              'before'      => '',
+              'after'       => '',
+              'link_before' => '  ',
+              'link_after'  => '',
+              'depth'       => 1,
+            );
+            ?>
+            <?php if ( $footer_menus ) : ?>
             <div class="footer__nav">
-							<?php if(has_nav_menu('footer_primary')) : ?>
+              <?php foreach ( $footer_menus as $footer_menu ) : ?>
               <div class="footer-menu">
-								<?php if(!empty(get_field('footer-menu_title_1', 'option'))) : ?>
-                <h3 class="footer-menu__title"><?php echo get_field('footer-menu_title_1', 'option') ?></h3>
-								<?php endif; ?>
-								<?php
-									wp_nav_menu( [
-										'theme_location'  => 'footer_primary',
-										'menu'            => 'footer_primary',
-										'container'       => false,
-										'menu_class'      => false,
-										'menu_id'         => '',
-										'echo'            => true,
-										'fallback_cb'     => 'wp_page_menu',
-										'before'          => '',
-										'after'           => '',
-										'link_before'     => '  ',
-										'link_after'      => '',
-										'items_wrap'      => '<ul class="footer-menu__list" data-menu>%3$s</ul>',
-										'depth'           => 1,
-										'walker'          => new Footer_Menu_Walker(),
-									] );
-								?>
+                <?php if ( ! empty( $footer_menu['title'] ) ) : ?>
+                <h3 class="footer-menu__title"><?php echo esc_html( $footer_menu['title'] ); ?></h3>
+                <?php endif; ?>
+                <?php
+                  wp_nav_menu(
+                    array_merge(
+                      $footer_menu_args,
+                      array(
+                        'theme_location' => $footer_menu['location'],
+                        'items_wrap'     => '<ul class="footer-menu__list" data-menu>%3$s</ul>',
+                        'walker'         => new Footer_Menu_Walker(),
+                      )
+                    )
+                  );
+                ?>
               </div>
-							<?php endif; ?>
-
-							<?php if(has_nav_menu('footer_nav')) : ?>
-              <div class="footer-menu">
-								<?php if(!empty(get_field('footer-menu_title_2', 'option'))) : ?>
-                <h3 class="footer-menu__title"><?php echo get_field('footer-menu_title_2', 'option') ?></h3>
-								<?php endif; ?>
-								<?php
-									wp_nav_menu( [
-										'theme_location'  => 'footer_nav',
-										'menu'            => 'footer_nav',
-										'container'       => false,
-										'menu_class'      => false,
-										'menu_id'         => '',
-										'echo'            => true,
-										'fallback_cb'     => 'wp_page_menu',
-										'before'          => '',
-										'after'           => '',
-										'link_before'     => '  ',
-										'link_after'      => '',
-										'items_wrap'      => '<ul class="footer-menu__list" data-menu>%3$s</ul>',
-										'depth'           => 1,
-										'walker'          => new Footer_Menu_Walker(),
-									] );
-								?>
-              </div>
-							<?php endif; ?>
-
-              <?php if(has_nav_menu('footer_info')) : ?>
-              <div class="footer-menu">
-								<?php if(!empty(get_field('footer-menu_title_3', 'option'))) : ?>
-                <h3 class="footer-menu__title"><?php echo get_field('footer-menu_title_3', 'option') ?></h3>
-								<?php endif; ?>
-								<?php
-									wp_nav_menu( [
-										'theme_location'  => 'footer_info',
-										'menu'            => 'footer_info',
-										'container'       => false,
-										'menu_class'      => false,
-										'menu_id'         => '',
-										'echo'            => true,
-										'fallback_cb'     => 'wp_page_menu',
-										'before'          => '',
-										'after'           => '',
-										'link_before'     => '  ',
-										'link_after'      => '',
-										'items_wrap'      => '<ul class="footer-menu__list" data-menu>%3$s</ul>',
-										'depth'           => 1,
-										'walker'          => new Footer_Menu_Walker(),
-									] );
-								?>
-              </div>
-							<?php endif; ?>
+              <?php endforeach; ?>
             </div>
 
             <?php /* == Мобильное меню аккордеон == */ ?>
             <div class="footer-mobile-nav accordion">
-							 <?php if(has_nav_menu('footer_primary')) : ?>
+              <?php foreach ( $footer_menus as $footer_menu ) : ?>
               <div class="accordion__item">
                 <button class="accordion__control">
-									<?php if(!empty(get_field('footer-menu_title_1', 'option'))) : ?>
-                  <span class="accordion__title footer-mobile-nav__title"><?php echo get_field('footer-menu_title_1', 'option') ?></span>
-									<?php endif; ?>
+                  <?php if ( ! empty( $footer_menu['title'] ) ) : ?>
+                  <span class="accordion__title footer-mobile-nav__title"><?php echo esc_html( $footer_menu['title'] ); ?></span>
+                  <?php endif; ?>
                   <span class="accordion__icon">
                     <svg aria-hidden="true" width="24" height="24">
                       <use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#icon-arrow-up"></use>
                     </svg>
                   </span>
                 </button>
-                <!-- Содержание -->
                 <div class="accordion__content" aria-hidden="true">
                   <?php
-                    wp_nav_menu( [
-                      'theme_location'  => 'footer_primary',
-                      'menu'            => 'footer_primary',
-                      'container'       => false,
-                      'menu_class'      => false,
-                      'menu_id'         => '',
-                      'echo'            => true,
-                      'fallback_cb'     => 'wp_page_menu',
-                      'before'          => '',
-                      'after'           => '',
-                      'link_before'     => '  ',
-                      'link_after'      => '',
-                      'items_wrap'      => '<ul class="footer-mobile-nav__list" data-menu>%3$s</ul>',
-                      'depth'           => 1,
-                      'walker'          => new Footer_Menu_Walker(),
-                    ] );
+                    wp_nav_menu(
+                      array_merge(
+                        $footer_menu_args,
+                        array(
+                          'theme_location' => $footer_menu['location'],
+                          'items_wrap'     => '<ul class="footer-mobile-nav__list" data-menu>%3$s</ul>',
+                          'walker'         => new Footer_Menu_Walker(),
+                        )
+                      )
+                    );
                   ?>
                 </div>
               </div>
-							<?php endif; ?>
-
-							<?php if(has_nav_menu('footer_nav')) : ?>
-              <div class="accordion__item">
-                <button class="accordion__control">
-									<?php if(!empty(get_field('footer-menu_title_2', 'option'))) : ?>
-                  <span class="accordion__title footer-mobile-nav__title"><?php echo get_field('footer-menu_title_2', 'option') ?></span>
-									<?php endif; ?>
-                  <span class="accordion__icon">
-                    <svg aria-hidden="true" width="24" height="24">
-                      <use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#icon-arrow-up"></use>
-                    </svg>
-                  </span>
-                </button>
-                <!-- Содержание -->
-                <div class="accordion__content" aria-hidden="true">
-                  <?php
-                    wp_nav_menu( [
-                      'theme_location'  => 'footer_nav',
-                      'menu'            => 'footer_nav',
-                      'container'       => false,
-                      'menu_class'      => false,
-                      'menu_id'         => '',
-                      'echo'            => true,
-                      'fallback_cb'     => 'wp_page_menu',
-                      'before'          => '',
-                      'after'           => '',
-                      'link_before'     => '  ',
-                      'link_after'      => '',
-                      'items_wrap'      => '<ul class="footer-mobile-nav__list" data-menu>%3$s</ul>',
-                      'depth'           => 1,
-                      'walker'          => new Footer_Menu_Walker(),
-                    ] );
-                  ?>
-                </div>
-              </div>
-							<?php endif; ?>
-
-							<?php if(has_nav_menu('footer_info')) : ?>
-              <div class="accordion__item">
-                <button class="accordion__control">
-									<?php if(!empty(get_field('footer-menu_title_3', 'option'))) : ?>
-                  <span class="accordion__title footer-mobile-nav__title"><?php echo get_field('footer-menu_title_3', 'option') ?></span>
-									<?php endif; ?>
-                  <span class="accordion__icon">
-                    <svg aria-hidden="true" width="24" height="24">
-                      <use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#icon-arrow-up"></use>
-                    </svg>
-                  </span>
-                </button>
-                <!-- Содержание -->
-                <div class="accordion__content" aria-hidden="true">
-                <?php
-									wp_nav_menu( [
-										'theme_location'  => 'footer_info',
-										'menu'            => 'footer_info',
-										'container'       => false,
-										'menu_class'      => false,
-										'menu_id'         => '',
-										'echo'            => true,
-										'fallback_cb'     => 'wp_page_menu',
-										'before'          => '',
-										'after'           => '',
-										'link_before'     => '  ',
-										'link_after'      => '',
-										'items_wrap'      => '<ul class="footer-mobile-nav__list" data-menu>%3$s</ul>',
-										'depth'           => 1,
-										'walker'          => new Footer_Menu_Walker(),
-									] );
-								?>
-                </div>
-              </div>
-							<?php endif; ?>
+              <?php endforeach; ?>
             </div>
+            <?php endif; ?>
           </div>
         </div>
 
@@ -271,7 +184,10 @@
               ?>
           </p>
           <div class="footer__bottom-right footer__col-9">
-            <a class="footer__policy" href="/privacy-policy" data-text="Политика конфиденциальности">Политика конфиденциальности</a>
+            <div class="footer__legal">
+              <a class="footer__policy" href="/privacy-policy" data-text="Политика конфиденциальности">Политика конфиденциальности</a>
+              <button type="button" class="footer__cookie-settings" data-cookie-settings><?php esc_html_e( 'Настройки cookie', 'architect' ); ?></button>
+            </div>
             <p class="footer__made">Сделано в&#160;
               <a href="https://www.cosmo-design.com/" class="footer__made-link" target="_blank">Cosmo design</a>
             </p>
@@ -292,6 +208,11 @@
         <div class="footer-bg__vertical"></div>
       </div>
     </footer>
+
+    <?php get_template_part( 'template-parts/components/cookie-notice' ); ?>
+    <?php get_template_part( 'template-parts/components/modal-leadform' ); ?>
+
+    <link rel="manifest" href="<?php echo esc_url( get_template_directory_uri() ); ?>/favicons/talantec/site.webmanifest">
 
 		<?php wp_footer(); ?>
 
