@@ -74,16 +74,16 @@ $company_inn = get_theme_mod('company_inn', '');
           <div class="footer__info footer__col-3">
           <?php /*-- Название компании --*/ ?>
           <?php if($company_name) : ?>
-          <span class="sec-contacts__caption" itemprop="name"><?php echo esc_html($company_name); ?></span>
-          <? endif; ?>
+          <span class="sec-contacts__text" itemprop="name"><?php echo esc_html($company_name); ?></span>
+          <?php endif; ?>
 
           <?php /*-- Реквизиты --*/ ?>
-          <?php if($company_ogrn) : ?>
-          <span class="sec-contacts__text">ОГРН <span itemprop="taxID"><?php echo esc_html($company_ogrn); ?></span></span>
-          <? endif; ?>
           <?php if($company_inn) : ?>
           <span class="sec-contacts__text">ИНН <span itemprop="taxID"><?php echo esc_html($company_inn); ?></span></span>
-          <? endif; ?>
+          <?php endif; ?>
+          <?php if($company_ogrn) : ?>
+          <span class="sec-contacts__text">ОГРН <?php echo esc_html($company_ogrn); ?></span>
+          <?php endif; ?>
           </div>
           <div class="footer__content footer__col-9">
             <div class="footer-menu">
@@ -118,7 +118,10 @@ $company_inn = get_theme_mod('company_inn', '');
               ?>
           </p>
           <div class="footer__bottom-right footer__col-9">
-            <a class="footer__policy" href="/privacy-policy" data-text="Политика конфиденциальности">Политика конфиденциальности</a>
+            <div class="footer__legal">
+              <a class="footer__policy" href="/privacy-policy" data-text="Политика конфиденциальности">Политика конфиденциальности</a>
+              <button type="button" class="footer__cookie-settings" data-cookie-settings><?php esc_html_e( 'Настройки cookie', 'architect' ); ?></button>
+            </div>
             <p class="footer__made">Сделано в&#160;
               <a href="https://www.cosmo-design.com/" class="footer__made-link" target="_blank">Cosmo design</a>
             </p>
@@ -139,6 +142,11 @@ $company_inn = get_theme_mod('company_inn', '');
         <div class="footer-bg__vertical"></div>
       </div>
     </footer>
+
+    <?php get_template_part( 'template-parts/components/cookie-notice' ); ?>
+    <?php get_template_part( 'template-parts/components/modal-leadform' ); ?>
+
+    <link rel="manifest" href="<?php echo esc_url( get_template_directory_uri() ); ?>/favicons/talantec/site.webmanifest">
 
 		<?php wp_footer(); ?>
 

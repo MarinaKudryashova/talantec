@@ -3,20 +3,20 @@
 * Section: О нас 
 */
 
-$page_id = $args["id"];
-$layout_data = $args["layout-data"];
-$layout_name = $args["layout-name"];
+$page_id = $args['id'] ?? 0;
+$layout_data = is_array($args['layout-data'] ?? null) ? $args['layout-data'] : array();
+$layout_name = $args['layout-name'] ?? '';
 
 $field_title = $layout_name . '_sec_heading_title';
 $field_descr = $layout_name . '_sec_heading_descr';
 $field_list = $layout_name . '_about_facts';
 
-$sec_about_title = $layout_data[$field_title];
-$sec_about_descr = $layout_data[$field_descr];
-$sec_about_facts = $layout_data[$field_list];
+$sec_about_title = $layout_data[$field_title] ?? '';
+$sec_about_descr = $layout_data[$field_descr] ?? '';
+$sec_about_facts = $layout_data[$field_list] ?? array();
 ?>
 
-<section class="sec-about sec-offset" id="about-company">
+<section class="sec-about sec-bg sec-offset" id="about-company">
   <div class="sec-about__container container">
     <div class="sec-about__heading">
       <?php if (!empty($sec_about_title)) : ?>
@@ -27,7 +27,7 @@ $sec_about_facts = $layout_data[$field_list];
       <p class="sec-about__descr"><?php echo wp_kses_post($sec_about_descr); ?></p>
       <?php endif; ?>
     </div>
-    <?php if ($sec_about_facts) : ?>
+    <?php if ( is_array( $sec_about_facts ) && $sec_about_facts ) : ?>
     <ul class="about-facts">
       <?php foreach ($sec_about_facts as $fact) : ?>
       <li class="about-facts__item">

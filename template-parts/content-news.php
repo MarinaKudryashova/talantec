@@ -32,7 +32,7 @@ $news_query = new WP_Query($post_args);
 $page_slug = get_post_field('post_name', $page_id);
 ?>
 
-<section class="<?php echo esc_attr($type); ?> sec-offset" id="<?php echo esc_attr($type); ?>">
+<section class="<?php echo esc_attr($type); ?> sec-bg sec-offset" id="<?php echo esc_attr($type); ?>">
   <div class="<?php echo esc_attr($type); ?>__container container">
     <div class="<?php echo esc_attr($type); ?>__content">
       
@@ -52,6 +52,7 @@ $page_slug = get_post_field('post_name', $page_id);
           ));
 
           $first = true;
+          if ( ! is_wp_error( $categories ) && is_array( $categories ) ) :
           foreach($categories as $cat) :
             $active = ($current_cat == $cat->slug) ? 'is-active' : '';
 
@@ -63,7 +64,8 @@ $page_slug = get_post_field('post_name', $page_id);
                 <!-- <span class="count">(<?php //echo $cat->count; ?>)</span> -->
               </a>
             </li>
-          <?php endforeach; ?>
+          <?php endforeach;
+          endif; ?>
           
         </ul>
       </div>

@@ -2,8 +2,8 @@
 /*
 * Section: Цены
 */
-$page_id = $args["id"];
-$layout_data = $args['layout-data'] ?? [];
+$page_id = $args['id'] ?? 0;
+$layout_data = is_array($args['layout-data'] ?? null) ? $args['layout-data'] : array();
 $layout_name = $args['layout-name'] ?? '';
 $layout_ids = $args['layout-ids'] ?? '';
 
@@ -11,12 +11,12 @@ $field_title = $layout_name . '_title';
 $field_subtitler = $layout_name . '_subtitle';
 $field_list = $layout_name . '_list';
 
-$sec_price_title = $layout_data[$field_title];
-$sec_price_subtitler = $layout_data[$field_subtitler];
-$sec_price_list = $layout_data[$field_list];
+$sec_price_title = $layout_data[$field_title] ?? '';
+$sec_price_subtitler = $layout_data[$field_subtitler] ?? '';
+$sec_price_list = $layout_data[$field_list] ?? array();
 
 ?>
-<section class="sec-price sec-offset" id="sec-price">
+<section class="sec-price sec-bg sec-offset" id="sec-price">
   <div class="sec-price__container container">
     <div class="sec-price__heading">
       <?php if (!empty($sec_price_title)) : ?>
@@ -64,7 +64,7 @@ $sec_price_list = $layout_data[$field_list];
               </ul>
               <?php endif; ?>
             </div>
-            <button type="button" class="tariff-card__btn ui-btn-arrow">
+            <button type="button" class="tariff-card__btn ui-btn-arrow" data-graph-path="modal-leadform">
               <span class="ui-btn-arrow__text">Заказать</span>
               <span class="ui-btn-arrow__arrow">
                 <span class="ui-arrow">

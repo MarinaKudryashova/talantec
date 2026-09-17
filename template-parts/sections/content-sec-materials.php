@@ -1,6 +1,6 @@
  <?php
 $page_id = $args['id'] ?? 0;
-$layout_data = $args['layout-data'] ?? [];
+$layout_data = is_array($args['layout-data'] ?? null) ? $args['layout-data'] : array();
 $layout_name = $args['layout-name'] ?? '';
 
 
@@ -11,13 +11,13 @@ $field_slogan = $layout_name . '_slogan';
 $field_descr = $layout_name . '_descr';
 
 
-$sec_slider_title = $layout_data[$field_title];
-$sec_slider_type = $layout_data[$field_type];
-$sec_slider_list = $layout_data[$field_list];
-$sec_slider_slogan = $layout_data[$field_slogan];
-$sec_slider_descr = $layout_data[$field_descr];
+$sec_slider_title = $layout_data[$field_title] ?? '';
+$sec_slider_type = $layout_data[$field_type] ?? '';
+$sec_slider_list = $layout_data[$field_list] ?? array();
+$sec_slider_slogan = $layout_data[$field_slogan] ?? '';
+$sec_slider_descr = $layout_data[$field_descr] ?? '';
 
-if($sec_slider_list) {
+if ( is_array( $sec_slider_list ) && $sec_slider_list ) {
   $template_dir = get_template_directory_uri();
 
   // Собираем все данные в массив

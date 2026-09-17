@@ -19,14 +19,7 @@ $news_page_id = get_option('page_for_posts');
   <div class="content-overlay content-overlay--page">
   <?php 
     get_template_part('template-parts/content-news', '', array('page_id' => $news_page_id, 'type' => 'news'));
-    $arlayouts = get_field('layouts');
-    if ($arlayouts) :
-      foreach ($arlayouts as $ids => $layout) :
-        $layout_name = $layout['acf_fc_layout'];
-        $layout_ids = $ids;
-        get_template_part('template-parts/sections/' . $layout_name, '', array('id' => $news_page_id, 'layout-data' => $layout, 'layout-name' => $layout_name, 'layout-ids' => $layout_ids));
-      endforeach;
-    endif;
+    architect_render_flexible_layouts($news_page_id, get_field('layouts', $news_page_id));
   ?>
   </div>
 </main>

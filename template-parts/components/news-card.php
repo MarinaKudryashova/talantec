@@ -33,10 +33,11 @@ $item = $args['item-data'] ?? [];
   </div>
   <div class="news-card__view">
     <picture class="news-card__picture">
+      <?php architect_picture_mobile_sources($item['img_versions'] ?? array()); ?>
       <?php if (!empty($item['img_versions']['webp_1x'])) : ?>
       <source srcset="<?php echo esc_url($item['img_versions']['webp_1x']); ?>" type="image/webp">
       <?php endif; ?>
-      <img src="<?php echo esc_url($item['img_versions']['original_1x']); ?>" alt="Иллюстрация к новости" loading="lazy" width="416"
+      <img src="<?php echo esc_url($item['img_versions']['original_1x'] ?? ''); ?>" alt="<?php echo esc_attr($item['name'] ?? 'Иллюстрация к новости'); ?>" loading="lazy" decoding="async" width="416"
         height="300">
     </picture>
   </div>

@@ -2,6 +2,7 @@
 // Класс для обработки меню футера
 class Footer_Menu_Walker extends Walker_Nav_Menu {
   public function start_el(&$output, $item, $depth = 0, $args = null, $id = 0) {
+    $args = architect_nav_menu_args($args);
     $output .= '<li class="footer-menu__item">';
     
     $attributes  = '';

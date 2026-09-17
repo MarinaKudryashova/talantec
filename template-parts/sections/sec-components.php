@@ -21,7 +21,7 @@ $sec_components_list = get_field('sec-components_show_blocks');
       <?php endif; ?>
     </div>
     <!-- Табы   -->
-     <?php if (!empty($sec_components_list && is_array($sec_components_list))) : ?> 
+     <?php if (!empty($sec_components_list) && is_array($sec_components_list)) : ?> 
     <div class="tabs sec-components__content components-content" data-tabs="tabs-components">
       <ul class="tabs__nav components-content__nav">
         <!-- кнопки -->

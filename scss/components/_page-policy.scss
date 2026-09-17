@@ -1,0 +1,33 @@
+.page-policy {
+  &__container {
+    padding-bottom: px-to-vw(80px, 1440);
+
+    @include desktop {
+      padding-bottom: clamp(48px, 5.556vw, 80px);
+    }
+  }
+
+  &__title {
+    margin: 0 0 12px;
+    font-weight: 500;
+    font-size: px-to-vw(40px, 1440);
+    line-height: 110%;
+    color: var(--black);
+
+    @include small-desktop {
+      font-size: clamp(32px, 2.778vw, 40px);
+    }
+
+    @include small-tablet {
+      font-size: clamp(28px, 5vw, 32px);
+    }
+  }
+
+  &__updated {
+    margin: 0 0 1em;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    color: var(--grey);
+  }
+}

@@ -141,15 +141,18 @@ function services_true_taxonomy_filter() {
 		$taxes = array('services_category');
 		
 		foreach ($taxes as $tax) {
-			$current_tax = isset( $_GET[$tax] ) ? $_GET[$tax] : '';
+			$current_tax = isset( $_GET[$tax] ) ? sanitize_title( wp_unslash( $_GET[$tax] ) ) : '';
 			$tax_obj = get_taxonomy($tax);
+			if ( ! $tax_obj ) {
+				continue;
+			}
 			$tax_name = mb_strtolower($tax_obj->labels->name);
 			$terms = get_terms(array(
 				'taxonomy' => $tax,
 				'hide_empty' => false,
 			));
 			
-			if(count($terms) > 0) {
+			if ( ! is_wp_error( $terms ) && is_array( $terms ) && count( $terms ) > 0 ) {
 				echo "<select name='$tax' id='$tax' class='postform'>";
 				echo "<option value=''>Все $tax_name</option>";
 				

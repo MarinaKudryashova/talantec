@@ -1,5 +1,5 @@
 import "./components/header-scroll";
-import "./components/products-bgs";
+import "./components/bggrid-bgs";
 
 import "./components/init-slider"; // инициализация Swiper
 import "./components/materials-slider";
@@ -19,3 +19,5 @@ import "./components/chars-slider";
 import "./components/projects-slider";
 
 import "./components/stageswork";
+import "./components/cookie-notice";
+import "./components/modal";

@@ -1,0 +1,335 @@
+html.is-modal-lock {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body.disable-scroll {
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  width: auto !important;
+  height: auto !important;
+  overflow: visible;
+}
+
+.graph-modal {
+  --transition-time: var(--transition-300);
+  z-index: 1300;
+  padding: clamp(16px, 4vw, 40px);
+  color: var(--black);
+  background-color: var(--black-560);
+
+  &__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid var(--border);
+    background: transparent;
+    background-image: none;
+    color: var(--border);
+    cursor: pointer;
+    transition:
+      color var(--transition-300),
+      border-color var(--transition-300),
+      background-color var(--transition-300);
+
+    svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+      stroke-width: 1.5px;
+      transition: stroke var(--transition-300);
+    }
+
+    &:hover,
+    &:focus-visible {
+      color: var(--accent);
+      border-color: var(--accent);
+      background-color: transparent;
+      outline: none;
+    }
+
+    @include mobile {
+      top: 8px;
+      right: 8px;
+    }
+  }
+
+  &__container {
+    position: relative;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    margin: auto;
+    border: none;
+    border-radius: 0;
+    padding: clamp(32px, px-to-vw(48px, 1440), 48px) clamp(20px, px-to-vw(48px, 1440), 48px);
+    width: 860px;
+    max-width: calc(100% - 32px);
+    min-height: 0;
+    color: var(--black);
+    background: var(--bg);
+    cursor: default;
+
+    &:focus,
+    &:focus-visible {
+      outline: none;
+    }
+
+    @include tablet {
+      width: calc(100% - 32px);
+      max-width: 640px;
+      padding: 32px 24px;
+    }
+
+    @include mobile {
+      width: calc(100% - 24px);
+      max-width: none;
+      padding: 28px 16px 24px;
+    }
+
+    &.graph-modal-open {
+      display: flex;
+    }
+
+    &[data-graph-target="modal-leadform"] {
+      width: 860px;
+      max-width: calc(100% - 32px);
+
+      @include tablet {
+        width: calc(100% - 32px);
+        max-width: 640px;
+      }
+
+      @include mobile {
+        max-width: none;
+      }
+    }
+
+    &[data-graph-target="modal-send"],
+    &[data-graph-target="modal-failed"] {
+      width: min(480px, calc(100% - 32px));
+      min-height: 172px;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    margin: 0;
+    color: var(--black);
+  }
+
+  &__heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: clamp(24px, px-to-vw(32px, 1440), 32px);
+    text-align: center;
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 500;
+    font-size: px-to-vw(48px, 1440);
+    line-height: 110%;
+    color: var(--black);
+
+    @include desktop {
+      font-size: clamp(32px, 3.333vw, 48px);
+    }
+
+    @include tablet {
+      font-size: 36px;
+    }
+
+    @include mobile {
+      font-size: 24px;
+    }
+  }
+
+  &__descr {
+    margin: 0;
+    max-width: 36em;
+    font-weight: 400;
+    font-size: px-to-vw(16px, 1440);
+    line-height: 120%;
+    color: var(--grey);
+
+    @include desktop {
+      font-size: 16px;
+    }
+
+    @include mobile {
+      font-size: 14px;
+    }
+  }
+
+  &__form {
+    width: 100%;
+
+    .screen-reader-response {
+      display: none;
+    }
+
+    .form__btn-wrap {
+      align-self: center;
+      margin-inline: auto;
+      width: fit-content;
+    }
+
+    .form__btn.ui-btn-arrow {
+      align-self: center;
+      margin-inline: auto;
+      background-color: var(--accent);
+
+      .ui-btn-arrow__text {
+        color: var(--white);
+      }
+
+      .ui-btn-arrow__arrow {
+        background-color: var(--white);
+      }
+
+      .ui-arrow__svg {
+        color: var(--accent);
+      }
+
+      &:hover,
+      &:focus-visible {
+        background-color: var(--accent-dark);
+
+        .ui-btn-arrow__text {
+          color: var(--white);
+        }
+
+        .ui-btn-arrow__arrow {
+          background-color: var(--white);
+        }
+
+        .ui-arrow__svg {
+          color: var(--accent-dark);
+        }
+      }
+    }
+  }
+
+  .form-argee label span.wpcf7-list-item-label::before {
+    border-color: var(--border);
+  }
+
+  .form-argee label span.wpcf7-list-item-label::after {
+    border-color: var(--white);
+  }
+
+  .form-argee {
+    overflow: visible;
+    padding-bottom: 18px;
+
+    .wpcf7-not-valid-tip {
+      display: block;
+      white-space: normal;
+      color: var(--accent);
+    }
+  }
+
+  .form-field {
+    overflow: visible;
+  }
+
+  .form__btn-wrap:has(.form__btn:disabled),
+  .form__btn-wrap:has(.form__btn.is-disabled) {
+    cursor: not-allowed;
+  }
+
+  .form__btn.ui-btn-arrow:disabled,
+  .form__btn.ui-btn-arrow.is-disabled,
+  .form__btn.ui-btn-arrow[aria-disabled="true"] {
+    opacity: 0.55;
+    pointer-events: none;
+    cursor: not-allowed;
+
+    &:hover,
+    &:focus,
+    &:focus-visible {
+      background-color: var(--accent);
+
+      .ui-btn-arrow__text {
+        color: var(--white);
+      }
+
+      .ui-btn-arrow__arrow {
+        background-color: var(--white);
+      }
+
+      .ui-arrow__svg {
+        color: var(--accent);
+      }
+    }
+  }
+
+  .form-field__input {
+    color: var(--black);
+    caret-color: var(--black);
+    -webkit-text-fill-color: var(--black);
+  }
+
+  .form-field:focus-within .form-field__input {
+    border-bottom-color: var(--black);
+  }
+
+  .form-field:focus-within .wpcf7-form-control-wrap:has(.form-field__input:focus) ~ .form-field__border,
+  .form-field:focus-within .wpcf7-form-control-wrap:has(.form-field__input:focus-visible) ~ .form-field__border,
+  .form-field:focus-within .form-field__border {
+    background-color: var(--black);
+    transform: scaleX(1);
+  }
+
+  .form-field__input:-webkit-autofill,
+  .form-field__input:-webkit-autofill:hover,
+  .form-field__input:-webkit-autofill:focus {
+    border-color: var(--black);
+    -webkit-box-shadow: 0 0 0 40rem var(--bg) inset;
+    -webkit-text-fill-color: var(--black);
+  }
+}
+
+.modal-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+
+  &__title {
+    margin: 0;
+    font-weight: 500;
+    font-size: clamp(24px, px-to-vw(32px, 1440), 32px);
+    line-height: 110%;
+    color: var(--black);
+  }
+
+  &__text {
+    margin: 0;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    color: var(--grey);
+
+    @include mobile {
+      font-size: 14px;
+    }
+  }
+}

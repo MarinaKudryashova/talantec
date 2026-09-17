@@ -53,13 +53,25 @@ a {
 .main {
   position: relative;
   flex: 1 0 auto;
+
+  &--no-bg {
+    padding-top: calc(var(--header-height, 88px) + 40px);
+    background-color: var(--white);
+  }
+}
+
+body:has(#wpadminbar) .main--no-bg {
+  padding-top: calc(var(--header-height, 88px) + 32px + 40px);
+
+  @media screen and (max-width: 782px) {
+    padding-top: calc(var(--header-height, 72px) + 46px + 24px);
+  }
 }
 
 .container {
   margin: 0 auto;
   max-width: 100%;
   padding: 0 px-to-vw(64px, 1440); // 120px для media 1440;
-  // padding: 0 px-to-vw(120px, 1440); // 120px для media 1440;
 
   @include small-desktop {
     padding: 0 40px;
@@ -76,26 +88,6 @@ a {
   @include mobile {
     padding: 0 16px;
   }
-
-  // @include desktop {
-  //   padding: 0 clamp(64px, (px-to-vw(64px, 1440)), 64px);
-  // }
-
-  // @include small-desktop {
-  //   padding: 0 clamp(36px, (px-to-vw(40px, 1280)), 64px);
-  // }
-
-  // @include tablet {
-  //   padding: 0 clamp(30px, (px-to-vw(32px, 1023)), 40px);
-  // }
-
-  // @include small-tablet {
-  //   padding: 0 clamp(18px, (px-to-vw(24px, 768)), 30px);
-  // }
-
-  // @include mobile {
-  //   padding: 0 clamp(16px, (px-to-vw(16px, 576)), 18px);
-  // }
 }
 
 .content-overlay {
@@ -103,7 +95,7 @@ a {
   z-index: 10;
   margin-top: 100vh;
   background-color: var(--white);
-  min-height: 100vh;
+  min-height: clamp(500px, 34.7222222222vw, 1000px);
 
   @include mobile {
     margin-top: 630px;
@@ -111,15 +103,10 @@ a {
 
   &--page {
     margin-top: clamp(500px, px-to-vw(500px, 1440), 1000px);
-    // padding-top: clamp(40px, px-to-vw(40px, 1440), 80px);
 
     @include small-tablet {
       margin-top: clamp(480px, px-to-vw(500px, 768), 1000px);
     }
-
-    // @include mobile {
-    //   padding-top: clamp(24px, px-to-vw(24px, 576), 24px);
-    // }
 
     @include small-mobile {
       margin-top: clamp(417px, px-to-vw(417px, 375), 480px);

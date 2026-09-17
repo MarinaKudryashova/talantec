@@ -4,7 +4,7 @@
 */
 
 $page_id = $args['id'] ?? 0;
-$layout_data = $args['layout-data'] ?? [];
+$layout_data = is_array($args['layout-data'] ?? null) ? $args['layout-data'] : array();
 $layout_name = $args['layout-name'] ?? '';
 
 $field_title = $layout_name . '_sec_heading_title';
@@ -12,9 +12,9 @@ $field_descr = $layout_name . '_sec_heading_descr';
 $field_position = $layout_name . '_position';
 
 
-$sec_blockquote_title = $layout_data[$field_title];
-$sec_blockquote_descr = $layout_data[$field_descr];
-$sec_blockquote_position = $layout_data[$field_position];
+$sec_blockquote_title = $layout_data[$field_title] ?? '';
+$sec_blockquote_descr = $layout_data[$field_descr] ?? '';
+$sec_blockquote_position = $layout_data[$field_position] ?? '';
 ?>
 
 <section class="sec-blockquote sec-offset">

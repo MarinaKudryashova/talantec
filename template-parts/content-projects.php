@@ -51,6 +51,7 @@ $page_slug = get_post_field('post_name', $page_id);
             'hide_empty' => false
           ));
           
+          if ( ! is_wp_error( $categories ) && is_array( $categories ) ) :
           foreach($categories as $cat) :
             $active = ($current_cat == $cat->slug) ? 'is-active' : '';
             $url = home_url('/' . $page_slug . '/' . $cat->slug . '/');
@@ -61,7 +62,8 @@ $page_slug = get_post_field('post_name', $page_id);
                 <!-- <span class="count">(<?php //echo $cat->count; ?>)</span> -->
               </a>
             </li>
-          <?php endforeach; ?>
+          <?php endforeach;
+          endif; ?>
         </ul>
       </div>
       

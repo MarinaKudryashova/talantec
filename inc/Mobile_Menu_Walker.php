@@ -3,6 +3,7 @@
 class Mobile_Menu_Walker extends Walker_Nav_Menu {
 
     public function start_lvl(&$output, $depth = 0, $args = null) {
+        $args = architect_nav_menu_args($args);
         if (isset($args->item_spacing) && 'discard' === $args->item_spacing) {
             $t = '';
             $n = '';
@@ -14,10 +15,11 @@ class Mobile_Menu_Walker extends Walker_Nav_Menu {
         
         // Содержимое аккордеона
         $output .= "{$n}{$indent}<div class=\"accordion__content\" aria-hidden=\"true\">{$n}";
-        $output .= "{$n}{$indent}<ul class=\"mobile-menu__nav nav\">{$n}";
+        $output .= "{$n}{$indent}<ul class=\"mobile-menu__nav\">{$n}";
     }
 
     public function end_lvl(&$output, $depth = 0, $args = null) {
+        $args = architect_nav_menu_args($args);
         if (isset($args->item_spacing) && 'discard' === $args->item_spacing) {
             $t = '';
             $n = '';
@@ -31,6 +33,7 @@ class Mobile_Menu_Walker extends Walker_Nav_Menu {
     }
 
     public function start_el(&$output, $item, $depth = 0, $args = null, $id = 0) {
+        $args = architect_nav_menu_args($args);
         if (isset($args->item_spacing) && 'discard' === $args->item_spacing) {
             $t = '';
             $n = '';
@@ -87,7 +90,7 @@ class Mobile_Menu_Walker extends Walker_Nav_Menu {
             $item_output .= $indent . "\t\t" . '<span class="accordion__title">' . $title . '</span>' . $n;
             $item_output .= $indent . "\t\t" . '<span class="accordion__icon">' . $n;
             $item_output .= $indent . "\t\t\t" . '<svg aria-hidden="true" width="24" height="24">' . $n;
-            $item_output .= $indent . "\t\t\t\t" . '<use xlink:href="' . get_template_directory_uri() . '/img/sprite.svg#icon-arrow-up"></use>' . $n;
+            $item_output .= $indent . "\t\t\t\t" . '<use xlink:href="' . esc_url(get_template_directory_uri()) . '/img/sprite.svg#icon-arrow-up"></use>' . $n;
             $item_output .= $indent . "\t\t\t" . '</svg>' . $n;
             $item_output .= $indent . "\t\t" . '</span>' . $n;
             $item_output .= $indent . "\t" . '</button>' . $n;
@@ -109,6 +112,7 @@ class Mobile_Menu_Walker extends Walker_Nav_Menu {
     }
 
     public function end_el(&$output, $item, $depth = 0, $args = null) {
+        $args = architect_nav_menu_args($args);
         if (isset($args->item_spacing) && 'discard' === $args->item_spacing) {
             $t = '';
             $n = '';

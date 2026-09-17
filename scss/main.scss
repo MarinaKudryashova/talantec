@@ -28,20 +28,20 @@
 @import "./components/sec-about";
 @import "./components/about-facts";
 
-// Решения
+// Виды услуг
 @import "./components/sec-blockquote";
-@import "./components/solutions";
-@import "./components/solutions-card";
-@import "./components/solutions-card-link";
+@import "./components/type-services";
+@import "./components/type-services-card";
+@import "./components/type-services-card-link";
 
-// Услуги
-@import "./components/sec-services";
-@import "./components/service-card";
+// Этапы
+@import "./components/sec-steps";
+@import "./components/step-card";
 
-// Изделия
-@import "./components/products";
-@import "./components/products-bgs";
-@import "./components/products-link";
+// Сетка с фоном
+@import "./components/bggrid";
+@import "./components/bggrid-bgs";
+@import "./components/bggrid-link";
 
 // Материалы
 @import "./components/sec-materials";
@@ -101,13 +101,23 @@
 @import "./components/categories-nav";
 
 @import "./components/sec-offset";
+@import "./components/sec-bg";
 
 //страница Новости
 @import "./components/news";
 @import "./components/textredactor";
 @import "./components/gallery-layout";
+@import "./components/gallery-zoom";
 @import "./components/navigation";
 
 @import "./components/sec-faq";
 @import "./components/sec-price";
 @import "./components/tariff-card";
+@import "./components/sec-benefits";
+
+@import "./components/post-projects";
+@import "./components/page-contacts";
+@import "./components/page-policy";
+@import "./components/error-404";
+@import "./components/cookie-notice";
+@import "./components/modal";

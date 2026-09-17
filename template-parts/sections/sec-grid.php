@@ -2,20 +2,20 @@
 /*
 * Section: Сетка
 */
-$page_id = $args["id"];
-$layout_data = $args["layout-data"];
-$layout_name = $args["layout-name"];
+$page_id = $args['id'] ?? 0;
+$layout_data = is_array($args['layout-data'] ?? null) ? $args['layout-data'] : array();
+$layout_name = $args['layout-name'] ?? '';
 $layout_ids = $args['layout-ids'] ?? '';
 
 $field_title = $layout_name . '_title';
 $field_subtitle = $layout_name . '_subtitle';
 $field_list = $layout_name . '_list';
 
-$sec_grid_title = $layout_data[$field_title];
-$sec_grid_subtitle = $layout_data[$field_subtitle];
-$sec_grid_list = $layout_data[$field_list];
+$sec_grid_title = $layout_data[$field_title] ?? '';
+$sec_grid_subtitle = $layout_data[$field_subtitle] ?? '';
+$sec_grid_list = $layout_data[$field_list] ?? array();
 
-if($sec_grid_list) {
+if ( is_array( $sec_grid_list ) && $sec_grid_list ) {
   $template_dir = get_template_directory_uri();
 
   // Собираем все данные в массив
@@ -45,7 +45,7 @@ if($sec_grid_list) {
   
 }
 ?>
-<section class="sec-grid sec-offset">
+<section class="sec-grid sec-bg sec-offset">
   <div class="sec-grid__container container">
     <div class="sec-grid__heading">
       <?php if (!empty($sec_grid_title)) : ?>

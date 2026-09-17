@@ -57,7 +57,7 @@
   }
 }
 
-.accordion {
+.sec-faq .accordion {
   --size-icon: 30px;
   display: flex;
   flex-direction: column;
@@ -110,6 +110,31 @@
 
     &.is-open {
       outline: none;
+
+      .accordion__control {
+        padding-bottom: 16px;
+
+        @include mobile {
+          padding-bottom: 8px;
+        }
+      }
+
+      .accordion__icon {
+        color: var(--grey-1);
+
+        svg {
+          transform: rotate(-45deg);
+        }
+      }
+
+      .accordion__content {
+        padding-bottom: 20px;
+        opacity: 1;
+
+        @include mobile {
+          padding-bottom: 12px;
+        }
+      }
     }
   }
 
@@ -136,19 +161,11 @@
 
     @include mobile {
       gap: 8px;
-      // padding: 12px 16px;
       font-size: clamp(14px, px-to-vw(16px, 375), 18px);
     }
 
     &:focus {
       outline: none;
-    }
-    .is-open & {
-      padding-bottom: 16px;
-
-      @include mobile {
-        padding-bottom: 8px;
-      }
     }
   }
 
@@ -181,10 +198,6 @@
       transform var(--transition-300),
       color var(--transition-300);
 
-    .is-open & {
-      color: var(--grey-1);
-    }
-
     & svg {
       width: var(--size-icon);
       height: var(--size-icon);
@@ -197,10 +210,6 @@
       transition:
         stroke var(--transition-300),
         transform var(--transition-300);
-
-      .is-open & {
-        transform: rotate(-45deg);
-      }
     }
   }
 
@@ -218,15 +227,6 @@
 
     @include mobile {
       padding: 0 16px;
-    }
-
-    .is-open & {
-      padding-bottom: 20px;
-      opacity: 1;
-
-      @include mobile {
-        padding-bottom: 12px;
-      }
     }
   }
 

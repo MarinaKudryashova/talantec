@@ -8,11 +8,12 @@ $item = $args['item-data'] ?? [];
 ?>
 <a href="<?php echo esc_url($item['link']); ?>" class="ui-card">
   <picture class="ui-card__img">
+    <?php architect_picture_mobile_sources($item['img_versions'] ?? array()); ?>
     <?php if (!empty($item['img_versions']['webp_1x'])) : ?>
     <source srcset="<?php echo esc_url($item['img_versions']['webp_1x']); ?>" type="image/webp">
     <?php endif; ?>
-    <img loading="lazy" src="<?php echo esc_url($item['img_versions']['original_1x']); ?>" width="640" height="425"
-      aria-hidden="true" alt="">
+    <img loading="lazy" src="<?php echo esc_url($item['img_versions']['original_1x'] ?? ''); ?>" width="640" height="425"
+      aria-hidden="true" alt="" decoding="async">
   </picture>
   <div class="ui-card__link">
     <?php if (!empty($item['name'])) : ?>

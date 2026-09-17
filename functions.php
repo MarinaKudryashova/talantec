@@ -153,29 +153,30 @@ function theme_styles_and_scripts() {
 			$ver = $ver . '.' . time();
 	}
 
-	// ПОЛНОЕ УДАЛЕНИЕ jQuery (осторожно!)
-	if (!is_admin() && !is_customize_preview() && !current_user_can('manage_options')) {
-		wp_deregister_script('jquery');
-		wp_deregister_script('jquery-migrate');		
-	}
-
-  // основные стили темы
 	wp_enqueue_style( 'theme-style', get_stylesheet_uri(), array(), $ver );
 	wp_style_add_data( 'theme-style', 'rtl', 'replace' );
 
-	// дополнительные стили
-	// wp_enqueue_style( 'css-vendor', $css_path . 'vendor.min.css', array(), $ver); // стили (библиотеки)
-	wp_enqueue_style( 'css-vendor', $css_path . 'vendor.css', array(), $ver); // стили (библиотеки)
-	// wp_enqueue_style( 'css-main', $css_path . 'main.min.css', array('css-vendor'), $ver); // основные стили темы
-	wp_enqueue_style( 'css-main', $css_path . 'main.css', array('css-vendor'), $ver); // основные стили темы
+	wp_enqueue_style( 'css-vendor', $css_path . 'vendor.css', array(), $ver );
+	wp_enqueue_style( 'css-main', $css_path . 'main.css', array( 'css-vendor' ), $ver );
 
-	// скрипт навигации	
-	wp_enqueue_script( 'architect-navigation', get_template_directory_uri() . '/js/navigation.js', array(), $ver, true );
+	wp_enqueue_script( 'js-main', $js_path . 'main.min.js', array(), $ver, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 
+	if ( is_page_template( 'page-contacts.php' ) ) {
+		$maps_key = trim( (string) get_theme_mod( 'yandex_maps_api_key', '' ) );
+		$maps_src = 'https://api-maps.yandex.ru/2.1/?lang=ru_RU';
+		if ( $maps_key !== '' ) {
+			$maps_src = add_query_arg( 'apikey', $maps_key, $maps_src );
+		}
 
-	// основные скрипты темы	
-	wp_enqueue_script( 'js-main', $js_path . 'main.min.js', array(), $ver, array( 'in_footer' => true, 'strategy' => 'defer'));
-	// wp_enqueue_script( 'js-main', $js_path . 'main.js', array(), $ver, array( 'in_footer' => true, 'strategy' => 'defer'));
+		wp_enqueue_script( 'yandex-maps', $maps_src, array(), null, array( 'in_footer' => true ) );
+		wp_enqueue_script(
+			'architect-map',
+			$js_path . 'map.js',
+			array( 'yandex-maps' ),
+			$ver,
+			array( 'in_footer' => true )
+		);
+	}
 }
 
 add_action( 'wp_enqueue_scripts', 'theme_styles_and_scripts' );
@@ -187,8 +188,34 @@ add_action( 'wp_enqueue_scripts', 'theme_styles_and_scripts' );
 require_once get_template_directory() . '/inc/thumbnail.php'; // Подключаем функционал управления миниатюрами записей из общего списка записей в админ-панели WordPress
 require_once get_template_directory() . '/inc/theme-svg.php'; // Добавляет поддержку SVG изображений в медиабиблиотеку
 require_once get_template_directory() . '/inc/disable_default_image_sizes.php'; // Отключаем только конкретные стандартные размеры изображений
-require_once get_template_directory() . '/inc/the_picture_element.php'; // Отключаем только конкретные стандартные размеры изображений
+require_once get_template_directory() . '/inc/the_picture_element.php';
+require_once get_template_directory() . '/inc/performance.php';
 require_once get_template_directory() . '/inc/post-options.php';
+
+/**
+ * wp_nav_menu() may pass $args as array (WP 6.7+ / PHP 8).
+ *
+ * @param mixed $args Menu args.
+ * @return object
+ */
+function architect_nav_menu_args( $args ) {
+	if ( ! is_object( $args ) ) {
+		$args = (object) ( is_array( $args ) ? $args : array() );
+	}
+
+	foreach ( array( 'before', 'after', 'link_before', 'link_after' ) as $prop ) {
+		if ( ! isset( $args->{$prop} ) ) {
+			$args->{$prop} = '';
+		}
+	}
+
+	if ( ! isset( $args->item_spacing ) ) {
+		$args->item_spacing = 'preserve';
+	}
+
+	return $args;
+}
+
 require_once get_template_directory() . '/inc/Header_Menu_Walker.php';
 require_once get_template_directory() . '/inc/Top_Menu_Walker.php';
 require_once get_template_directory() . '/inc/Footer_Menu_Walker.php';

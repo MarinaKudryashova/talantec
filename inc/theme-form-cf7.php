@@ -38,4 +38,58 @@ if (!function_exists('theme_child_cf7_button_handler')) {
   }
   }
 
+/**
+ * Name: 3–30 characters. Phone: valid RU number, not only “not empty”.
+ */
+function architect_cf7_validate_given_name( $result, $tag ) {
+	if ( $tag->name !== 'given-name' ) {
+		return $result;
+	}
+
+	$name = isset( $_POST[ $tag->name ] ) ? trim( wp_unslash( $_POST[ $tag->name ] ) ) : '';
+	if ( $name === '' ) {
+		return $result;
+	}
+
+	$length = function_exists( 'mb_strlen' ) ? mb_strlen( $name ) : strlen( $name );
+	if ( $length < 3 || $length > 30 ) {
+		$result->invalidate( $tag, __( 'Введите имя от 3 до 30 символов', 'architect' ) );
+	}
+
+	return $result;
+}
+add_filter( 'wpcf7_validate_text', 'architect_cf7_validate_given_name', 20, 2 );
+add_filter( 'wpcf7_validate_text*', 'architect_cf7_validate_given_name', 20, 2 );
+
+function architect_cf7_is_valid_phone( $phone ) {
+	$digits = preg_replace( '/\D+/', '', (string) $phone );
+	if ( strlen( $digits ) === 11 && in_array( $digits[0], array( '7', '8' ), true ) ) {
+		return true;
+	}
+	if ( strlen( $digits ) === 10 && $digits[0] !== '0' ) {
+		return true;
+	}
+	return false;
+}
+
+function architect_cf7_validate_phone_number( $result, $tag ) {
+	if ( $tag->name !== 'tel' ) {
+		return $result;
+	}
+
+	$phone = isset( $_POST[ $tag->name ] ) ? trim( wp_unslash( $_POST[ $tag->name ] ) ) : '';
+	if ( $phone === '' ) {
+		return $result;
+	}
+
+	if ( ! architect_cf7_is_valid_phone( $phone ) ) {
+		$result->invalidate( $tag, __( 'Введите корректный номер телефона', 'architect' ) );
+	}
+
+	return $result;
+}
+add_filter( 'wpcf7_validate_tel', 'architect_cf7_validate_phone_number', 20, 2 );
+add_filter( 'wpcf7_validate_tel*', 'architect_cf7_validate_phone_number', 20, 2 );
+
+
 

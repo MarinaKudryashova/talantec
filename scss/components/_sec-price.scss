@@ -79,10 +79,6 @@
     grid-column: 4 span;
 
     @include big-tablet {
-      grid-column: 6 span;
-    }
-
-    @include mobile {
       grid-column: 12 span;
     }
   }
